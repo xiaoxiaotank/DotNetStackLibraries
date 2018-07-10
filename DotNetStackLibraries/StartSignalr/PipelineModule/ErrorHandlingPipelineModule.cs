@@ -19,6 +19,8 @@ namespace StartSignalr.PipelineModule
             }
 
             base.OnIncomingError(exceptionContext, invokerContext);
+
+            invokerContext.Hub.Clients.Caller.Error(exceptionContext.Error.Message);
         }
     }
 }

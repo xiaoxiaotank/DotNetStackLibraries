@@ -64,3 +64,536 @@ SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(e72e556d-ab28-40fd-
 SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(e72e556d-ab28-40fd-8066-38eead6c39ee)
 SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(e72e556d-ab28-40fd-8066-38eead6c39ee)
 SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(e72e556d-ab28-40fd-8066-38eead6c39ee)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 087611cf-8ba5-4261-aeb8-a70619527f5d is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 087611cf-8ba5-4261-aeb8-a70619527f5d, transport: WebSocketTransport, message: {"C":"d-55693522-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 087611cf-8ba5-4261-aeb8-a70619527f5d, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 087611cf-8ba5-4261-aeb8-a70619527f5d, transport: WebSocketTransport, message: {"I":"1","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 162\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(087611cf-8ba5-4261-aeb8-a70619527f5d)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 71d9f57c-8330-4768-a7ff-a84a33daa0d0 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 71d9f57c-8330-4768-a7ff-a84a33daa0d0, transport: WebSocketTransport, message: {"C":"d-D0D69ADC-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 71d9f57c-8330-4768-a7ff-a84a33daa0d0, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(71d9f57c-8330-4768-a7ff-a84a33daa0d0)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(71d9f57c-8330-4768-a7ff-a84a33daa0d0)
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(71d9f57c-8330-4768-a7ff-a84a33daa0d0)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 71d9f57c-8330-4768-a7ff-a84a33daa0d0
+SignalR.Transports.WebSocketTransport Information: 0 : End(71d9f57c-8330-4768-a7ff-a84a33daa0d0)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(71d9f57c-8330-4768-a7ff-a84a33daa0d0)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (71d9f57c-8330-4768-a7ff-a84a33daa0d0)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection a02a327d-d3be-41e7-9dab-12ddbdf1b59d is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: a02a327d-d3be-41e7-9dab-12ddbdf1b59d, transport: WebSocketTransport, message: {"C":"d-7B14A006-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: a02a327d-d3be-41e7-9dab-12ddbdf1b59d, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: a02a327d-d3be-41e7-9dab-12ddbdf1b59d, transport: WebSocketTransport, message: {"I":"1","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(a02a327d-d3be-41e7-9dab-12ddbdf1b59d)
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(a02a327d-d3be-41e7-9dab-12ddbdf1b59d)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(a02a327d-d3be-41e7-9dab-12ddbdf1b59d)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection a02a327d-d3be-41e7-9dab-12ddbdf1b59d
+SignalR.Transports.WebSocketTransport Information: 0 : End(a02a327d-d3be-41e7-9dab-12ddbdf1b59d)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(a02a327d-d3be-41e7-9dab-12ddbdf1b59d)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (a02a327d-d3be-41e7-9dab-12ddbdf1b59d)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 9e2311f7-effb-4d2b-a276-6ee402910bd0 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 9e2311f7-effb-4d2b-a276-6ee402910bd0, transport: WebSocketTransport, message: {"C":"d-7B14A006-B,0|E,0|F,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 9e2311f7-effb-4d2b-a276-6ee402910bd0, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9e2311f7-effb-4d2b-a276-6ee402910bd0)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 9e2311f7-effb-4d2b-a276-6ee402910bd0, transport: WebSocketTransport, message: {"I":"1","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9e2311f7-effb-4d2b-a276-6ee402910bd0)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9e2311f7-effb-4d2b-a276-6ee402910bd0)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9e2311f7-effb-4d2b-a276-6ee402910bd0)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9e2311f7-effb-4d2b-a276-6ee402910bd0)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9e2311f7-effb-4d2b-a276-6ee402910bd0)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection bd48c145-166b-46cb-b88e-cc447c560214 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: bd48c145-166b-46cb-b88e-cc447c560214, transport: WebSocketTransport, message: {"C":"d-CC99CAE8-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: bd48c145-166b-46cb-b88e-cc447c560214, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: bd48c145-166b-46cb-b88e-cc447c560214, transport: WebSocketTransport, message: {"I":"1","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: bd48c145-166b-46cb-b88e-cc447c560214, transport: WebSocketTransport, message: {"I":"2","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(bd48c145-166b-46cb-b88e-cc447c560214)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 9fa369b9-1cc9-4b58-a9e7-55ecd7952609 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 9fa369b9-1cc9-4b58-a9e7-55ecd7952609, transport: WebSocketTransport, message: {"C":"d-93307D33-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 9fa369b9-1cc9-4b58-a9e7-55ecd7952609, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 9fa369b9-1cc9-4b58-a9e7-55ecd7952609, transport: WebSocketTransport, message: {"I":"1","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 9fa369b9-1cc9-4b58-a9e7-55ecd7952609, transport: WebSocketTransport, message: {"I":"2","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 9fa369b9-1cc9-4b58-a9e7-55ecd7952609
+SignalR.Transports.WebSocketTransport Information: 0 : End(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (9fa369b9-1cc9-4b58-a9e7-55ecd7952609)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 577369cd-54ef-4fd4-a9d3-f35e015972ae is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 577369cd-54ef-4fd4-a9d3-f35e015972ae, transport: WebSocketTransport, message: {"C":"d-93307D33-B,0|E,0|F,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 577369cd-54ef-4fd4-a9d3-f35e015972ae, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(577369cd-54ef-4fd4-a9d3-f35e015972ae)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(577369cd-54ef-4fd4-a9d3-f35e015972ae)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 577369cd-54ef-4fd4-a9d3-f35e015972ae
+SignalR.Transports.WebSocketTransport Information: 0 : End(577369cd-54ef-4fd4-a9d3-f35e015972ae)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(577369cd-54ef-4fd4-a9d3-f35e015972ae)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (577369cd-54ef-4fd4-a9d3-f35e015972ae)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,0|G,0|H,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"I":"1","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,1","M":[{"H":"chatHub","M":"AddNewMessageToPage","A":["","萨芬的"]}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"I":"2"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"R":"09:07:52:萨芬的","I":"3"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,2","M":[{"I":"P|4","P":{"I":"4","D":0}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,3","M":[{"I":"P|4","P":{"I":"4","D":5}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,4","M":[{"I":"P|4","P":{"I":"4","D":10}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,5","M":[{"I":"P|4","P":{"I":"4","D":15}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,6","M":[{"I":"P|4","P":{"I":"4","D":20}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,7","M":[{"I":"P|4","P":{"I":"4","D":25}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,8","M":[{"I":"P|4","P":{"I":"4","D":30}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,9","M":[{"I":"P|4","P":{"I":"4","D":35}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,A","M":[{"I":"P|4","P":{"I":"4","D":40}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,B","M":[{"I":"P|4","P":{"I":"4","D":45}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,C","M":[{"I":"P|4","P":{"I":"4","D":50}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,D","M":[{"I":"P|4","P":{"I":"4","D":55}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,E","M":[{"I":"P|4","P":{"I":"4","D":60}}]}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,F","M":[{"I":"P|4","P":{"I":"4","D":65}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,10","M":[{"I":"P|4","P":{"I":"4","D":70}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,11","M":[{"I":"P|4","P":{"I":"4","D":75}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,12","M":[{"I":"P|4","P":{"I":"4","D":80}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,13","M":[{"I":"P|4","P":{"I":"4","D":85}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,14","M":[{"I":"P|4","P":{"I":"4","D":90}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,15","M":[{"I":"P|4","P":{"I":"4","D":95}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|G,0|H,16","M":[{"I":"P|4","P":{"I":"4","D":100}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9, transport: WebSocketTransport, message: {"R":"Job complete!","I":"4"}
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9
+SignalR.Transports.WebSocketTransport Information: 0 : End(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (7a3bc5cb-b8f3-4387-a2ad-f2a3f20165d9)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection dec3c826-b33c-450d-985c-c888bf4d6a72 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,1|I,0|J,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,1","M":[{"H":"chatHub","M":"AddNewMessageToPage","A":["sdf ","sdf "]}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"I":"1"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"R":"09:07:03:sdf ","I":"2"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,2","M":[{"I":"P|3","P":{"I":"3","D":0}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,3","M":[{"I":"P|3","P":{"I":"3","D":5}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,4","M":[{"I":"P|3","P":{"I":"3","D":10}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,5","M":[{"I":"P|3","P":{"I":"3","D":15}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,6","M":[{"I":"P|3","P":{"I":"3","D":20}}]}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(dec3c826-b33c-450d-985c-c888bf4d6a72)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,7","M":[{"I":"P|3","P":{"I":"3","D":25}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,8","M":[{"I":"P|3","P":{"I":"3","D":30}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,9","M":[{"I":"P|3","P":{"I":"3","D":35}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,A","M":[{"I":"P|3","P":{"I":"3","D":40}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,B","M":[{"I":"P|3","P":{"I":"3","D":45}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,C","M":[{"I":"P|3","P":{"I":"3","D":50}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,D","M":[{"I":"P|3","P":{"I":"3","D":55}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,E","M":[{"I":"P|3","P":{"I":"3","D":60}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,F","M":[{"I":"P|3","P":{"I":"3","D":65}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,10","M":[{"I":"P|3","P":{"I":"3","D":70}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,11","M":[{"I":"P|3","P":{"I":"3","D":75}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,12","M":[{"I":"P|3","P":{"I":"3","D":80}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,13","M":[{"I":"P|3","P":{"I":"3","D":85}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,14","M":[{"I":"P|3","P":{"I":"3","D":90}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,15","M":[{"I":"P|3","P":{"I":"3","D":95}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|I,0|J,16","M":[{"I":"P|3","P":{"I":"3","D":100}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: dec3c826-b33c-450d-985c-c888bf4d6a72, transport: WebSocketTransport, message: {"R":"Job complete!","I":"3"}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(dec3c826-b33c-450d-985c-c888bf4d6a72)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(dec3c826-b33c-450d-985c-c888bf4d6a72)
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(dec3c826-b33c-450d-985c-c888bf4d6a72)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(dec3c826-b33c-450d-985c-c888bf4d6a72)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection dec3c826-b33c-450d-985c-c888bf4d6a72
+SignalR.Transports.WebSocketTransport Information: 0 : End(dec3c826-b33c-450d-985c-c888bf4d6a72)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(dec3c826-b33c-450d-985c-c888bf4d6a72)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (dec3c826-b33c-450d-985c-c888bf4d6a72)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 078c2053-210c-4635-b10b-1bd8f057125e is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,2|K,0|L,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,1","M":[{"H":"chatHub","M":"AddNewMessageToPage","A":["","sdf "]}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"I":"1"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"R":"09:07:28:sdf ","I":"2"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,2","M":[{"I":"P|3","P":{"I":"3","D":0}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,3","M":[{"I":"P|3","P":{"I":"3","D":5}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,4","M":[{"I":"P|3","P":{"I":"3","D":10}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,5","M":[{"I":"P|3","P":{"I":"3","D":15}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,6","M":[{"I":"P|3","P":{"I":"3","D":20}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,7","M":[{"I":"P|3","P":{"I":"3","D":25}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,8","M":[{"I":"P|3","P":{"I":"3","D":30}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,9","M":[{"I":"P|3","P":{"I":"3","D":35}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,A","M":[{"I":"P|3","P":{"I":"3","D":40}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,B","M":[{"I":"P|3","P":{"I":"3","D":45}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,C","M":[{"I":"P|3","P":{"I":"3","D":50}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,D","M":[{"I":"P|3","P":{"I":"3","D":55}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,E","M":[{"I":"P|3","P":{"I":"3","D":60}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,F","M":[{"I":"P|3","P":{"I":"3","D":65}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,10","M":[{"I":"P|3","P":{"I":"3","D":70}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,11","M":[{"I":"P|3","P":{"I":"3","D":75}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,12","M":[{"I":"P|3","P":{"I":"3","D":80}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,13","M":[{"I":"P|3","P":{"I":"3","D":85}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,14","M":[{"I":"P|3","P":{"I":"3","D":90}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,15","M":[{"I":"P|3","P":{"I":"3","D":95}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"C":"d-93307D33-B,3|K,0|L,16","M":[{"I":"P|3","P":{"I":"3","D":100}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 078c2053-210c-4635-b10b-1bd8f057125e, transport: WebSocketTransport, message: {"R":"Job complete!","I":"3"}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(078c2053-210c-4635-b10b-1bd8f057125e)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection c312569c-f09f-4589-ac65-fc3414d55cec is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"I":"1","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(c312569c-f09f-4589-ac65-fc3414d55cec)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"I":"2","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(c312569c-f09f-4589-ac65-fc3414d55cec)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(c312569c-f09f-4589-ac65-fc3414d55cec)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(c312569c-f09f-4589-ac65-fc3414d55cec)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,1","M":[{"H":"chatHub","M":"AddNewMessageToPage","A":["艾丝凡","斯蒂芬"]}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"I":"3"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"R":"09:07:30:斯蒂芬","I":"4"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,2","M":[{"I":"P|5","P":{"I":"5","D":0}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,3","M":[{"I":"P|5","P":{"I":"5","D":5}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,4","M":[{"I":"P|5","P":{"I":"5","D":10}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,5","M":[{"I":"P|5","P":{"I":"5","D":15}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,6","M":[{"I":"P|5","P":{"I":"5","D":20}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,7","M":[{"I":"P|5","P":{"I":"5","D":25}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,8","M":[{"I":"P|5","P":{"I":"5","D":30}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,9","M":[{"I":"P|5","P":{"I":"5","D":35}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,A","M":[{"I":"P|5","P":{"I":"5","D":40}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,B","M":[{"I":"P|5","P":{"I":"5","D":45}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,C","M":[{"I":"P|5","P":{"I":"5","D":50}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,D","M":[{"I":"P|5","P":{"I":"5","D":55}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,E","M":[{"I":"P|5","P":{"I":"5","D":60}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,F","M":[{"I":"P|5","P":{"I":"5","D":65}}]}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(c312569c-f09f-4589-ac65-fc3414d55cec)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,10","M":[{"I":"P|5","P":{"I":"5","D":70}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,11","M":[{"I":"P|5","P":{"I":"5","D":75}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,12","M":[{"I":"P|5","P":{"I":"5","D":80}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,13","M":[{"I":"P|5","P":{"I":"5","D":85}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,14","M":[{"I":"P|5","P":{"I":"5","D":90}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,15","M":[{"I":"P|5","P":{"I":"5","D":95}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"C":"d-7AD9BC26-B,1|C,0|D,16","M":[{"I":"P|5","P":{"I":"5","D":100}}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c312569c-f09f-4589-ac65-fc3414d55cec, transport: WebSocketTransport, message: {"R":"Job complete!","I":"5"}
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 8e654eba-4791-4916-a176-4e2f25f7840f is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 8e654eba-4791-4916-a176-4e2f25f7840f, transport: WebSocketTransport, message: {"C":"d-66089E5D-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(8e654eba-4791-4916-a176-4e2f25f7840f)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d, transport: WebSocketTransport, message: {"C":"d-66089E5D-B,0|E,0|F,1","S":1,"M":[]}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : 8e654eba-4791-4916-a176-4e2f25f7840f is dead
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d, transport: WebSocketTransport, message: {"I":"0","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : 8e654eba-4791-4916-a176-4e2f25f7840f is dead
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : 8e654eba-4791-4916-a176-4e2f25f7840f is dead
+SignalR.Transports.TransportHeartBeat Verbose: 0 : 8e654eba-4791-4916-a176-4e2f25f7840f is dead
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d
+SignalR.Transports.WebSocketTransport Information: 0 : End(1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (1ec4b4dc-8e5e-4561-bf34-09b5b5bfc36d)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 708846b6-2739-43f0-9dc1-4760176ddc89 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 708846b6-2739-43f0-9dc1-4760176ddc89, transport: WebSocketTransport, message: {"C":"d-66089E5D-B,0|G,0|H,1","S":1,"M":[]}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : 8e654eba-4791-4916-a176-4e2f25f7840f is dead
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(708846b6-2739-43f0-9dc1-4760176ddc89)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 708846b6-2739-43f0-9dc1-4760176ddc89, transport: WebSocketTransport, message: {"I":"0","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : 8e654eba-4791-4916-a176-4e2f25f7840f is dead
+SignalR.Transports.TransportHeartBeat Verbose: 0 : 8e654eba-4791-4916-a176-4e2f25f7840f is dead
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 8e654eba-4791-4916-a176-4e2f25f7840f
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(8e654eba-4791-4916-a176-4e2f25f7840f)
+SignalR.Transports.WebSocketTransport Information: 0 : End(8e654eba-4791-4916-a176-4e2f25f7840f)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(708846b6-2739-43f0-9dc1-4760176ddc89)
+SignalR.Transports.WebSocketTransport Verbose: 0 : Cancel(8e654eba-4791-4916-a176-4e2f25f7840f)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(8e654eba-4791-4916-a176-4e2f25f7840f)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (8e654eba-4791-4916-a176-4e2f25f7840f)
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(708846b6-2739-43f0-9dc1-4760176ddc89)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(708846b6-2739-43f0-9dc1-4760176ddc89)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 708846b6-2739-43f0-9dc1-4760176ddc89
+SignalR.Transports.WebSocketTransport Information: 0 : End(708846b6-2739-43f0-9dc1-4760176ddc89)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(708846b6-2739-43f0-9dc1-4760176ddc89)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (708846b6-2739-43f0-9dc1-4760176ddc89)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection c4a7b4c3-ca4a-43b7-a794-51448181665b is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c4a7b4c3-ca4a-43b7-a794-51448181665b, transport: WebSocketTransport, message: {"C":"d-66089E5D-B,0|I,0|J,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: c4a7b4c3-ca4a-43b7-a794-51448181665b, transport: WebSocketTransport, message: {"I":"0","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(c4a7b4c3-ca4a-43b7-a794-51448181665b)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 7537388e-0e94-45a8-a01d-0cdc63211301 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7537388e-0e94-45a8-a01d-0cdc63211301, transport: WebSocketTransport, message: {"C":"d-49DAFEED-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 7537388e-0e94-45a8-a01d-0cdc63211301, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 181cc418-38d7-48d7-8b5b-ffaa00f64733 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 181cc418-38d7-48d7-8b5b-ffaa00f64733, transport: WebSocketTransport, message: {"C":"d-F7F4DD49-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 181cc418-38d7-48d7-8b5b-ffaa00f64733, transport: WebSocketTransport, message: {"S":{"userName":"张三","computerName":"IOS","message":"from server"},"I":"0"}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 181cc418-38d7-48d7-8b5b-ffaa00f64733, transport: WebSocketTransport, message: {"C":"d-F7F4DD49-B,0|C,1|D,1","M":[{"H":"chatHub","M":"Error","A":["Hub exception!"]}]}
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 181cc418-38d7-48d7-8b5b-ffaa00f64733, transport: WebSocketTransport, message: {"I":"1","H":true,"E":"Hub exception!","T":"   在 StartSignalr.Hubs.ChatHub.GetHubException() 位置 C:\\Users\\Jiajianjun\\Source\\Repos\\DotNetStackLibraries\\DotNetStackLibraries\\StartSignalr\\Hubs\\ChatHub.cs:行号 167\r\n   在 lambda_method(Closure , IHub , Object[] )\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.<>c__DisplayClass10_0.<WrapVoidAction>b__0(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubMethodDispatcher.Execute(IHub hub, Object[] parameters)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubDispatcher.Incoming(IHubIncomingInvokerContext context)\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()\r\n--- 引发异常的上一位置中堆栈跟踪的末尾 ---\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)\r\n   在 System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)\r\n   在 Microsoft.AspNet.SignalR.Hubs.HubPipelineModule.<>c__DisplayClass0_0.<<BuildIncoming>b__0>d.MoveNext()","D":{"userName":""}}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(181cc418-38d7-48d7-8b5b-ffaa00f64733)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 743bf01c-9fcb-4c15-872d-bd33c46721a8 is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 743bf01c-9fcb-4c15-872d-bd33c46721a8, transport: WebSocketTransport, message: {"C":"d-A8E91FB2-B,0|C,0|D,1","S":1,"M":[]}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 743bf01c-9fcb-4c15-872d-bd33c46721a8
+SignalR.Transports.WebSocketTransport Information: 0 : End(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (743bf01c-9fcb-4c15-872d-bd33c46721a8)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection f3016aae-bd25-400c-893e-0a7901a6fa6a is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: f3016aae-bd25-400c-893e-0a7901a6fa6a, transport: WebSocketTransport, message: {"C":"d-A8E91FB2-B,0|E,0|F,1","S":1,"M":[]}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(f3016aae-bd25-400c-893e-0a7901a6fa6a)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(f3016aae-bd25-400c-893e-0a7901a6fa6a)
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(f3016aae-bd25-400c-893e-0a7901a6fa6a)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(f3016aae-bd25-400c-893e-0a7901a6fa6a)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection f3016aae-bd25-400c-893e-0a7901a6fa6a
+SignalR.Transports.WebSocketTransport Information: 0 : End(f3016aae-bd25-400c-893e-0a7901a6fa6a)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(f3016aae-bd25-400c-893e-0a7901a6fa6a)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (f3016aae-bd25-400c-893e-0a7901a6fa6a)
+SignalR.Transports.TransportHeartBeat Information: 0 : Connection 0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e is New.
+SignalR.Transports.WebSocketTransport Verbose: 0 : Sending outgoing message. Connection id: 0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e, transport: WebSocketTransport, message: {"C":"d-A8E91FB2-B,0|G,0|H,1","S":1,"M":[]}
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.TransportHeartBeat Verbose: 0 : KeepAlive(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.WebSocketTransport Information: 0 : CloseSocket(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.WebSocketTransport Information: 0 : Abort(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.TransportHeartBeat Information: 0 : Removing connection 0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e
+SignalR.Transports.WebSocketTransport Information: 0 : End(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.WebSocketTransport Verbose: 0 : DrainWrites(0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)
+SignalR.Transports.WebSocketTransport Information: 0 : CompleteRequest (0c5a64ba-8f65-4d61-bb9c-f21a71d2d54e)

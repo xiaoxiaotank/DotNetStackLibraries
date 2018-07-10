@@ -110,6 +110,11 @@ namespace StartSignalr.Hubs
             return base.OnConnected();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stopCalled">如果故意断开而非超时导致，则为true,否则为false</param>
+        /// <returns></returns>
         public override Task OnDisconnected(bool stopCalled)
         {
             return base.OnDisconnected(stopCalled);
