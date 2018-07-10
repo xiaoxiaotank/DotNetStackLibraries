@@ -1,0 +1,45 @@
+﻿
+<input id="message" placeholder="请输入信息" value="123" />
+<button id="submit" style="width:50px;">发送</button>
+<button id="get" style="width:50px;background-color:red">接收</button>
+<div>
+    <div id="left" style="float:left;width:49%">
+
+    </div>
+    <div id="right" style="float:right;width:49%">
+
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $("#submit").click(function () {
+                var msg = $("#message").val();
+                $.ajax({
+                    type: 'post',
+                    url: '/Home/Send',
+                    data: { message: msg },
+                    success: function (result) {
+                        $("#left").append(`<label>${result}</label></br>`)
+                    }
+
+                })
+            })
+
+            $("#get").click(function () {
+                var key = $("#message").val();
+                $.ajax({
+                    type: 'get',
+                    url: '/Home/Get',
+                    data: { key: key },
+                    success: function (result) {
+                        $("#right").append(`<label>${result}</label></br>`)
+                    }
+
+                })
+            })
+        })
+    </script>
+}
+
