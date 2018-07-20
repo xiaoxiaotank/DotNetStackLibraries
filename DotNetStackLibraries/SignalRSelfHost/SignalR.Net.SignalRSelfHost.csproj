@@ -7,7 +7,7 @@
     <ProjectGuid>{3A996DAC-7A15-4A1F-BB36-6475D3A5835E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>SignalRSelfHost</RootNamespace>
-    <AssemblyName>SignalRSelfHost</AssemblyName>
+    <AssemblyName>SignalR.Net.SignalRSelfHost</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -13,7 +13,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JavaScriptClient</RootNamespace>
-    <AssemblyName>JavaScriptClient</AssemblyName>
+    <AssemblyName>SignalR.Net.JavaScriptClient</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartSignalr", "StartSignalr\StartSignalr.csproj", "{A540862C-87E4-4074-B679-5BFAE175C5B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Net.StartSignalr", "StartSignalr\SignalR.Net.StartSignalr.csproj", "{A540862C-87E4-4074-B679-5BFAE175C5B9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SignalR", "SignalR", "{D9F790B9-2EC5-463C-A3B9-1735F07CCCCB}"
 EndProject
@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ASP.NET CORE", "ASP.NET COR
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net", ".Net", "{0D10829B-E9E6-48C6-BE2A-859F75309142}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalRSelfHost", "SignalRSelfHost\SignalRSelfHost.csproj", "{3A996DAC-7A15-4A1F-BB36-6475D3A5835E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Net.SignalRSelfHost", "SignalRSelfHost\SignalR.Net.SignalRSelfHost.csproj", "{3A996DAC-7A15-4A1F-BB36-6475D3A5835E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptClient", "JavaScriptClient\JavaScriptClient.csproj", "{15D7D8C7-7629-4A65-BBA7-417F80E8556D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Net.JavaScriptClient", "JavaScriptClient\SignalR.Net.JavaScriptClient.csproj", "{15D7D8C7-7629-4A65-BBA7-417F80E8556D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Net Core", ".Net Core", "{360B2802-2EE5-4ED4-9E30-4F7998342888}"
 EndProject
@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.Swagger",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{C575B2E6-3CF1-4983-9116-24F32BD41E4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.MVC.Redis", "AspNetCore.MVC.Redis\AspNetCore.MVC.Redis.csproj", "{B84ABC7A-FD1D-417A-A9DD-C6DDB8C137AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.MVC.Redis", "AspNetCore.MVC.Redis\AspNetCore.MVC.Redis.csproj", "{B84ABC7A-FD1D-417A-A9DD-C6DDB8C137AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{AA129E19-91CA-4041-8D8C-83589483BD6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NPOI", "NPOI\NPOI.csproj", "{D4C1DCEE-277A-4E84-8003-9DEDA10170B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +59,10 @@ Global
 		{B84ABC7A-FD1D-417A-A9DD-C6DDB8C137AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B84ABC7A-FD1D-417A-A9DD-C6DDB8C137AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B84ABC7A-FD1D-417A-A9DD-C6DDB8C137AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4C1DCEE-277A-4E84-8003-9DEDA10170B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C1DCEE-277A-4E84-8003-9DEDA10170B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C1DCEE-277A-4E84-8003-9DEDA10170B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C1DCEE-277A-4E84-8003-9DEDA10170B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +77,7 @@ Global
 		{BD906F85-8C17-4ADB-A512-E297E032236E} = {FDBB07C5-4313-48D0-A487-CCD19EB4FCB8}
 		{C575B2E6-3CF1-4983-9116-24F32BD41E4D} = {2667C49B-E7D7-47D3-AC11-B7539AEE3E5E}
 		{B84ABC7A-FD1D-417A-A9DD-C6DDB8C137AB} = {C575B2E6-3CF1-4983-9116-24F32BD41E4D}
+		{D4C1DCEE-277A-4E84-8003-9DEDA10170B8} = {AA129E19-91CA-4041-8D8C-83589483BD6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}
