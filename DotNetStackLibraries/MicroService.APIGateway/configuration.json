@@ -1,0 +1,30 @@
+﻿{
+  "ReRoutes": [
+    // API:ClientService
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "127.0.0.1",
+          "Port": "8810"
+        }
+      ],
+      "UpstreamPathTemplate": "/ClientService/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    // API:ProductService
+    {
+      "DownstreamPathTemplate": "/api/{url}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "127.0.0.1",
+          "Port": "8820"
+        }
+      ],
+      "UpstreamPathTemplate": "/ProductService/{url}",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    }
+  ]
+}
