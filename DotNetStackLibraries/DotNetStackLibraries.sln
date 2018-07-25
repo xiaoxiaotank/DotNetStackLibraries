@@ -37,13 +37,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MicroService", "MicroServic
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ocelot", "Ocelot", "{E7112DE8-9DF2-4901-AE96-5015861BC7C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Ocelot.ClientService", "MicroService.ClientService\MicroService.Ocelot.ClientService.csproj", "{1DF83FED-7108-4175-800A-461F2A973EF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Ocelot.ClientService", "MicroService.ClientService\MicroService.Ocelot.ClientService.csproj", "{1DF83FED-7108-4175-800A-461F2A973EF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Ocelot.APIGateway", "MicroService.APIGateway\MicroService.Ocelot.APIGateway.csproj", "{FEC87F86-24E0-45C3-8E86-7C47DACEED88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Ocelot.APIGateway", "MicroService.APIGateway\MicroService.Ocelot.APIGateway.csproj", "{FEC87F86-24E0-45C3-8E86-7C47DACEED88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Ocelot.Common", "MicroService.Common\MicroService.Ocelot.Common.csproj", "{68E94CA0-A9C0-4E4B-9AB9-5FF8ADF4B194}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Ocelot.Common", "MicroService.Common\MicroService.Ocelot.Common.csproj", "{68E94CA0-A9C0-4E4B-9AB9-5FF8ADF4B194}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroService.Ocelot.ProductService", "MicroService.Ocelot.ProductService\MicroService.Ocelot.ProductService.csproj", "{70E86E74-7A89-46DE-A7FC-E1259B71FC77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroService.Ocelot.ProductService", "MicroService.Ocelot.ProductService\MicroService.Ocelot.ProductService.csproj", "{70E86E74-7A89-46DE-A7FC-E1259B71FC77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools.StackExchange.Redis", "Tools.StackExchange.Redis\Tools.StackExchange.Redis.csproj", "{79D2C861-7749-4F7D-B69E-54BF3379C6A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{70E86E74-7A89-46DE-A7FC-E1259B71FC77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70E86E74-7A89-46DE-A7FC-E1259B71FC77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70E86E74-7A89-46DE-A7FC-E1259B71FC77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D2C861-7749-4F7D-B69E-54BF3379C6A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D2C861-7749-4F7D-B69E-54BF3379C6A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D2C861-7749-4F7D-B69E-54BF3379C6A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D2C861-7749-4F7D-B69E-54BF3379C6A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +117,7 @@ Global
 		{FEC87F86-24E0-45C3-8E86-7C47DACEED88} = {E7112DE8-9DF2-4901-AE96-5015861BC7C0}
 		{68E94CA0-A9C0-4E4B-9AB9-5FF8ADF4B194} = {E7112DE8-9DF2-4901-AE96-5015861BC7C0}
 		{70E86E74-7A89-46DE-A7FC-E1259B71FC77} = {E7112DE8-9DF2-4901-AE96-5015861BC7C0}
+		{79D2C861-7749-4F7D-B69E-54BF3379C6A5} = {AA129E19-91CA-4041-8D8C-83589483BD6B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}

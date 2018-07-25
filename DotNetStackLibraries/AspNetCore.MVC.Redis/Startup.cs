@@ -33,13 +33,14 @@ namespace AspNetCore.MVC.Redis
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            //redis
+            #region redis
             services.AddMemoryCache();
             services.AddDistributedRedisCache(options =>
             {
                 options.Configuration = "127.0.0.1";
                 options.InstanceName = "sample";
-            });
+            }); 
+            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
