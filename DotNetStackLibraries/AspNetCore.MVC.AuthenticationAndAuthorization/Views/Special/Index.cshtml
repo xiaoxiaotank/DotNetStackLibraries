@@ -1,0 +1,9 @@
+﻿@model AspNetCore.MVC.AuthenticationAndAuthorization.Models.Special.IndexViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>你好,@Model.UserName!</h2>
+<h2>认证方式：@Model.AuthenticationType</h2>
+<a class="btn btn-default" href="~/Account/Logout">注销</a>
+

@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+<form asp-controller="Account" asp-action="Login" method="post">
+    <label>名字:</label><input name="name" />
+    <label>密码</label><input name="password" type="password" />
+    <button type="submit">登录</button>
+</form>
+
