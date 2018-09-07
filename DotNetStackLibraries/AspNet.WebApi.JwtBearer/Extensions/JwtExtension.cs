@@ -138,7 +138,7 @@ namespace AspNet.WebApi.JwtBearer.Extensions
 
         public static void RemoveToken(string token)
         {
-            if (_tokenCacheDic.ContainsKey(token))
+            if (token != null && _tokenCacheDic.ContainsKey(token))
             {
                 _tokenCacheDic.Remove(token);
             }
@@ -146,7 +146,7 @@ namespace AspNet.WebApi.JwtBearer.Extensions
 
         public static bool IsTokenExist(string token)
         {
-            return _tokenCacheDic.ContainsKey(token);
+            return token != null && _tokenCacheDic.ContainsKey(token);
         }
     }
 }
