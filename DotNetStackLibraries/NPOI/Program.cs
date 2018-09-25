@@ -60,6 +60,7 @@ namespace NPOI
             //创建工作表
             var sheet = workbook.CreateSheet(sheetName);
             //冻结表头行
+            //冻结列数、行数、开始显示行数、开始显示列数
             sheet.CreateFreezePane(0, 1);
             //创建表头行
             var headerRow = sheet.CreateRow(0);
