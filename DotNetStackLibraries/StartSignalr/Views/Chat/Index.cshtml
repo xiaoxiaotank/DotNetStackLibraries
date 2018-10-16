@@ -15,13 +15,13 @@
     <script src="~/Scripts/jquery.signalR-2.2.2.min.js"></script>
     <!--signalr自动生成的脚本，只有当使用自动代理时才要引用-->
     <script src="~/signalr/hubs"></script>
-    @*<script src="http://192.168.120.140:8100/signalr/hubs"></script>*@
+    @*<script src="http://localhost:17437/signalr/hubs"></script>*@
     <script>
         //$(function () {
         //    //Don't set jQuery.support.cors to true in your code.在跨域的时候
         //    //$.connection.hub.start({ transport: 'longPolling' });指定连接方式："webSockets" "foreverFrame" "serverSentEvents" "longPolling"
         //    //$.connection.hub.transport.name 获取正在使用的传输方式
-        //    //$.connection.hub.url = "http://192.168.120.140:8100/signalr"; //指定hub的url,比如www.baidu.com/signalr,默认为“/signalr”,即当前域名下
+        //    //$.connection.hub.url = "http://localhost:17437/signalr"; //指定hub的url,比如www.baidu.com/signalr,默认为“/signalr”,即当前域名下
         //    //$.connection.hub.qs = {"version":"1.0"}; 设置http query string
         //    //    $.connection.hub.logging = true;
 
@@ -58,6 +58,7 @@
         //            //调用后台hub的Send方法
         //            chat.server.send($('#display-name').val(), $('#message').val());
 
+        //            console.log(chat.server.send($('#message').val()));
         //            //仅仅自己客户端获取数据
         //            chat.server.send($('#message').val()).done(function (message) {
         //                console.log(message);
@@ -120,23 +121,29 @@
         //});
     </script>
     <script>
-                //不使用自动代理
-                    $(function () {
-                        var connection = $.hubConnection("http://localhost:8100/signalr", { useDefaultPath: false });
-                        alert(connection.url);
+        //不使用自动代理
+        $(function () {
+            var connection = $.hubConnection("http://localhost:17437/signalr", { useDefaultPath: false });
+            alert(connection.url);
 
-                    //connection.url = "/signalr";
-                    var contosoChatHubProxy = connection.createHubProxy('controlCenterHub');
-                    contosoChatHubProxy.on('showstations', function (msg) {
-                        console.log(msg);
-                    });
-                    connection.start().done(function () {
-                        contosoChatHubProxy.invoke("initialize");
-                    });
+            //connection.url = "/signalr";
+            var contosoChatHubProxy = connection.createHubProxy('chatHub');
+            contosoChatHubProxy.on('showstations', function (msg) {
+                console.log(msg);
+            });
+            connection.start().done(function () {
+                console.log(contosoChatHubProxy.invoke("send", "1"));
+                contosoChatHubProxy
+                    .invoke("send", "1")
+                    .done(function (data) {
+                        alert(data);
+                    })
 
-                    connection.error(function (error) {
-                        alert('SignalR error: ' + error)
-                    });
-                })
+            });
+
+            connection.error(function (error) {
+                alert('SignalR error: ' + error)
+            });
+        })
     </script>
 }

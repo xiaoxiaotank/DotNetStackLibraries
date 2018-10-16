@@ -75,6 +75,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{723EEC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.AccessingObjectsAcrossAppDomainBoundaries", "CSharp.AccessingObjectsAcrossAppDomainBoundaries\CSharp.AccessingObjectsAcrossAppDomainBoundaries.csproj", "{4F1F40A5-DCA8-43D4-A13C-04D7BB27577E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.ILogger", "AspNetCore.WebApi.ILogger\AspNetCore.WebApi.ILogger.csproj", "{4DF2836A-AC4E-4D57-BB69-1BFD8923E46D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,10 @@ Global
 		{4F1F40A5-DCA8-43D4-A13C-04D7BB27577E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F1F40A5-DCA8-43D4-A13C-04D7BB27577E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F1F40A5-DCA8-43D4-A13C-04D7BB27577E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DF2836A-AC4E-4D57-BB69-1BFD8923E46D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DF2836A-AC4E-4D57-BB69-1BFD8923E46D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DF2836A-AC4E-4D57-BB69-1BFD8923E46D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DF2836A-AC4E-4D57-BB69-1BFD8923E46D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -194,6 +200,7 @@ Global
 		{27AB9E01-930F-4AF6-A455-6BB407B3BD3E} = {3ECC12B6-7CB4-4640-A58A-B1A4773EEA89}
 		{9DA17D36-016D-4267-9A1B-A563398CC67E} = {ACA88906-0C02-4D7C-9509-D4132643B3BE}
 		{4F1F40A5-DCA8-43D4-A13C-04D7BB27577E} = {723EECF1-B4B8-42A3-AEE0-8F6AA1058D20}
+		{4DF2836A-AC4E-4D57-BB69-1BFD8923E46D} = {3ECC12B6-7CB4-4640-A58A-B1A4773EEA89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}
