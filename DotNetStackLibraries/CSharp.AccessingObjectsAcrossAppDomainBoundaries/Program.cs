@@ -13,8 +13,8 @@ namespace CSharp.AccessingObjectsAcrossAppDomainBoundaries
     {
         static void Main(string[] args)
         {
-            Marshalling();
-
+            //Marshalling();
+            TestStaticMember();
             Console.ReadKey();
         }
 
@@ -69,7 +69,7 @@ namespace CSharp.AccessingObjectsAcrossAppDomainBoundaries
             anotherAd = AppDomain.CreateDomain("Another AD");
             mbrt = (MarshalByRefType)anotherAd.CreateInstanceAndUnwrap(exeAssembly, typeof(MarshalByRefType).FullName);
 
-            //对象的方法返回所返回对象的副本，对象按值封送，即得到的是一个真是的对象
+            //对象的方法返回所返回对象的副本，对象按值封送，即得到的是一个真实的对象
             var mbvt = mbrt.MethodWithReturn();
             //证明得到的不是对一个代理对象的引用
             Console.WriteLine($"Is proxy? {RemotingServices.IsTransparentProxy(mbvt)}");
@@ -101,6 +101,48 @@ namespace CSharp.AccessingObjectsAcrossAppDomainBoundaries
             //这里永远执行不到。。
             #endregion
 
+        }
+
+
+        class A : MarshalByRefObject
+        {
+            public static int Number;
+
+            public void SetNumber(int value)
+            {
+                Number = value;
+            }
+        }
+
+        [Serializable]
+        class B
+        {
+            public static int Number;
+
+            public void SetNumber(int value)
+            {
+                Number = value;
+            }
+        }
+
+        private static void TestStaticMember()
+        {
+            var assamblyName = Assembly.GetEntryAssembly().FullName;
+            var newDomain = AppDomain.CreateDomain("New Domain");
+
+            #region 引用封送：在newDomain创建一个A的实例，然后传入到该域，接收到的是代理，但是静态成员是域独立的
+            A.Number = 10;
+            var a = newDomain.CreateInstanceAndUnwrap(assamblyName, typeof(A).FullName) as A;
+            a.SetNumber(20);
+            Console.WriteLine(A.Number);
+            #endregion
+
+            #region 值封送：在newDomain创建一个B的实例，然后传入到该域，接收到的是其副本，即该变量与newDomain中的变量是独立的，但是内部元素的值相同
+            B.Number = 10;
+            var b = newDomain.CreateInstanceAndUnwrap(assamblyName, typeof(B).FullName) as B;
+            b.SetNumber(20);
+            Console.WriteLine(B.Number); 
+            #endregion
         }
     }
 }
