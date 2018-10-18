@@ -87,6 +87,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Roslyn.MSBuild", "As
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Roslyn.CSharp", "AspNet.Roslyn.CSharp\AspNet.Roslyn.CSharp.csproj", "{81C20470-2A3C-4620-B885-14A4C5D914D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.NullValue", "AspNetCore.WebApi.NullValue\AspNetCore.WebApi.NullValue.csproj", "{FB55E0D0-486F-4EFC-96C3-D7000E82A927}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -189,6 +191,10 @@ Global
 		{81C20470-2A3C-4620-B885-14A4C5D914D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C20470-2A3C-4620-B885-14A4C5D914D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C20470-2A3C-4620-B885-14A4C5D914D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB55E0D0-486F-4EFC-96C3-D7000E82A927}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB55E0D0-486F-4EFC-96C3-D7000E82A927}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB55E0D0-486F-4EFC-96C3-D7000E82A927}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB55E0D0-486F-4EFC-96C3-D7000E82A927}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -232,6 +238,7 @@ Global
 		{EDD611DA-658B-4891-A8DD-45CE6359B7B4} = {0B9CA158-BB88-40D8-83C5-20CB770DBB2A}
 		{5DD35367-156B-467F-BC5A-BAB08CE7C458} = {0B9CA158-BB88-40D8-83C5-20CB770DBB2A}
 		{81C20470-2A3C-4620-B885-14A4C5D914D8} = {0B9CA158-BB88-40D8-83C5-20CB770DBB2A}
+		{FB55E0D0-486F-4EFC-96C3-D7000E82A927} = {FDBB07C5-4313-48D0-A487-CCD19EB4FCB8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}
