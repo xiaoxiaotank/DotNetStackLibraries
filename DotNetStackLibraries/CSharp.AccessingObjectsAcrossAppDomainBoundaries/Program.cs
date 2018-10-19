@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Remoting;
 using System.Text;
 using System.Threading;
@@ -112,6 +113,24 @@ namespace CSharp.AccessingObjectsAcrossAppDomainBoundaries
             {
                 Number = value;
             }
+
+            public void Modify(int[] arr)
+            {
+                arr[0] = 1;
+            }
+
+            /// <summary>
+            /// 引用封送时数组是不会自动封送回调用方，即调用方的值不会被改变，猜测是被调用方中存了一份该数组的副本，
+            /// 使用[out]可以将修改后的值同步到调用方
+            /// 
+            /// 注意，这个跟 ref 和 out 作用不同，这个的作用仅仅是让数组在不同应用程序域中的执行方式像是在相同域中似的，如果在方法内改变了引用，调用方的数组仍不会被改变
+            /// </summary>
+            /// <param name="arr"></param>
+            public void ModifyByOut([Out]int[] arr)
+            {
+                //arr = new int[] { 100, 200 };
+                arr[0] = 1;
+            }
         }
 
         [Serializable]
@@ -123,6 +142,7 @@ namespace CSharp.AccessingObjectsAcrossAppDomainBoundaries
             {
                 Number = value;
             }
+
         }
 
         private static void TestStaticMember()
@@ -135,13 +155,21 @@ namespace CSharp.AccessingObjectsAcrossAppDomainBoundaries
             var a = newDomain.CreateInstanceAndUnwrap(assamblyName, typeof(A).FullName) as A;
             a.SetNumber(20);
             Console.WriteLine(A.Number);
+
+            var arr1 = new[] { 0 };
+            a.Modify(arr1);
+            Console.WriteLine($"arr1[0]的值没有改变还是:{arr1[0]}");
+
+            a.ModifyByOut(arr1);
+            Console.WriteLine($"由于使用了跨域引用封送的特性out,arr1[0]的值已经被改为：{arr1[0]}");
+
             #endregion
 
             #region 值封送：在newDomain创建一个B的实例，然后传入到该域，接收到的是其副本，即该变量与newDomain中的变量是独立的，但是内部元素的值相同
             B.Number = 10;
             var b = newDomain.CreateInstanceAndUnwrap(assamblyName, typeof(B).FullName) as B;
             b.SetNumber(20);
-            Console.WriteLine(B.Number); 
+            Console.WriteLine(B.Number);
             #endregion
         }
     }
