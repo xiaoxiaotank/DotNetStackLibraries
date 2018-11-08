@@ -12,7 +12,8 @@ namespace Tools.OpenXML
         {
             using (var helper = new ReportHelper("test.xlsx", null))
             {
-                helper.GenerateReport();
+                helper.GenerateReportByMemory();
+                helper.GenerateReportByWriter();
             }
         }
     }
