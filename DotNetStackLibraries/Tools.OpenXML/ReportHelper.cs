@@ -128,64 +128,16 @@ namespace Tools.OpenXML
         /// <param name="worksheet"></param>
         private void FillSheet2(WorksheetPart worksheetPart)
         {
-            var columnList = new List<Column>()
-            {
-                new Column() { Min = 1, Max = 1, Width = 20, CustomWidth = true },
-                new Column() { Min = 2, Max = 25, Width = 6, CustomWidth = true }
-            };
-
-            var mergeCellRefList = new List<MergeCell>()
-            {
-                new MergeCell(){ Reference = "A1:Y1" },
-                new MergeCell(){ Reference = "A2:Y2" },
-            };
             using (var writer = OpenXmlWriter.Create(worksheetPart))
             {
                 //S: Worksheet
                 writer.WriteStartElement(new Worksheet());
 
-                #region Init
-                //S: SheetViews
-                writer.WriteStartElement(new SheetViews());
-                writer.WriteElement(new SheetView()
-                {
-                    WorkbookViewId = 0
-                });
-                //E: SheetViews
-                writer.WriteEndElement();
-                #endregion
+                InitSheetViews(writer);
+                InitColumns(writer);
+                MergeCells(writer);
+                FillData(writer);
 
-                #region 设置列
-                //S: Columns
-                writer.WriteStartElement(new Columns());
-                columnList.ForEach(column => writer.WriteElement(column));
-                //E: Columns
-                writer.WriteEndElement();
-                #endregion
-
-                #region 合并单元格
-                //S: MergeCells
-                writer.WriteStartElement(new MergeCells());
-                mergeCellRefList.ForEach(mergeCell =>
-                {
-                    writer.WriteElement(mergeCell);
-                });
-                //E: MergeCells
-                writer.WriteEndElement();
-                #endregion
-
-                #region 填充数据
-                //S: SheetData
-                writer.WriteStartElement(new SheetData());
-
-                CreateHeader(writer);
-                CreateFirstPart(writer);
-
-                //E: SheetData
-                writer.WriteEndElement();
-
-
-                #endregion
                 //E: Worksheet
                 writer.WriteEndElement();
             }
@@ -208,6 +160,79 @@ namespace Tools.OpenXML
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 初始化表格视图
+        /// </summary>
+        /// <param name="writer"></param>
+        private static void InitSheetViews(OpenXmlWriter writer)
+        {
+            //S: SheetViews
+            writer.WriteStartElement(new SheetViews());
+            writer.WriteElement(new SheetView() { WorkbookViewId = 0 });
+            //E: SheetViews
+            writer.WriteEndElement();
+        }
+
+
+        /// <summary>
+        /// 初始化列
+        /// </summary>
+        /// <param name="writer"></param>
+        private static void InitColumns(OpenXmlWriter writer)
+        {
+            var columnList = new List<Column>()
+            {
+                new Column() { Min = 1, Max = 1, Width = 20, CustomWidth = true },
+                new Column() { Min = 2, Max = 25, Width = 6, CustomWidth = true }
+            };
+
+            writer.InitColumns(columnList);
+        }
+
+        /// <summary>
+        /// 合并单元格
+        /// </summary>
+        /// <param name="writer"></param>
+        private static void MergeCells(OpenXmlWriter writer)
+        {
+            var mergeCellList = new List<MergeCell>()
+            {
+                new MergeCell(){ Reference = "A1:Y1" },
+                new MergeCell(){ Reference = "A2:Y2" },
+                new MergeCell(){ Reference = "A8:Y8" },
+            };
+            for (int i = 3; i <= 7; i++)
+            {
+                mergeCellList.AddRange(new List<MergeCell>()
+                {
+                    new MergeCell() { Reference = $"A{i}:C{i}" },
+                    new MergeCell() { Reference = $"D{i}:H{i}" },
+                    new MergeCell() { Reference = $"I{i}:K{i}" },
+                    new MergeCell() { Reference = $"L{i}:P{i}" },
+                    new MergeCell() { Reference = $"Q{i}:U{i}" },
+                    new MergeCell() { Reference = $"V{i}:Y{i}" },
+                });
+            }
+
+            writer.MergeCells(mergeCellList);
+        }
+
+        /// <summary>
+        /// 填充数据
+        /// </summary>
+        /// <param name="writer"></param>
+        private void FillData(OpenXmlWriter writer)
+        {
+            //S: SheetData
+            writer.WriteStartElement(new SheetData());
+
+            CreateHeader(writer);
+            CreateFirstPart(writer);
+
+            //E: SheetData
+            writer.WriteEndElement();
         }
 
         /// <summary>
@@ -285,6 +310,7 @@ namespace Tools.OpenXML
             
         }
 
+       
         /// <summary>
         /// 获取样式Id
         /// </summary>

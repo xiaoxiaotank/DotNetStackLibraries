@@ -23,6 +23,42 @@ namespace Tools.OpenXML
         public static readonly Fill[] DefaultFills = new[] { new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.None } }, new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.Gray125 } } };
         public static readonly CellFormat DefaultCellForamt = new CellFormat() { FontId = 0, FillId = 0, BorderId = 0, Alignment = new Alignment() { WrapText = true, Horizontal = HorizontalAlignmentValues.Left, Vertical = VerticalAlignmentValues.Center } };
 
+
+        /// <summary>
+        /// 合并单元格
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="mergeCells"></param>
+        public static void MergeCells(this OpenXmlWriter writer, IEnumerable<MergeCell> mergeCells)
+        {
+            //S: MergeCells
+            writer.WriteStartElement(new MergeCells());
+            foreach (var mergeCell in mergeCells)
+            {
+                writer.WriteElement(mergeCell);
+            }
+            //E: MergeCells
+            writer.WriteEndElement();
+        }
+
+        /// <summary>
+        /// 初始化列
+        /// </summary>
+        /// <param name="writer"></param>
+        /// <param name="columns"></param>
+        public static void InitColumns(this OpenXmlWriter writer, IEnumerable<Column> columns)
+        {
+            //S: Columns
+            writer.WriteStartElement(new Columns());
+            foreach (var column in columns)
+            {
+                writer.WriteElement(column);
+            }
+            //E: Columns
+            writer.WriteEndElement();
+        }
+
+
         /// <summary>
         /// 获取字体
         /// </summary>
