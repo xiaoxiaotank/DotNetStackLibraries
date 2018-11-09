@@ -76,20 +76,19 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         protected static Stylesheet GetDefaultStylesheet()
         {
             var fonts = new Fonts() { Count = 1 };
-            fonts.Append(new Font() { FontSize = new FontSize() { Val = 11 }, FontName = new FontName() { Val = "宋体" } });
+            fonts.Append(OpenXMLExcels.DefaultFont);
 
             var borders = new Borders() { Count = 1 };
-            borders.Append(new Border() { LeftBorder = new LeftBorder(), TopBorder = new TopBorder(), RightBorder = new RightBorder(), BottomBorder = new BottomBorder() });
+            borders.Append(OpenXMLExcels.DefaultBorder);
 
             var fills = new Fills() { Count = 2 };
-            fills.Append(new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.None } }, new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.Gray125 } });
+            fills.Append(OpenXMLExcels.DefaultFills);
 
-            var cellFormat = new CellFormat() { FontId = 0, FillId = 0, BorderId = 0, Alignment = new Alignment() { WrapText = true, Horizontal = HorizontalAlignmentValues.Left, Vertical = VerticalAlignmentValues.Center } };
             var cellStyleFormats = new CellStyleFormats() { Count = 1 };
-            cellStyleFormats.Append(cellFormat);
+            cellStyleFormats.Append(OpenXMLExcels.DefaultCellForamt);
             var cellFormats = new CellFormats() { Count = 1 };
             //一个对象只能属于一个XML节点，所以使用clone
-            cellFormats.Append(cellFormat.Clone() as OpenXmlElement);
+            cellFormats.Append(OpenXMLExcels.DefaultCellForamt.Clone() as OpenXmlElement);
 
             var stylesheet = new Stylesheet()
             {

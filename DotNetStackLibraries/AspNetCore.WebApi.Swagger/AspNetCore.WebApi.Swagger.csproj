@@ -7,7 +7,8 @@
   <!--Swagger-->
   <PropertyGroup>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn><!--默认的，对未记录的类型提供警告信息，加上此句则不再警告-->
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <LangVersion>7.1</LangVersion><!--默认的，对未记录的类型提供警告信息，加上此句则不再警告-->
   </PropertyGroup>
 
   <ItemGroup>

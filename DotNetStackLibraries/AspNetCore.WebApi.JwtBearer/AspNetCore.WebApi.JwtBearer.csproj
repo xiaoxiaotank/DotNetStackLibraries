@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>AspNetCore.WebApi.JwtBearer</AssemblyName>
     <RootNamespace>AspNetCore.WebApi.JwtBearer</RootNamespace>
+    <LangVersion>7.1</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -128,7 +128,18 @@ namespace Tools.OpenXML
         /// <param name="worksheet"></param>
         private void FillSheet2(WorksheetPart worksheetPart)
         {
-            using(var writer = OpenXmlWriter.Create(worksheetPart))
+            var columnList = new List<Column>()
+            {
+                new Column() { Min = 1, Max = 1, Width = 20, CustomWidth = true },
+                new Column() { Min = 2, Max = 25, Width = 6, CustomWidth = true }
+            };
+
+            var mergeCellRefList = new List<MergeCell>()
+            {
+                new MergeCell(){ Reference = "A1:Y1" },
+                new MergeCell(){ Reference = "A2:Y2" },
+            };
+            using (var writer = OpenXmlWriter.Create(worksheetPart))
             {
                 //S: Worksheet
                 writer.WriteStartElement(new Worksheet());
@@ -141,94 +152,45 @@ namespace Tools.OpenXML
                     WorkbookViewId = 0
                 });
                 //E: SheetViews
-                writer.WriteEndElement(); 
-                #endregion
-
-                #region Header
-
-                #region 合并单元格
-                //S: MergeCell
-                var mergeCell = new MergeCell() { Reference = "A1:Y1" };
-                writer.WriteStartElement(new MergeCells());
-                writer.WriteElement(mergeCell);
-                //E: MergeCells
                 writer.WriteEndElement();
                 #endregion
 
                 #region 设置列
                 //S: Columns
                 writer.WriteStartElement(new Columns());
-                var column1 = new Column() { Min = 1, Max = 1, Width = 20, CustomWidth = true };
-                var column2_25 = new Column() { Min = 2, Max = 25, Width = 6, CustomWidth = true };
-                writer.WriteElement(column1);
-                writer.WriteElement(column2_25);
+                columnList.ForEach(column => writer.WriteElement(column));
                 //E: Columns
                 writer.WriteEndElement();
                 #endregion
 
-                #region 填充数据
-                #region Styles
-
-                var font = new Font()
+                #region 合并单元格
+                //S: MergeCells
+                writer.WriteStartElement(new MergeCells());
+                mergeCellRefList.ForEach(mergeCell =>
                 {
-                    FontSize = new FontSize() { Val = 16 },
-                    FontName = new FontName() { Val = "宋体" },
-                    Bold = new Bold(),
-                    Color = new Color() { Rgb = HexBinaryValue.FromString(Colors.Red.GetRgbString()) },
-                    VerticalTextAlignment = new VerticalTextAlignment() { Val = VerticalAlignmentRunValues.Baseline }
-                };
-                var fontId = _openXMLExcel.AddFonts(font);
-
-                var pattern = PatternValues.Solid;
-                var foreDColor = Colors.Yellow;
-                var backDColor = Colors.Yellow;
-                var fillKey = $"{pattern}.{foreDColor}.{backDColor}";
-                var fillId = GetStyleId(fillKey);
-                if (!fillId.HasValue)
-                {
-                    var fill = OpenXMLExcels.GetFill(pattern, foreDColor, backDColor);
-                    fillId = _styleIdDic.Value[fillKey] = _openXMLExcel.AddFills(fill);
-                }
-
-                var dColor = Colors.Black;
-                var borderKey = $"{BorderStyleValues.Thin}.{dColor}";
-                var borderId = GetStyleId(borderKey);
-                if (!borderId.HasValue)
-                {
-                    var border = OpenXMLExcels.GetBorder(BorderStyleValues.Thin, dColor);
-                    borderId = _styleIdDic.Value[borderKey] = _openXMLExcel.AddBorders(border);
-                }
-
-                var alignment = new Alignment() { Horizontal = HorizontalAlignmentValues.Center, Vertical = VerticalAlignmentValues.Center };
-                var cellFormatId = _openXMLExcel.AddCellFormats(new CellFormat() { FontId = fontId, FillId = fillId, BorderId = borderId, Alignment = alignment, ApplyFont = true, ApplyFill = true, ApplyBorder = true, ApplyAlignment = true },
-                    new CellFormat() { BorderId = borderId, ApplyBorder = true });
-
+                    writer.WriteElement(mergeCell);
+                });
+                //E: MergeCells
+                writer.WriteEndElement();
                 #endregion
+
+                #region 填充数据
                 //S: SheetData
                 writer.WriteStartElement(new SheetData());
-                //Height单位：磅
-                var row = new Row() { RowIndex = 1, Height = 40, CustomHeight = true };
-                //S: Row
-                writer.WriteStartElement(row);
-                var cell = new Cell() { CellReference = "A1", StyleIndex = cellFormatId - 1, DataType = CellValues.String, CellValue = new CellValue() { Text = "我 是 Header" } };
-                writer.WriteElement(cell);
-                for (int i = 1; i < 25; i++)
-                {
-                    writer.WriteElement(new Cell() { CellReference = $"{ (char)('A' + i) }1", StyleIndex = cellFormatId });
-                }
-                //E: Row
-                writer.WriteEndElement();
+
+                CreateHeader(writer);
+                CreateFirstPart(writer);
+
                 //E: SheetData
-                writer.WriteEndElement(); 
+                writer.WriteEndElement();
+
+
                 #endregion
-
-                #endregion
-
-
                 //E: Worksheet
                 writer.WriteEndElement();
             }
         }
+
 
         /// <summary>
         /// 初始化文档
@@ -246,6 +208,81 @@ namespace Tools.OpenXML
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 创建头部
+        /// </summary>
+        /// <param name="writer"></param>
+        private void CreateHeader(OpenXmlWriter writer)
+        {
+            #region Styles
+
+            var fontSize = 16;
+            var fontName = "楷体";
+            var bold = new Bold();
+            var fontDColor = Colors.Red;
+            var fontKey = OpenXMLExcels.GetFontStyleKey(fontSize, fontName, bold, fontDColor);
+            var fontId = GetStyleId(fontKey);
+            if (!fontId.HasValue)
+            {
+                var font = OpenXMLExcels.GetFont(fontSize, fontName, bold, fontDColor);
+                fontId = _styleIdDic.Value[fontKey] = _openXMLExcel.AddFonts(font);
+            }
+
+            var pattern = PatternValues.Solid;
+            var foreDColor = Colors.Yellow;
+            var backDColor = Colors.Yellow;
+            var fillKey = OpenXMLExcels.GetFillStyleKey(pattern, foreDColor, backDColor);
+            var fillId = GetStyleId(fillKey);
+            if (!fillId.HasValue)
+            {
+                var fill = OpenXMLExcels.GetFill(pattern, foreDColor, backDColor);
+                fillId = _styleIdDic.Value[fillKey] = _openXMLExcel.AddFills(fill);
+            }
+
+            var boderDColor = Colors.Black;
+            var borderKey = OpenXMLExcels.GetBorderStyleKey(BorderStyleValues.Thin, boderDColor);
+            var borderId = GetStyleId(borderKey);
+            if (!borderId.HasValue)
+            {
+                var border = OpenXMLExcels.GetBorder(BorderStyleValues.Thin, boderDColor);
+                borderId = _styleIdDic.Value[borderKey] = _openXMLExcel.AddBorders(border);
+            }
+
+            var alignment = new Alignment() { Horizontal = HorizontalAlignmentValues.Center, Vertical = VerticalAlignmentValues.Center };
+            var cellFormatKey = OpenXMLExcels.GetCellFormatStyleKey(borderId, fontId, fillId, alignment: alignment);
+            var cellFormatId = GetStyleId(cellFormatKey);
+            if (!cellFormatId.HasValue)
+            {
+                var cellFormat1 = OpenXMLExcels.GetCellFormat(borderId, fontId, fillId, alignment: alignment);
+                var cellFormat2 = OpenXMLExcels.GetCellFormat(borderId);
+                cellFormatId = _styleIdDic.Value[cellFormatKey] = _openXMLExcel.AddCellFormats(cellFormat1, cellFormat2);
+            }
+
+            #endregion
+
+            //Height单位：磅
+            var row = new Row() { RowIndex = 1, Height = 40, CustomHeight = true };
+            //S: Row
+            writer.WriteStartElement(row);
+            var cell = new Cell() { CellReference = "A1", StyleIndex = cellFormatId - 1, DataType = CellValues.String, CellValue = new CellValue() { Text = "我 是 Header" } };
+            writer.WriteElement(cell);
+            for (int i = 1; i < 25; i++)
+            {
+                writer.WriteElement(new Cell() { CellReference = $"{ (char)('A' + i) }1", StyleIndex = cellFormatId });
+            }
+            //E: Row
+            writer.WriteEndElement();
+        }
+
+        /// <summary>
+        /// 创建第一部分
+        /// </summary>
+        /// <param name="writer"></param>
+        private void CreateFirstPart(OpenXmlWriter writer)
+        {
+            
         }
 
         /// <summary>
