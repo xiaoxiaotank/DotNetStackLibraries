@@ -9,12 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Tools.OpenXML.Extensions;
 using Tools.OpenXML.Tools.OpenXMLExcel;
-using Colors = System.Drawing.Color;
+using DColor = System.Drawing.Color;
 
 namespace Tools.OpenXML
 {
     class ReportHelper : IDisposable
     {
+        private const uint FirstCellIndex = 0;
+        private const uint LastCellIndex = 24;
+        private const uint StartClock = 7;
+        private const double ColumnAWidth = 18;
         private static readonly string _filePath = Path.Combine(FileExtension.FilePath, "Excels");
 
         private readonly object _obj = new object();
@@ -22,14 +26,10 @@ namespace Tools.OpenXML
         private readonly OpenXMLExcelBase _openXMLExcel;
         public readonly string ReportFullName;
 
-        /// <summary>
-        /// key:key
-        /// value:样式下标
-        /// </summary>
-        private Lazy<Dictionary<string, uint>> _styleIdDic = new Lazy<Dictionary<string, uint>>();
+        private uint _rowIndex = 1;
 
         /// <summary>
-        /// 
+        /// 构造
         /// </summary>
         /// <param name="fileName">文件名</param>
         /// <param name="data">数据</param>
@@ -52,7 +52,7 @@ namespace Tools.OpenXML
                 Name = "TestSheet-1",
                 SheetId = 1
             });
-            FillSheet1(worksheet1);
+            FillSheet1ByMemory(worksheet1);
         }
 
         /// <summary>
@@ -68,14 +68,25 @@ namespace Tools.OpenXML
                 Name = "TestSheet-2",
                 SheetId = 2
             }, worksheetPart);
-            FillSheet2(worksheetPart);
+            FillSheet2ByWriter(worksheetPart);
         }
 
+        public void Dispose()
+        {
+            if (_openXMLExcel.Document != null)
+            {
+                _openXMLExcel.Document.Dispose();
+            }
+            GC.SuppressFinalize(this);
+        }
+
+
+        #region Privites
         /// <summary>
-        /// 填写工作表1
+        /// 操作内存填写工作表1
         /// </summary>
         /// <param name="worksheet"></param>
-        private void FillSheet1(Worksheet worksheet)
+        private void FillSheet1ByMemory(Worksheet worksheet)
         {
             //CellReference:用于设置单元格的位置；用于表格数据更新时，公式和图表会自动更新
             var cellA1 = new Cell() { CellReference = "A1", DataType = CellValues.String, CellValue = new CellValue() { Text = "我是A1" } };
@@ -94,17 +105,17 @@ namespace Tools.OpenXML
                 {
                     PatternType = PatternValues.Solid,
                     //填充色
-                    ForegroundColor = new ForegroundColor() { Rgb = HexBinaryValue.FromString(Colors.Red.GetRgbString()) },
+                    ForegroundColor = new ForegroundColor() { Rgb = HexBinaryValue.FromString(DColor.Red.GetRgbString()) },
                     //暂时未知
-                    BackgroundColor = new BackgroundColor() { Rgb = HexBinaryValue.FromString(Colors.Yellow.GetRgbString()) }
+                    BackgroundColor = new BackgroundColor() { Rgb = HexBinaryValue.FromString(DColor.Yellow.GetRgbString()) }
                 }
             };
             var border = new Border()
             {
-                LeftBorder = new LeftBorder() { Style = BorderStyleValues.Thick, Color = new Color() { Rgb = HexBinaryValue.FromString(Colors.Blue.GetRgbString()) } },
-                TopBorder = new TopBorder() { Style = BorderStyleValues.Double, Color = new Color() { Rgb = HexBinaryValue.FromString(Colors.Black.GetRgbString()) } },
-                RightBorder = new RightBorder() { Style = BorderStyleValues.Thin, Color = new Color() { Rgb = HexBinaryValue.FromString(Colors.Blue.GetRgbString()) } },
-                BottomBorder = new BottomBorder() { Style = BorderStyleValues.Hair, Color = new Color() { Rgb = HexBinaryValue.FromString(Colors.Black.GetRgbString()) } },
+                LeftBorder = new LeftBorder() { Style = BorderStyleValues.Thick, Color = new Color() { Rgb = HexBinaryValue.FromString(DColor.Blue.GetRgbString()) } },
+                TopBorder = new TopBorder() { Style = BorderStyleValues.Double, Color = new Color() { Rgb = HexBinaryValue.FromString(DColor.Black.GetRgbString()) } },
+                RightBorder = new RightBorder() { Style = BorderStyleValues.Thin, Color = new Color() { Rgb = HexBinaryValue.FromString(DColor.Blue.GetRgbString()) } },
+                BottomBorder = new BottomBorder() { Style = BorderStyleValues.Hair, Color = new Color() { Rgb = HexBinaryValue.FromString(DColor.Black.GetRgbString()) } },
             };
 
             var borderId = _openXMLExcel.AddBorders(border);
@@ -118,15 +129,15 @@ namespace Tools.OpenXML
             cellFormats.Append(new CellFormat() { BorderId = borderId, FillId = fills.Count - 1, ApplyFill = true, ApplyBorder = true });
             cellFormats.Count++;
 
-            cellB2.StyleIndex = cellFormats.Count - 1; 
+            cellB2.StyleIndex = cellFormats.Count - 1;
             #endregion
         }
 
         /// <summary>
-        /// 填写工作表2
+        /// 操作硬盘填写工作表2
         /// </summary>
         /// <param name="worksheet"></param>
-        private void FillSheet2(WorksheetPart worksheetPart)
+        private void FillSheet2ByWriter(WorksheetPart worksheetPart)
         {
             using (var writer = OpenXmlWriter.Create(worksheetPart))
             {
@@ -143,7 +154,6 @@ namespace Tools.OpenXML
             }
         }
 
-
         /// <summary>
         /// 初始化文档
         /// </summary>
@@ -153,7 +163,7 @@ namespace Tools.OpenXML
             {
                 lock (_obj)
                 {
-                    if(_openXMLExcel.Document == null)
+                    if (_openXMLExcel.Document == null)
                     {
                         _openXMLExcel.CreateDocument(ReportFullName);
                         _openXMLExcel.AddWorkbook();
@@ -175,7 +185,6 @@ namespace Tools.OpenXML
             writer.WriteEndElement();
         }
 
-
         /// <summary>
         /// 初始化列
         /// </summary>
@@ -184,8 +193,9 @@ namespace Tools.OpenXML
         {
             var columnList = new List<Column>()
             {
-                new Column() { Min = 1, Max = 1, Width = 20, CustomWidth = true },
-                new Column() { Min = 2, Max = 25, Width = 6, CustomWidth = true }
+                //索引从1开始
+                new Column() { Min = FirstCellIndex + 1, Max = 1, Width = ColumnAWidth, CustomWidth = true },
+                new Column() { Min = 2, Max = LastCellIndex + 1, Width = 5, CustomWidth = true }
             };
 
             writer.InitColumns(columnList);
@@ -197,11 +207,16 @@ namespace Tools.OpenXML
         /// <param name="writer"></param>
         private static void MergeCells(OpenXmlWriter writer)
         {
+            var occupyLineIndex = 9 + 10 + 2;
             var mergeCellList = new List<MergeCell>()
             {
                 new MergeCell(){ Reference = "A1:Y1" },
                 new MergeCell(){ Reference = "A2:Y2" },
                 new MergeCell(){ Reference = "A8:Y8" },
+                new MergeCell(){ Reference = $"B{ occupyLineIndex }: Y{ occupyLineIndex }" },
+                new MergeCell(){ Reference = $"A{ occupyLineIndex + 1 }: K{ occupyLineIndex + 1 }" },
+                new MergeCell(){ Reference = $"L{ occupyLineIndex + 1 }: Y{ occupyLineIndex + 1 }" },
+                new MergeCell(){ Reference = $"A{ occupyLineIndex + 2 }: Y{ occupyLineIndex + 2 }" }
             };
             for (int i = 3; i <= 7; i++)
             {
@@ -228,111 +243,247 @@ namespace Tools.OpenXML
             //S: SheetData
             writer.WriteStartElement(new SheetData());
 
-            CreateHeader(writer);
-            CreateFirstPart(writer);
+            FillHeader(writer);
+            FillFirstPart(writer);
+            FillSecondPart(writer);
+            FillFooter(writer);
 
             //E: SheetData
             writer.WriteEndElement();
         }
 
         /// <summary>
-        /// 创建头部
+        /// 填充头部
         /// </summary>
         /// <param name="writer"></param>
-        private void CreateHeader(OpenXmlWriter writer)
+        private void FillHeader(OpenXmlWriter writer)
         {
             #region Styles
+            var borderId = _openXMLExcel.GetBorderId(BorderStyleValues.Thin, DColor.Black);
 
-            var fontSize = 16;
-            var fontName = "楷体";
-            var bold = new Bold();
-            var fontDColor = Colors.Red;
-            var fontKey = OpenXMLExcels.GetFontStyleKey(fontSize, fontName, bold, fontDColor);
-            var fontId = GetStyleId(fontKey);
-            if (!fontId.HasValue)
-            {
-                var font = OpenXMLExcels.GetFont(fontSize, fontName, bold, fontDColor);
-                fontId = _styleIdDic.Value[fontKey] = _openXMLExcel.AddFonts(font);
-            }
-
-            var pattern = PatternValues.Solid;
-            var foreDColor = Colors.Yellow;
-            var backDColor = Colors.Yellow;
-            var fillKey = OpenXMLExcels.GetFillStyleKey(pattern, foreDColor, backDColor);
-            var fillId = GetStyleId(fillKey);
-            if (!fillId.HasValue)
-            {
-                var fill = OpenXMLExcels.GetFill(pattern, foreDColor, backDColor);
-                fillId = _styleIdDic.Value[fillKey] = _openXMLExcel.AddFills(fill);
-            }
-
-            var boderDColor = Colors.Black;
-            var borderKey = OpenXMLExcels.GetBorderStyleKey(BorderStyleValues.Thin, boderDColor);
-            var borderId = GetStyleId(borderKey);
-            if (!borderId.HasValue)
-            {
-                var border = OpenXMLExcels.GetBorder(BorderStyleValues.Thin, boderDColor);
-                borderId = _styleIdDic.Value[borderKey] = _openXMLExcel.AddBorders(border);
-            }
-
-            var alignment = new Alignment() { Horizontal = HorizontalAlignmentValues.Center, Vertical = VerticalAlignmentValues.Center };
-            var cellFormatKey = OpenXMLExcels.GetCellFormatStyleKey(borderId, fontId, fillId, alignment: alignment);
-            var cellFormatId = GetStyleId(cellFormatKey);
-            if (!cellFormatId.HasValue)
-            {
-                var cellFormat1 = OpenXMLExcels.GetCellFormat(borderId, fontId, fillId, alignment: alignment);
-                var cellFormat2 = OpenXMLExcels.GetCellFormat(borderId);
-                cellFormatId = _styleIdDic.Value[cellFormatKey] = _openXMLExcel.AddCellFormats(cellFormat1, cellFormat2);
-            }
-
+            var cellFormatIndex = _openXMLExcel.GetCellFormatIndex(
+                borderId, 
+                fontId: _openXMLExcel.GetFontId(16, "宋体", new Bold(), DColor.DarkRed), 
+                fillId: _openXMLExcel.GetFillId(PatternValues.Solid, DColor.FromArgb(255, 255, 153), DColor.FromArgb(255, 255, 153)), 
+                alignment: new Alignment() { Horizontal = HorizontalAlignmentValues.Center, Vertical = VerticalAlignmentValues.Center });
+            var borderCellFormatIndex = _openXMLExcel.GetCellFormatIndex(borderId);
             #endregion
 
             //Height单位：磅
-            var row = new Row() { RowIndex = 1, Height = 40, CustomHeight = true };
+            var row = new Row() { RowIndex = _rowIndex++, Height = 36.95, CustomHeight = true };
             //S: Row
             writer.WriteStartElement(row);
-            var cell = new Cell() { CellReference = "A1", StyleIndex = cellFormatId - 1, DataType = CellValues.String, CellValue = new CellValue() { Text = "我 是 Header" } };
-            writer.WriteElement(cell);
-            for (int i = 1; i < 25; i++)
+            writer.WriteElement(new Cell() { CellReference = $"A{ row.RowIndex }", StyleIndex = cellFormatIndex, DataType = CellValues.String, CellValue = new CellValue() { Text = "223-235MHz频段占用度测量表(2017年07月07日)" } });
+            for (uint i = FirstCellIndex + 1; i <= LastCellIndex; i++)
             {
-                writer.WriteElement(new Cell() { CellReference = $"{ (char)('A' + i) }1", StyleIndex = cellFormatId });
+                writer.WriteElement(new Cell() { CellReference = $"{ OpenXMLExcels.GetColumnNameByIndex(i) }{ row.RowIndex }", StyleIndex = borderCellFormatIndex });
             }
             //E: Row
             writer.WriteEndElement();
         }
 
         /// <summary>
-        /// 创建第一部分
+        /// 填充第一部分
         /// </summary>
         /// <param name="writer"></param>
-        private void CreateFirstPart(OpenXmlWriter writer)
+        private void FillFirstPart(OpenXmlWriter writer)
         {
-            
-        }
-
-       
-        /// <summary>
-        /// 获取样式Id
-        /// </summary>
-        /// <param name="key"></param>
-        /// <returns></returns>
-        private uint? GetStyleId(string key)
-        {
-            return _styleIdDic.Value.ContainsKey(key) ? _styleIdDic.Value[key] : default(uint?);
-        }
-
-        public void Dispose()
-        {
-            if(_openXMLExcel.Document != null)
+            var paramsDic = new Dictionary<string, KeyValuePair<object, CellValues>>()
             {
-                _openXMLExcel.Document.Dispose();
+                ["监测站名称"] = new KeyValuePair<object, CellValues>("东城花园监测站", CellValues.String),
+                ["监测站经度"] = new KeyValuePair<object, CellValues>(76.027214050293, CellValues.Number),
+                ["监测站纬度"] = new KeyValuePair<object, CellValues>(39.4658088684082, CellValues.Number),
+                ["接收机(频谱仪)型号"] = new KeyValuePair<object, CellValues>(string.Empty, CellValues.String),
+                ["天线类型"] = new KeyValuePair<object, CellValues>(string.Empty, CellValues.String),
+                ["天线挂高"] = new KeyValuePair<object, CellValues>(null, CellValues.Number),
+                ["起始频率(MHz)"] = new KeyValuePair<object, CellValues>(223, CellValues.Number),
+                ["终止频率(MHz)"] = new KeyValuePair<object, CellValues>(235, CellValues.Number),
+                ["检波方式"] = new KeyValuePair<object, CellValues>("均值", CellValues.String),
+                ["中频带宽(RBW，kHz)"] = new KeyValuePair<object, CellValues>(39.0625, CellValues.Number),
+                ["门限电平"] = new KeyValuePair<object, CellValues>("自适应门限", CellValues.String),
+                ["测量周期(秒)"] = new KeyValuePair<object, CellValues>(null, CellValues.Number),
+                ["测量分辨率(分钟)"] = new KeyValuePair<object, CellValues>(null, CellValues.Number),
+                ["测量开始时间"] = new KeyValuePair<object, CellValues>(DateTime.Now, CellValues.String),
+                ["测量结束时间"] = new KeyValuePair<object, CellValues>(DateTime.Now, CellValues.String)
+            };
+
+            #region Styles
+            var borderId = _openXMLExcel.GetBorderId(BorderStyleValues.Thin, DColor.Black);
+            var fontId = _openXMLExcel.GetFontId(12, "宋体", null, DColor.Black);
+
+            var titleCellFormatIndex = _openXMLExcel.GetCellFormatIndex(borderId, fontId, alignment: new Alignment() { Horizontal = HorizontalAlignmentValues.Left, Vertical = VerticalAlignmentValues.Center });
+            var paramsCellFormatId = _openXMLExcel.GetCellFormatIndex(borderId, fontId, alignment: new Alignment() { Horizontal = HorizontalAlignmentValues.Center, Vertical = VerticalAlignmentValues.Center });
+            #endregion
+
+            #region Title
+            var row1 = new Row() { RowIndex = _rowIndex++, Height = 31.8, CustomHeight = true };
+            //S: Row
+            writer.WriteStartElement(row1);
+            writer.WriteElement(new Cell() { CellReference = $"A{ row1.RowIndex }", StyleIndex = titleCellFormatIndex, DataType = CellValues.String, CellValue = new CellValue() { Text = "一、测量系统参数" } });
+            for (uint i = FirstCellIndex + 1; i <= LastCellIndex; i++)
+            {
+                writer.WriteElement(new Cell() { CellReference = $"{ OpenXMLExcels.GetColumnNameByIndex(i) }{ row1.RowIndex }", StyleIndex = _openXMLExcel.GetCellFormatIndex(_openXMLExcel.GetBorderId(BorderStyleValues.Thin, DColor.Black)) });
             }
-            GC.SuppressFinalize(this);
+            //E: Row
+            writer.WriteEndElement();
+            #endregion
+
+            #region Contents
+            int pos = 0;
+            for (uint i = _rowIndex; i <= 7; i++)
+            {
+                var row = new Row() { RowIndex = i, Height = 25.85, CustomHeight = true };
+                //S: Row
+                writer.WriteStartElement(row);
+
+                var cellParam1 = paramsDic.ElementAt(pos++);
+                writer.WriteElement(new Cell() { CellReference = $"A{ i }", StyleIndex = paramsCellFormatId, CellValue = new CellValue() { Text = cellParam1.Key.ToString() }, DataType = CellValues.String });
+                writer.WriteElement(new Cell() { CellReference = $"D{ i }", StyleIndex = paramsCellFormatId, CellValue = new CellValue() { Text = cellParam1.Value.Key?.ToString() }, DataType = cellParam1.Value.Value });
+
+                var cellParam2 = paramsDic.ElementAt(pos++);
+                writer.WriteElement(new Cell() { CellReference = $"I{ i }", StyleIndex = paramsCellFormatId, CellValue = new CellValue() { Text = cellParam2.Key.ToString() }, DataType = CellValues.String });
+                writer.WriteElement(new Cell() { CellReference = $"L{ i }", StyleIndex = paramsCellFormatId, CellValue = new CellValue() { Text = cellParam2.Value.Key?.ToString() }, DataType = cellParam2.Value.Value });
+
+                var cellParam3 = paramsDic.ElementAt(pos++);
+                writer.WriteElement(new Cell() { CellReference = $"Q{ i }", StyleIndex = paramsCellFormatId, CellValue = new CellValue() { Text = cellParam3.Key.ToString() }, DataType = CellValues.String });
+                writer.WriteElement(new Cell() { CellReference = $"V{ i }", StyleIndex = paramsCellFormatId, CellValue = new CellValue() { Text = cellParam3.Value.Key?.ToString() }, DataType = cellParam3.Value.Value });
+
+                for (uint j = FirstCellIndex; j <= LastCellIndex; j++)
+                {
+                    writer.WriteElement(new Cell() { CellReference = $"{ OpenXMLExcels.GetColumnNameByIndex(j) }{ i }", StyleIndex = paramsCellFormatId });
+                }
+
+                //E: Row
+                writer.WriteEndElement();
+            }
+
+            _rowIndex = 8;
+            #endregion
+        }
+
+        /// <summary>
+        /// 填充第二部分
+        /// </summary>
+        /// <param name="writer"></param>
+        private void FillSecondPart(OpenXmlWriter writer)
+        {
+            #region Styles
+            var borderId = _openXMLExcel.GetBorderId(BorderStyleValues.Thin, DColor.Black);
+            var fontId = _openXMLExcel.GetFontId(9, "宋体", null, DColor.Black);
+            var cellFormatIndex = _openXMLExcel.GetCellFormatIndex(
+                borderId, 
+                fontId, 
+                alignment: new Alignment() { Horizontal = HorizontalAlignmentValues.Center, Vertical = VerticalAlignmentValues.Center, WrapText = true });
+            var titleCellFormatIndex = _openXMLExcel.GetCellFormatIndex(
+               borderId,
+               fontId: _openXMLExcel.GetFontId(12, "宋体", null, DColor.Black),
+               alignment: new Alignment() { Horizontal = HorizontalAlignmentValues.Left, Vertical = VerticalAlignmentValues.Center });
+            var cornerCellFormatIndex = _openXMLExcel.GetCellFormatIndex(_openXMLExcel.GetBorderId(BorderStyleValues.Thin, DColor.Black, true), fontId, alignment: new Alignment() { Vertical = VerticalAlignmentValues.Top, WrapText = true });
+            #endregion
+
+            #region Title
+            var row1 = new Row() { RowIndex = _rowIndex++, Height = 31.8, CustomHeight = true };
+            //S: Row
+            writer.WriteStartElement(row1);
+            var cell = new Cell() { CellReference = $"A{ row1.RowIndex }", StyleIndex = titleCellFormatIndex, DataType = CellValues.String, CellValue = new CellValue() { Text = "二、日占用度测量" } };
+            writer.WriteElement(cell);
+            for (uint i = FirstCellIndex + 1; i <= LastCellIndex; i++)
+            {
+                writer.WriteElement(new Cell() { CellReference = $"{ OpenXMLExcels.GetColumnNameByIndex(i) }{ row1.RowIndex }", StyleIndex = titleCellFormatIndex });
+            }
+            //E: Row
+            writer.WriteEndElement();
+            #endregion
+
+            #region Contents
+
+            #region Header
+            var row2 = new Row() { RowIndex = _rowIndex++, Height = 34.75, CustomHeight = true };
+            //S: Row
+            writer.WriteStartElement(row2);
+            writer.WriteElement(new Cell() { CellReference = $"A{ row2.RowIndex }", StyleIndex = cornerCellFormatIndex, CellValue = new CellValue() { Text = new string(' ', (int)ColumnAWidth) + "时间\n\n 频率(MHz)" }, DataType = CellValues.String });
+            for (uint i = FirstCellIndex + 1; i <= LastCellIndex; i++)
+            {
+                var clock = (StartClock + i - 1) % 24;
+                writer.WriteElement(new Cell() { CellReference = $"{ (char)('A' + i) }{ row2.RowIndex }", StyleIndex = cellFormatIndex, CellValue = new CellValue() { Text = $"{ clock }:00\r\n - \r\n{ clock + 1 }:00" }, DataType = CellValues.String });
+            }
+            //E: Row
+            writer.WriteEndElement();
+            #endregion
+
+            #region Body
+            for (uint i = 1; i <= 10 + 2; i++)
+            {
+                var row = new Row() { RowIndex = _rowIndex++, Height = 13.5, CustomHeight = true };
+                //S: Row
+                writer.WriteStartElement(row);
+                for (uint j = FirstCellIndex; j <= LastCellIndex; j++)
+                {
+                    writer.WriteElement(new Cell() { CellReference = $"{ (char)('A' + j) }{ row.RowIndex }", StyleIndex = cellFormatIndex });
+                }
+                //E: Row
+                writer.WriteEndElement();
+            }
+            #endregion
+
+            #region Footer
+            var row3 = new Row() { RowIndex = _rowIndex - 2, Height = 13.5, CustomHeight = true };
+            //S: Row
+            writer.WriteStartElement(row3);
+            writer.WriteElement(new Cell() { CellReference = $"A{ row3.RowIndex }", StyleIndex = cellFormatIndex,  CellValue = new CellValue() { Text = "各时间段频段占用度(%)" }, DataType = CellValues.String });
+            //E: Row
+            writer.WriteEndElement();
+
+            var row4 = new Row() { RowIndex = row3.RowIndex + 1, Height = row3.Height, CustomHeight = true };
+            //S: Row
+            writer.WriteStartElement(row4);
+            writer.WriteElement(new Cell() { CellReference = $"A{ row4.RowIndex }", StyleIndex = cellFormatIndex, CellValue = new CellValue() { Text = "日频段占用度(%)" }, DataType = CellValues.String });
+            //E: Row
+            writer.WriteEndElement();
+            #endregion
+
+            #endregion
+        }
+
+        /// <summary>
+        /// 填充脚步
+        /// </summary>
+        /// <param name="writer"></param>
+        private void FillFooter(OpenXmlWriter writer)
+        {
+            var borderId = _openXMLExcel.GetBorderId(BorderStyleValues.Thin, DColor.Black);
+            var fontId = _openXMLExcel.GetFontId(12, "宋体", new Bold(), DColor.Black);
+            var infoCellFormatIndex = _openXMLExcel.GetCellFormatIndex(borderId, fontId, alignment: new Alignment() { Horizontal = HorizontalAlignmentValues.Left, Vertical = VerticalAlignmentValues.Center });
+            var remarkCellFormatIndex = _openXMLExcel.GetCellFormatIndex(borderId, fontId, alignment: new Alignment() { Horizontal = HorizontalAlignmentValues.Center, Vertical = VerticalAlignmentValues.Center });
+
+            var row1 = new Row() { RowIndex = _rowIndex++, Height = 25.85, CustomHeight = true };
+            //S: Row
+            writer.WriteStartElement(row1);
+            for (uint i = FirstCellIndex; i <= LastCellIndex; i++)
+            {
+                writer.WriteElement(new Cell() { CellReference = $"{ (char)('A' + i) }{ row1.RowIndex }", StyleIndex = infoCellFormatIndex });
+            }
+            writer.WriteElement(new Cell() { CellReference = $"A{ row1.RowIndex }", StyleIndex = infoCellFormatIndex, CellValue = new CellValue() { Text = "填表人：" }, DataType = CellValues.String });
+            writer.WriteElement(new Cell() { CellReference = $"L{ row1.RowIndex }", StyleIndex = infoCellFormatIndex, CellValue = new CellValue() { Text = "填表时间：" }, DataType = CellValues.String });
+            //E: Row
+            writer.WriteEndElement();
+
+            var row2 = new Row() { RowIndex = _rowIndex++, Height = 29.55, CustomHeight = true };
+            //S: Row
+            writer.WriteStartElement(row2);
+            for (uint i = FirstCellIndex; i <= LastCellIndex; i++)
+            {
+                writer.WriteElement(new Cell() { CellReference = $"{ OpenXMLExcels.GetColumnNameByIndex(i) }{ row2.RowIndex }", StyleIndex = remarkCellFormatIndex });
+            }
+            writer.WriteElement(new Cell() { CellReference = $"A{ row2.RowIndex }", StyleIndex = remarkCellFormatIndex, CellValue = new CellValue() { Text = "注：日频段占用度，取各时间频段占用度最大值(要注明时间)。" }, DataType = CellValues.String });
+            //E: Row
+            writer.WriteEndElement();
         }
 
         ~ReportHelper()
         {
             Dispose();
-        }
+        } 
+        #endregion
     }
 }

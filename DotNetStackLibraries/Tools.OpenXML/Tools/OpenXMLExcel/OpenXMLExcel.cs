@@ -8,6 +8,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Tools.OpenXML.Enums;
+using DColor = System.Drawing.Color;
 
 namespace Tools.OpenXML.Tools.OpenXMLExcel
 {
@@ -97,6 +98,58 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             styleCellFormats.Count += (uint)cellFormats.Length;
 
             return styleCellFormats.Count - 1;
+        }
+
+        public override uint GetFontId(double fontSize, string fontName, Bold bold, DColor dColor)
+        {
+            var fontKey = OpenXMLExcels.GetFontStyleKey(fontSize, fontName, bold, dColor);
+            var fontId = GetStyleId(fontKey);
+            if (!fontId.HasValue)
+            {
+                var font = OpenXMLExcels.GetFont(fontSize, fontName, bold, dColor);
+                fontId = _styleIdDic.Value[fontKey] = AddFonts(font);
+            }
+
+            return fontId.Value;
+        }
+
+        public override uint GetBorderId(BorderStyleValues style, DColor dColor, bool includeDiagonal = false, bool isDiagonalDown = true)
+        {
+            var borderKey = OpenXMLExcels.GetBorderStyleKey(style, dColor, includeDiagonal, isDiagonalDown);
+            var borderId = GetStyleId(borderKey);
+            if (!borderId.HasValue)
+            {
+                var border = OpenXMLExcels.GetBorder(style, dColor, includeDiagonal, isDiagonalDown);
+                borderId = _styleIdDic.Value[borderKey] = AddBorders(border);
+            }
+
+            return borderId.Value;
+        }
+
+        public override uint GetFillId(PatternValues pattern, DColor foreDColor, DColor backDColor)
+        {
+            var fillKey = OpenXMLExcels.GetFillStyleKey(pattern, foreDColor, backDColor);
+            var fillId = GetStyleId(fillKey);
+            if (!fillId.HasValue)
+            {
+                var fill = OpenXMLExcels.GetFill(pattern, foreDColor, backDColor);
+                fillId = _styleIdDic.Value[fillKey] = AddFills(fill);
+            }
+
+            return fillId.Value;
+        }
+
+        public override uint GetCellFormatIndex(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, Alignment alignment = null)
+        {
+            var cellFormatKey = OpenXMLExcels.GetCellFormatStyleKey(borderId, fontId, fillId, formatId, alignment);
+            var cellFormatId = GetStyleId(cellFormatKey);
+            if (!cellFormatId.HasValue)
+            {
+                var cellFormat = OpenXMLExcels.GetCellFormat(borderId, fontId, fillId, formatId, alignment);
+                cellFormatId = _styleIdDic.Value[cellFormatKey] = AddCellFormats(cellFormat);
+            }
+
+            return cellFormatId.Value;
         }
     }
 }

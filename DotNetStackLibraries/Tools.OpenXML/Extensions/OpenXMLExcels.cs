@@ -15,6 +15,7 @@ namespace Tools.OpenXML
 {
     static class OpenXMLExcels
     {
+        public const byte LetterCount = 26; 
         public const double DefaultFontSize = 11;
         public const string DefaultFontName = "宋体";
 
@@ -83,9 +84,10 @@ namespace Tools.OpenXML
         /// 获取边框
         /// </summary>
         /// <param name="style"></param>
-        /// <param name="rgb"></param>
+        /// <param name="dColor"></param>
+        /// <param name="includeDiagonal"></param>
         /// <returns></returns>
-        public static Border GetBorder(BorderStyleValues style, DColor dColor)
+        public static Border GetBorder(BorderStyleValues style, DColor dColor, bool includeDiagonal = false, bool isDiagonalDown = true)
         {
             var color = new Color() { Rgb = new HexBinaryValue(dColor.GetRgbString()) };
             var border = new Border()
@@ -95,6 +97,18 @@ namespace Tools.OpenXML
                 RightBorder = new RightBorder() { Color = color.Clone() as Color, Style = style },
                 BottomBorder = new BottomBorder() { Color = color.Clone() as Color, Style = style }
             };
+            if (includeDiagonal)
+            {
+                border.DiagonalBorder = new DiagonalBorder() { Color = color.Clone() as Color, Style = style };
+                if (isDiagonalDown)
+                {
+                    border.DiagonalDown = true;
+                }
+                else
+                {
+                    border.DiagonalUp = true;
+                }
+            }
 
             return border;
         }
@@ -141,7 +155,7 @@ namespace Tools.OpenXML
                 ApplyBorder = borderId.HasValue,
                 ApplyFont = fontId.HasValue,
                 ApplyFill = fillId.HasValue,
-                ApplyAlignment = alignment != null
+                ApplyAlignment = alignment != null,
             };
             return cellFormat;
         }
@@ -152,8 +166,8 @@ namespace Tools.OpenXML
         /// <param name="borderStyle"></param>
         /// <param name="dColor"></param>
         /// <returns></returns>
-        public static string GetBorderStyleKey(BorderStyleValues borderStyle = BorderStyleValues.None, DColor? dColor = null)
-        => $"{borderStyle}.{dColor}";
+        public static string GetBorderStyleKey(BorderStyleValues borderStyle = BorderStyleValues.None, DColor? dColor = null, bool includeDiagonal = false, bool isDiagonalDown = true)
+        => $"{borderStyle}.{dColor}.{includeDiagonal}.{isDiagonalDown}";
 
         /// <summary>
         /// 获取Fill的Key
@@ -186,6 +200,25 @@ namespace Tools.OpenXML
         /// <param name="alignment"></param>
         /// <returns></returns>
         public static string GetCellFormatStyleKey(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, Alignment alignment = null)
-            => $"{borderId}.{fontId}.{fillId}.{formatId}.{alignment.Vertical}.{alignment.Horizontal}";
+            => $"{borderId}.{fontId}.{fillId}.{formatId}.{alignment?.Vertical}.{alignment?.Horizontal}";
+
+        /// <summary>
+        /// 通过索引获取列的符号,从 0 开始
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static string GetColumnNameByIndex(uint index)
+        {
+            var name = new StringBuilder();
+
+            var i = index;
+            while(i / LetterCount > 0)
+            {
+                name.Append((char)('A' + i % LetterCount));
+                i = i / LetterCount - 1;
+            }
+
+            return string.Concat(name.Append((char)('A' + i)).ToString().Reverse());
+        }
     }
 }

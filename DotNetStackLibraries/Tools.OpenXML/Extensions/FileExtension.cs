@@ -11,7 +11,6 @@ namespace Tools.OpenXML
     static class FileExtension
     {
         public static readonly string BasePath = AppDomain.CurrentDomain.BaseDirectory;
-
         public static readonly string FilePath = Path.Combine(BasePath, "Files");
 
         /// <summary>
