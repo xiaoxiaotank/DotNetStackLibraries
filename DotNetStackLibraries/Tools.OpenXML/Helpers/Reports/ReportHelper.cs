@@ -8,7 +8,7 @@ using Tools.OpenXML.Tools.OpenXMLExcel;
 
 namespace Tools.OpenXML.Helpers.Reports
 {
-    class ReportHelperBase<T> : IDisposable
+    class ReportHelper<T> : IDisposable
     {
         /// <summary>
         /// 文件路径
@@ -38,7 +38,7 @@ namespace Tools.OpenXML.Helpers.Reports
         /// </summary>
         /// <param name="fileName">文件名（含后缀）</param>
         /// <param name="data">数据</param>
-        public ReportHelperBase(string fileName, T data)
+        public ReportHelper(string fileName, T data)
         {
             ReportFullName = Path.Combine(_filePath, fileName);
             _openXMLExcel = new OpenXMLExcel();
@@ -80,7 +80,7 @@ namespace Tools.OpenXML.Helpers.Reports
             }
         }
 
-        ~ReportHelperBase()
+        ~ReportHelper()
         {
             Dispose();
         }

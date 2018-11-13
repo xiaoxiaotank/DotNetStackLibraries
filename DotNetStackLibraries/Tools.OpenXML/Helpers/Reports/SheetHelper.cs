@@ -14,7 +14,7 @@ namespace Tools.OpenXML.Helpers.Reports
     /// 工作表帮助类基类
     /// </summary>
     /// <typeparam name="T">数据的类型</typeparam>
-    abstract class SheetHelperBase<T>
+    abstract class SheetHelper<T>
     {
         /// <summary>
         /// 第一个单元格索引
@@ -52,7 +52,7 @@ namespace Tools.OpenXML.Helpers.Reports
         /// <param name="sheetName"></param>
         /// <param name="openXMLExcel"></param>
         /// <param name="data"></param>
-        public SheetHelperBase(string sheetName, OpenXMLExcelBase openXMLExcel, T data)
+        public SheetHelper(string sheetName, OpenXMLExcelBase openXMLExcel, T data)
         {
             _sheetName = sheetName;
             _openXMLExcel = openXMLExcel;

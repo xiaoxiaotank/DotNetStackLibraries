@@ -14,7 +14,7 @@ using DColor = System.Drawing.Color;
 
 namespace Tools.OpenXML.Helpers.Reports.Report1
 {
-    partial class ReportHelper : ReportHelperBase<ReportDataModel>
+    partial class Report1Helper : ReportHelper<ReportDataModel>
     {
         #region 构造器
         /// <summary>
@@ -22,7 +22,7 @@ namespace Tools.OpenXML.Helpers.Reports.Report1
         /// </summary>
         /// <param name="fileName">文件名</param>
         /// <param name="data">数据</param>
-        public ReportHelper(string fileName, ReportDataModel data) : base(fileName, data)
+        public Report1Helper(string fileName, ReportDataModel data) : base(fileName, data)
         {
         }
         #endregion
@@ -47,7 +47,6 @@ namespace Tools.OpenXML.Helpers.Reports.Report1
             base.Generate();
             new Sheet1Helper("TestSheet-2", _openXMLExcel, _data.Sheet1Data).Generate();
         }
-
 
         #endregion
 

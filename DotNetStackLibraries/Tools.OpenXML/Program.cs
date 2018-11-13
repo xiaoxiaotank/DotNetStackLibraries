@@ -12,7 +12,7 @@ namespace Tools.OpenXML
     {
         static void Main(string[] args)
         {
-            using (var helper = new ReportHelper("test.xlsx", new ReportDataModel()))
+            using (var helper = new Report1Helper("test.xlsx", new ReportDataModel()))
             {
                 helper.GenerateReportByMemory();
                 helper.Generate();

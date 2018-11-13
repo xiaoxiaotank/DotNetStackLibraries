@@ -9,9 +9,9 @@ using DColor = System.Drawing.Color;
 
 namespace Tools.OpenXML.Helpers.Reports.Report1
 {
-    partial class ReportHelper
+    partial class Report1Helper
     {
-        class Sheet1Helper : SheetHelperBase<object>
+        class Sheet1Helper : SheetHelper<object>
         {
             /// <summary>
             /// 开始时钟
@@ -252,7 +252,7 @@ namespace Tools.OpenXML.Helpers.Reports.Report1
                 for (uint i = _firstCellIndex + 1; i <= _lastCellIndex; i++)
                 {
                     var clock = (StartClock + i - 1) % 24;
-                    _writer.WriteElement(new Cell() { CellReference = $"{ OpenXMLExcels.GetColumnNameByIndex(i) }{ row2.RowIndex }", StyleIndex = cellFormatIndex, CellValue = new CellValue() { Text = $"{ clock }:00\r\n - \r\n{ clock + 1 }:00" }, DataType = CellValues.String });
+                    _writer.WriteElement(new Cell() { CellReference = $"{ OpenXMLExcels.GetColumnNameByIndex(i) }{ row2.RowIndex }", StyleIndex = cellFormatIndex, CellValue = new CellValue() { Text = $"{ clock }:00\r\n- \r\n{ clock + 1 }:00" }, DataType = CellValues.String });
                 }
                 //E: Row
                 _writer.WriteEndElement();
