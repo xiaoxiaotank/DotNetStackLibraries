@@ -37,16 +37,16 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// <summary>
         /// 添加工作表
         /// </summary>
-        /// <param name="sheet"></param>
+        /// <param name="sheetName"></param>
         /// <returns></returns>
-        public abstract Worksheet AddWorksheet(Sheet sheet);
+        public abstract Worksheet AddWorksheet(string sheetName);
 
         /// <summary>
         /// 添加Sheet
         /// </summary>
-        /// <param name="sheet"></param>
+        /// <param name="sheetName"></param>
         /// <param name="worksheetPart"></param>
-        public abstract void AddSheetToPart(Sheet sheet, WorksheetPart worksheetPart);
+        public abstract void AddSheetToPart(string sheetName, WorksheetPart worksheetPart);
 
         /// <summary>
         /// 添加字体

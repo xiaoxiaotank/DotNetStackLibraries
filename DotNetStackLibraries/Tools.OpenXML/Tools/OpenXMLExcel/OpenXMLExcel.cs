@@ -21,7 +21,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             {
                 Directory.CreateDirectory(directory);
             }
-            else if (fileFullName.IsBusy())
+            else if (Files.IsBusy(fileFullName))
             {
                 throw new IOException("文件被占用");
             }
@@ -43,7 +43,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             workbookPart.WorkbookStylesPart.Stylesheet = GetDefaultStylesheet();
         }
 
-        public override Worksheet AddWorksheet(Sheet sheet)
+        public override Worksheet AddWorksheet(string sheetName)
         {
             var worksheet = new Worksheet(new SheetData());
             worksheet.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
@@ -53,13 +53,18 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             var worksheetPart = Document.WorkbookPart.AddNewPart<WorksheetPart>();
             worksheetPart.Worksheet = worksheet;
 
-            AddSheetToPart(sheet, worksheetPart);
+            AddSheetToPart(sheetName, worksheetPart);
             return worksheet;
         }
 
-        public override void AddSheetToPart(Sheet sheet, WorksheetPart worksheetPart)
+        public override void AddSheetToPart(string sheetName, WorksheetPart worksheetPart)
         {
-            sheet.Id = Document.WorkbookPart.GetIdOfPart(worksheetPart);
+            var sheet = new Sheet()
+            {
+                Name = sheetName,
+                SheetId = (uint)(Document.WorkbookPart.Workbook.Sheets.Count() + 1),
+                Id = Document.WorkbookPart.GetIdOfPart(worksheetPart)
+            };
             Document.WorkbookPart.Workbook.Sheets.Append(sheet);
         }
 

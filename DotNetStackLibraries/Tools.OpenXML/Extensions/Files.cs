@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Tools.OpenXML
 {
-    static class FileExtension
+    static class Files
     {
         public static readonly string BasePath = AppDomain.CurrentDomain.BaseDirectory;
         public static readonly string FilePath = Path.Combine(BasePath, "Files");
@@ -18,7 +18,7 @@ namespace Tools.OpenXML
         /// </summary>
         /// <param name="fileFullName"></param>
         /// <returns></returns>
-        public static bool IsBusy(this string fileFullName)
+        public static bool IsBusy(string fileFullName)
         {
             bool isBusy = false;
 

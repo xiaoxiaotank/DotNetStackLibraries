@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tools.OpenXML.Helpers.Reports.Report1;
+using Tools.OpenXML.Models;
 
 namespace Tools.OpenXML
 {
@@ -10,10 +12,10 @@ namespace Tools.OpenXML
     {
         static void Main(string[] args)
         {
-            using (var helper = new ReportHelper("test.xlsx", null))
+            using (var helper = new ReportHelper("test.xlsx", new ReportDataModel()))
             {
                 helper.GenerateReportByMemory();
-                helper.GenerateReportByWriter();
+                helper.Generate();
             }
         }
     }
