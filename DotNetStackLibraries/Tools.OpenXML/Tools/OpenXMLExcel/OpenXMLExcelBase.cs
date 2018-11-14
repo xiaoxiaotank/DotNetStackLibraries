@@ -20,15 +20,19 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// </summary>
         protected Lazy<ConcurrentDictionary<string, uint>> _styleIdDic = new Lazy<ConcurrentDictionary<string, uint>>();
 
+        /// <summary>
+        /// Excel文档
+        /// </summary>
         public SpreadsheetDocument Document { get; protected set; }
 
         /// <summary>
         /// 创建电子表格文档
         /// </summary>
-        /// <param name="fileFullName"></param>
+        /// <param name="fileFullName">文件全路径</param>
         /// <returns></returns>
         public abstract SpreadsheetDocument CreateDocument(string fileFullName);
 
+        #region Add
         /// <summary>
         /// 添加工作簿
         /// </summary>
@@ -39,7 +43,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// 添加工作表
         /// </summary>
         /// <param name="sheetName"></param>
-        /// <param name="sheetId"></param>
+        /// <param name="sheetId">null表示自动赋值</param>
         /// <returns></returns>
         public abstract Worksheet AddWorksheet(string sheetName, uint? sheetId = null);
 
@@ -48,8 +52,8 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// </summary>
         /// <param name="worksheetPart"></param>
         /// <param name="sheetName"></param>
-        /// <param name="sheetId"></param>
-        public abstract void AddSheetToPart(WorksheetPart worksheetPart, string sheetName, uint? sheetId = null);       
+        /// <param name="sheetId">null表示自动赋值</param>
+        public abstract void AddSheetToPart(WorksheetPart worksheetPart, string sheetName, uint? sheetId = null);
 
         /// <summary>
         /// 添加字体
@@ -85,9 +89,11 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// <param name="cellFormat"></param>
         /// <returns>最后一个样式的Id</returns>
         public abstract uint AddCellFormats(params CellFormat[] cellFormats);
+        #endregion
 
+        #region Add or Get
         /// <summary>
-        /// 获取字体Id
+        /// 创建或获取字体Id
         /// </summary>
         /// <param name="fontSize"></param>
         /// <param name="fontName"></param>
@@ -98,7 +104,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         public abstract uint GetFontId(double fontSize, string fontName, DColor dColor, Bold bold = null, Underline underline = null);
 
         /// <summary>
-        /// 获取边框Id
+        /// 创建或获取边框Id
         /// </summary>
         /// <param name="style"></param>
         /// <param name="dColor"></param>
@@ -106,7 +112,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         public abstract uint GetBorderId(BorderStyleValues style, DColor dColor, bool includeDiagonal = false, bool isDiagonalDown = true);
 
         /// <summary>
-        /// 获取填充Id
+        /// 创建或获取填充Id
         /// </summary>
         /// <param name="pattern"></param>
         /// <param name="foreDColor"></param>
@@ -115,14 +121,14 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         public abstract uint GetFillId(PatternValues pattern, DColor foreDColor, DColor backDColor);
 
         /// <summary>
-        /// 获取数字格式Id
+        /// 创建或获取数字格式Id
         /// </summary>
         /// <param name="formatCode"></param>
         /// <returns></returns>
         public abstract uint GetNumberingFormatId(string formatCode);
 
         /// <summary>
-        /// 获取单元格格式Id
+        /// 创建或获取单元格格式Id
         /// </summary>
         /// <param name="borderId"></param>
         /// <param name="fontId"></param>
@@ -131,7 +137,8 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// <param name="numberFormatId"></param>
         /// <param name="alignment"></param>
         /// <returns></returns>
-        public abstract uint GetCellFormatIndex(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, uint? numberFormatId = null, Alignment alignment = null);
+        public abstract uint GetCellFormatIndex(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, uint? numberFormatId = null, Alignment alignment = null); 
+        #endregion
 
         /// <summary>
         /// 获取默认样式表
@@ -139,6 +146,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// <param name="stylesPart"></param>
         protected static Stylesheet GetDefaultStylesheet()
         {
+            //一个对象只能属于一个XML节点，所以使用clone
             var fonts = new Fonts() { Count = 1 };
             fonts.Append(OpenXMLExcels.DefaultFont.Clone() as Font);
 
@@ -153,8 +161,8 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
 
             var cellStyleFormats = new CellStyleFormats() { Count = 1 };
             cellStyleFormats.Append(OpenXMLExcels.DefaultCellForamt.Clone() as Border);
+
             var cellFormats = new CellFormats() { Count = 1 };
-            //一个对象只能属于一个XML节点，所以使用clone
             cellFormats.Append(OpenXMLExcels.DefaultCellForamt.Clone() as OpenXmlElement);
 
             var stylesheet = new Stylesheet()

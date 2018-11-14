@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Tools.OpenXML.Extensions
 {
-    static class ColorExtension
+    static class Colors
     {
         /// <summary>
         /// 将颜色转为16进制RGB

@@ -108,7 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\ExcelStyles.cs" />
-    <Compile Include="Extensions\ColorExtension.cs" />
+    <Compile Include="Extensions\Applications.cs" />
+    <Compile Include="Extensions\Colors.cs" />
     <Compile Include="Extensions\OpenXMLExcels.cs" />
     <Compile Include="Extensions\Files.cs" />
     <Compile Include="Helpers\Reports\Report1\Sheet2Helper.cs" />

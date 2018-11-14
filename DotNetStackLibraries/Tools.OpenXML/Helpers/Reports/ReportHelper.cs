@@ -4,12 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tools.OpenXML.Extensions;
 using Tools.OpenXML.Tools.OpenXMLExcel;
 
 namespace Tools.OpenXML.Helpers.Reports
 {
     abstract class ReportHelper<T> : IDisposable
     {
+        #region 成员变量
         /// <summary>
         /// 文件路径
         /// </summary>
@@ -31,7 +33,8 @@ namespace Tools.OpenXML.Helpers.Reports
         /// <summary>
         /// 报告全名（全路径）
         /// </summary>
-        public string ReportFullName { get; }
+        public string ReportFullName { get; } 
+        #endregion
 
         /// <summary>
         /// 

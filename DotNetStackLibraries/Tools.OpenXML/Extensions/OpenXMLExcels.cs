@@ -15,16 +15,44 @@ namespace Tools.OpenXML
 {
     static class OpenXMLExcels
     {
-        public const byte LetterCount = 26; 
+        #region 成员变量
+        /// <summary>
+        /// 字母个数
+        /// </summary>
+        public const byte LetterCount = 26;
+        /// <summary>
+        /// 默认字号
+        /// </summary>
         public const double DefaultFontSize = 11;
+        /// <summary>
+        /// 默认字体名
+        /// </summary>
         public const string DefaultFontName = "宋体";
-
+        /// <summary>
+        /// 默认字体
+        /// </summary>
         public static readonly Font DefaultFont = new Font() { FontSize = new FontSize() { Val = DefaultFontSize }, FontName = new FontName() { Val = DefaultFontName } };
+        /// <summary>
+        /// 默认边框
+        /// </summary>
         public static readonly Border DefaultBorder = new Border() { LeftBorder = new LeftBorder(), TopBorder = new TopBorder(), RightBorder = new RightBorder(), BottomBorder = new BottomBorder() };
-        public static readonly Fill[] DefaultFills = new[] { new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.None } }, new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.Gray125 } } };
+        /// <summary>
+        /// 默认填充数组
+        /// </summary>
+        public static readonly Fill[] DefaultFills = new[]
+        {
+            new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.None } },
+            new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.Gray125 } }
+        };
+        /// <summary>
+        /// 默认数字格式
+        /// </summary>
         public static readonly NumberingFormat DefaultNumberingFormat = new NumberingFormat() { FormatCode = string.Empty, NumberFormatId = 0 };
-        public static readonly CellFormat DefaultCellForamt = new CellFormat() { FontId = 0, FillId = 0, BorderId = 0, Alignment = new Alignment() { WrapText = true, Horizontal = HorizontalAlignmentValues.Left, Vertical = VerticalAlignmentValues.Center } };
-
+        /// <summary>
+        /// 默认单元格格式
+        /// </summary>
+        public static readonly CellFormat DefaultCellForamt = new CellFormat() { FontId = 0, FillId = 0, BorderId = 0, NumberFormatId = 0, Alignment = new Alignment() { Horizontal = HorizontalAlignmentValues.Left, Vertical = VerticalAlignmentValues.Center } }; 
+        #endregion
 
         /// <summary>
         /// 合并单元格
@@ -60,22 +88,21 @@ namespace Tools.OpenXML
             writer.WriteEndElement();
         }
 
-
         /// <summary>
         /// 获取字体
         /// </summary>
         /// <param name="size"></param>
-        /// <param name="fontName"></param>
+        /// <param name="name"></param>
         /// <param name="dColor"></param>
         /// <param name="bold"></param>
         /// <param name="underline"></param>
         /// <returns></returns>
-        public static Font GetFont(double size, string fontName, DColor dColor, Bold bold, Underline underline)
+        public static Font GetFont(double size, string name, DColor dColor, Bold bold, Underline underline)
         {
             var font = new Font()
             {
                 FontSize = new FontSize() { Val = size },
-                FontName = new FontName() { Val = fontName },
+                FontName = new FontName() { Val = name },
                 Bold = bold,
                 Color = new Color() { Rgb = HexBinaryValue.FromString(dColor.GetRgbString()) },
                 Underline = underline
@@ -90,19 +117,19 @@ namespace Tools.OpenXML
         /// <param name="dColor"></param>
         /// <param name="includeDiagonal"></param>
         /// <returns></returns>
-        public static Border GetBorder(BorderStyleValues style, DColor dColor, bool includeDiagonal = false, bool isDiagonalDown = true)
+        public static Border GetBorder(BorderStyleValues style, DColor dColor, bool includeDiagonal, bool isDiagonalDown)
         {
             var color = new Color() { Rgb = new HexBinaryValue(dColor.GetRgbString()) };
             var border = new Border()
             {
                 LeftBorder = new LeftBorder() { Color = color, Style = style },
-                TopBorder = new TopBorder() { Color = color.Clone() as Color, Style = style },
-                RightBorder = new RightBorder() { Color = color.Clone() as Color, Style = style },
-                BottomBorder = new BottomBorder() { Color = color.Clone() as Color, Style = style }
+                TopBorder = new TopBorder() { Color = color.CloneSafely(), Style = style },
+                RightBorder = new RightBorder() { Color = color.CloneSafely(), Style = style },
+                BottomBorder = new BottomBorder() { Color = color.CloneSafely(), Style = style }
             };
             if (includeDiagonal)
             {
-                border.DiagonalBorder = new DiagonalBorder() { Color = color.Clone() as Color, Style = style };
+                border.DiagonalBorder = new DiagonalBorder() { Color = color.CloneSafely(), Style = style };
                 if (isDiagonalDown)
                 {
                     border.DiagonalDown = true;
@@ -139,7 +166,11 @@ namespace Tools.OpenXML
             return fill;
         }
 
-
+        /// <summary>
+        /// 获取数字格式
+        /// </summary>
+        /// <param name="formatCode"></param>
+        /// <returns></returns>
         public static NumberingFormat GetNumberingFormat(string formatCode)
         {
             var numberingFormat = new NumberingFormat()
@@ -157,7 +188,7 @@ namespace Tools.OpenXML
         /// <param name="fontId"></param>
         /// <param name="fillId"></param>
         /// <returns></returns>
-        public static CellFormat GetCellFormat(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, uint? numberFormatId = null, Alignment alignment = null)
+        public static CellFormat GetCellFormat(uint? borderId, uint? fontId, uint? fillId, uint? formatId, uint? numberFormatId, Alignment alignment)
         {
             var cellFormat = new CellFormat()
             {
@@ -176,15 +207,13 @@ namespace Tools.OpenXML
             return cellFormat;
         }
 
-
-
         /// <summary>
         /// 获取Border的Key
         /// </summary>
         /// <param name="borderStyle"></param>
         /// <param name="dColor"></param>
         /// <returns></returns>
-        public static string GetBorderStyleKey(BorderStyleValues borderStyle = BorderStyleValues.None, DColor? dColor = null, bool includeDiagonal = false, bool isDiagonalDown = true)
+        public static string GetBorderStyleKey(BorderStyleValues borderStyle, DColor? dColor, bool includeDiagonal, bool isDiagonalDown)
         => $"Border.{borderStyle}.{dColor}.{includeDiagonal}.{isDiagonalDown}";
 
         /// <summary>
@@ -194,7 +223,7 @@ namespace Tools.OpenXML
         /// <param name="foreDColor"></param>
         /// <param name="backDColor"></param>
         /// <returns></returns>
-        public static string GetFillStyleKey(PatternValues pattern = PatternValues.None, DColor? foreDColor = null, DColor? backDColor = null)
+        public static string GetFillStyleKey(PatternValues pattern, DColor? foreDColor, DColor? backDColor)
         => $"Fill.{pattern}.{foreDColor}.{backDColor}";
 
         /// <summary>
@@ -206,8 +235,8 @@ namespace Tools.OpenXML
         /// <param name="bold"></param>
         /// <param name="underline"></param>
         /// <returns></returns>
-        public static string GetFontStyleKey(double size = DefaultFontSize, string fontName = DefaultFontName, DColor? dColor = null, Bold bold = null, Underline underline = null)
-            => $"Font.{size}.{fontName}.{dColor}.{bold}.{underline?.Val}";
+        public static string GetFontStyleKey(double size, string fontName, DColor? dColor, Bold bold, Underline underline)
+        => $"Font.{size}.{fontName}.{dColor}.{bold}.{underline?.Val}";
 
         /// <summary>
         /// 获取CellFormat的Key
@@ -216,13 +245,19 @@ namespace Tools.OpenXML
         /// <param name="fontId"></param>
         /// <param name="fillId"></param>
         /// <param name="formatId"></param>
+        /// <param name="numberFormatId"></param>
         /// <param name="alignment"></param>
         /// <returns></returns>
-        public static string GetCellFormatStyleKey(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null,uint? numberFormatId = null, Alignment alignment = null)
-            => $"CellFormat.{borderId}.{fontId}.{fillId}.{formatId}.{numberFormatId}.{alignment?.Vertical}.{alignment?.Horizontal}";
+        public static string GetCellFormatStyleKey(uint? borderId, uint? fontId, uint? fillId, uint? formatId, uint? numberFormatId, Alignment alignment)
+        => $"CellFormat.{borderId}.{fontId}.{fillId}.{formatId}.{numberFormatId}.{alignment?.Vertical}.{alignment?.Horizontal}";
 
+        /// <summary>
+        /// 获取NumberingFormat的Key
+        /// </summary>
+        /// <param name="formatCode"></param>
+        /// <returns></returns>
         public static string GetNumberingFormatKey(string formatCode)
-            => $"NumberingFormat.{formatCode}";
+        => $"NumberingFormat.{formatCode}";
 
         /// <summary>
         /// 通过索引获取列的符号,从 0 开始
@@ -241,6 +276,17 @@ namespace Tools.OpenXML
             }
 
             return string.Concat(name.Append((char)('A' + i)).ToString().Reverse());
+        }
+
+        /// <summary>
+        /// 类型安全的克隆
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static T CloneSafely<T>(this T element) where T : OpenXmlElement
+        {
+            return element.Clone() as T;
         }
     }
 }

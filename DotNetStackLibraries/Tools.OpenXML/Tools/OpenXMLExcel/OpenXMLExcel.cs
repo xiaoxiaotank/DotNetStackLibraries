@@ -8,6 +8,7 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Tools.OpenXML.Enums;
+using Tools.OpenXML.Extensions;
 using DColor = System.Drawing.Color;
 
 namespace Tools.OpenXML.Tools.OpenXMLExcel

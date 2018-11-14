@@ -6,12 +6,14 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tools.OpenXML
+namespace Tools.OpenXML.Extensions
 {
     static class Files
     {
-        public static readonly string BasePath = AppDomain.CurrentDomain.BaseDirectory;
-        public static readonly string FilePath = Path.Combine(BasePath, "Files");
+        /// <summary>
+        /// 文件路径
+        /// </summary>
+        public static readonly string FilePath = Path.Combine(Applications.BasePath, "Files");
 
         /// <summary>
         /// 检查文件是否被占用
