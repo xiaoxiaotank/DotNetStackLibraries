@@ -16,6 +16,7 @@ namespace Tools.OpenXML.Helpers.Reports
     /// <typeparam name="T">数据的类型</typeparam>
     abstract class SheetHelper<T>
     {
+        private static readonly object _obj = new object();
         /// <summary>
         /// 第一个单元格索引
         /// </summary>
@@ -37,6 +38,7 @@ namespace Tools.OpenXML.Helpers.Reports
         /// </summary>
         protected readonly OpenXMLExcelBase _openXMLExcel;
 
+        private uint? _sheetId;
         /// <summary>
         /// 行索引，指示下一行是第几行
         /// </summary>
@@ -52,11 +54,12 @@ namespace Tools.OpenXML.Helpers.Reports
         /// <param name="sheetName"></param>
         /// <param name="openXMLExcel"></param>
         /// <param name="data"></param>
-        public SheetHelper(string sheetName, OpenXMLExcelBase openXMLExcel, T data)
+        public SheetHelper(string sheetName, OpenXMLExcelBase openXMLExcel, T data, uint? sheetId = null)
         {
             _sheetName = sheetName;
             _openXMLExcel = openXMLExcel;
             _data = data;
+            _sheetId = sheetId;
         }
 
         /// <summary>
@@ -64,8 +67,12 @@ namespace Tools.OpenXML.Helpers.Reports
         /// </summary>
         public void Generate()
         {
-            var worksheetPart = _openXMLExcel.Document.WorkbookPart.AddNewPart<WorksheetPart>();
-            _openXMLExcel.AddSheetToPart(_sheetName, worksheetPart);
+            WorksheetPart worksheetPart;
+            lock (_obj)
+            {
+                worksheetPart = _openXMLExcel.Document.WorkbookPart.AddNewPart<WorksheetPart>();
+            }
+            _openXMLExcel.AddSheetToPart(worksheetPart, _sheetName, _sheetId);
             CreateSheetBySAX(worksheetPart);
         }
 

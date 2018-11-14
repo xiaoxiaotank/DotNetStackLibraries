@@ -8,7 +8,7 @@ using Tools.OpenXML.Tools.OpenXMLExcel;
 
 namespace Tools.OpenXML.Helpers.Reports
 {
-    class ReportHelper<T> : IDisposable
+    abstract class ReportHelper<T> : IDisposable
     {
         /// <summary>
         /// 文件路径
@@ -48,9 +48,9 @@ namespace Tools.OpenXML.Helpers.Reports
         /// <summary>
         /// 生成报告
         /// </summary>
-        public virtual void Generate()
+        public virtual async Task GenerateAsync()
         {
-            InitDocument();
+            await Task.Factory.StartNew(() => InitDocument());
         }
 
         public void Dispose()

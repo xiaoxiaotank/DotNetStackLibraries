@@ -43,7 +43,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             workbookPart.WorkbookStylesPart.Stylesheet = GetDefaultStylesheet();
         }
 
-        public override Worksheet AddWorksheet(string sheetName)
+        public override Worksheet AddWorksheet(string sheetName, uint? sheetId = null)
         {
             var worksheet = new Worksheet(new SheetData());
             worksheet.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
@@ -53,19 +53,29 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             var worksheetPart = Document.WorkbookPart.AddNewPart<WorksheetPart>();
             worksheetPart.Worksheet = worksheet;
 
-            AddSheetToPart(sheetName, worksheetPart);
+            AddSheetToPart(worksheetPart, sheetName, sheetId);
             return worksheet;
         }
 
-        public override void AddSheetToPart(string sheetName, WorksheetPart worksheetPart)
+        public override void AddSheetToPart(WorksheetPart worksheetPart, string sheetName, uint? sheetId = null)
         {
+            var sheets = Document.WorkbookPart.Workbook.Sheets;
             var sheet = new Sheet()
             {
                 Name = sheetName,
-                SheetId = (uint)(Document.WorkbookPart.Workbook.Sheets.Count() + 1),
+                SheetId = sheetId ?? (uint)(sheets.Count() + 1),
                 Id = Document.WorkbookPart.GetIdOfPart(worksheetPart)
             };
-            Document.WorkbookPart.Workbook.Sheets.Append(sheet);
+            
+            var refChild = sheets.FirstOrDefault(s => (s as Sheet).SheetId > sheet.SheetId);
+            if(refChild != null)
+            {
+                sheets.InsertBefore(sheet, refChild);
+            }
+            else
+            {
+                sheets.Append(sheet);
+            }
         }
 
         public override uint AddFonts(params Font[] fonts)
@@ -96,6 +106,20 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             return styleFills.Count - 1;
         }
 
+        public override uint AddNumberingFormats(params NumberingFormat[] numberingFormats)
+        {
+            var styleNumberingFormats = Document.WorkbookPart.WorkbookStylesPart.Stylesheet.NumberingFormats;
+            for (int i = 0; i < numberingFormats.Length; i++)
+            {
+                numberingFormats[i].NumberFormatId = (uint)(styleNumberingFormats.Count + i);
+            }
+
+            styleNumberingFormats.Append(numberingFormats);
+            styleNumberingFormats.Count += (uint)numberingFormats.Length;
+
+            return styleNumberingFormats.Count - 1;
+        }
+
         public override uint AddCellFormats(params CellFormat[] cellFormats)
         {
             var styleCellFormats = Document.WorkbookPart.WorkbookStylesPart.Stylesheet.CellFormats;
@@ -105,13 +129,13 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             return styleCellFormats.Count - 1;
         }
 
-        public override uint GetFontId(double fontSize, string fontName, Bold bold, DColor dColor)
+        public override uint GetFontId(double fontSize, string fontName, DColor dColor, Bold bold = null, Underline underline = null)
         {
-            var fontKey = OpenXMLExcels.GetFontStyleKey(fontSize, fontName, bold, dColor);
+            var fontKey = OpenXMLExcels.GetFontStyleKey(fontSize, fontName, dColor, bold, underline);
             var fontId = GetStyleId(fontKey);
             if (!fontId.HasValue)
             {
-                var font = OpenXMLExcels.GetFont(fontSize, fontName, bold, dColor);
+                var font = OpenXMLExcels.GetFont(fontSize, fontName, dColor, bold, underline);
                 fontId = _styleIdDic.Value[fontKey] = AddFonts(font);
             }
 
@@ -144,17 +168,31 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             return fillId.Value;
         }
 
-        public override uint GetCellFormatIndex(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, Alignment alignment = null)
+        public override uint GetNumberingFormatId(string formatCode)
         {
-            var cellFormatKey = OpenXMLExcels.GetCellFormatStyleKey(borderId, fontId, fillId, formatId, alignment);
+            var key = OpenXMLExcels.GetNumberingFormatKey(formatCode);
+            var id = GetStyleId(key);
+            if (!id.HasValue)
+            {
+                var numberingFormat = OpenXMLExcels.GetNumberingFormat(formatCode);
+                id = _styleIdDic.Value[key] = AddNumberingFormats(numberingFormat);
+            }
+
+            return id.Value;
+        }
+
+        public override uint GetCellFormatIndex(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, uint? numberFormatId = null, Alignment alignment = null)
+        {
+            var cellFormatKey = OpenXMLExcels.GetCellFormatStyleKey(borderId, fontId, fillId, formatId, numberFormatId, alignment);
             var cellFormatId = GetStyleId(cellFormatKey);
             if (!cellFormatId.HasValue)
             {
-                var cellFormat = OpenXMLExcels.GetCellFormat(borderId, fontId, fillId, formatId, alignment);
+                var cellFormat = OpenXMLExcels.GetCellFormat(borderId, fontId, fillId, formatId, numberFormatId, alignment);
                 cellFormatId = _styleIdDic.Value[cellFormatKey] = AddCellFormats(cellFormat);
             }
 
             return cellFormatId.Value;
         }
+
     }
 }

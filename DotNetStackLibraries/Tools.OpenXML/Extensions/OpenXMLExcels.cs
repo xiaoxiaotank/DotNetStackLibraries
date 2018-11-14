@@ -22,6 +22,7 @@ namespace Tools.OpenXML
         public static readonly Font DefaultFont = new Font() { FontSize = new FontSize() { Val = DefaultFontSize }, FontName = new FontName() { Val = DefaultFontName } };
         public static readonly Border DefaultBorder = new Border() { LeftBorder = new LeftBorder(), TopBorder = new TopBorder(), RightBorder = new RightBorder(), BottomBorder = new BottomBorder() };
         public static readonly Fill[] DefaultFills = new[] { new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.None } }, new Fill() { PatternFill = new PatternFill() { PatternType = PatternValues.Gray125 } } };
+        public static readonly NumberingFormat DefaultNumberingFormat = new NumberingFormat() { FormatCode = string.Empty, NumberFormatId = 0 };
         public static readonly CellFormat DefaultCellForamt = new CellFormat() { FontId = 0, FillId = 0, BorderId = 0, Alignment = new Alignment() { WrapText = true, Horizontal = HorizontalAlignmentValues.Left, Vertical = VerticalAlignmentValues.Center } };
 
 
@@ -65,10 +66,11 @@ namespace Tools.OpenXML
         /// </summary>
         /// <param name="size"></param>
         /// <param name="fontName"></param>
-        /// <param name="bold"></param>
         /// <param name="dColor"></param>
+        /// <param name="bold"></param>
+        /// <param name="underline"></param>
         /// <returns></returns>
-        public static Font GetFont(double size, string fontName, Bold bold, DColor dColor)
+        public static Font GetFont(double size, string fontName, DColor dColor, Bold bold, Underline underline)
         {
             var font = new Font()
             {
@@ -76,6 +78,7 @@ namespace Tools.OpenXML
                 FontName = new FontName() { Val = fontName },
                 Bold = bold,
                 Color = new Color() { Rgb = HexBinaryValue.FromString(dColor.GetRgbString()) },
+                Underline = underline
             };
             return font;
         }
@@ -136,6 +139,17 @@ namespace Tools.OpenXML
             return fill;
         }
 
+
+        public static NumberingFormat GetNumberingFormat(string formatCode)
+        {
+            var numberingFormat = new NumberingFormat()
+            {
+                FormatCode = StringValue.FromString(formatCode)
+            };
+
+            return numberingFormat;
+        }
+
         /// <summary>
         /// 获取单元格样式
         /// </summary>
@@ -143,7 +157,7 @@ namespace Tools.OpenXML
         /// <param name="fontId"></param>
         /// <param name="fillId"></param>
         /// <returns></returns>
-        public static CellFormat GetCellFormat(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, Alignment alignment = null)
+        public static CellFormat GetCellFormat(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, uint? numberFormatId = null, Alignment alignment = null)
         {
             var cellFormat = new CellFormat()
             {
@@ -151,14 +165,18 @@ namespace Tools.OpenXML
                 FontId = fontId,
                 FillId = fillId,
                 FormatId = formatId,
+                NumberFormatId = numberFormatId,
                 Alignment = alignment,
                 ApplyBorder = borderId.HasValue,
                 ApplyFont = fontId.HasValue,
                 ApplyFill = fillId.HasValue,
+                ApplyNumberFormat = numberFormatId.HasValue,
                 ApplyAlignment = alignment != null,
             };
             return cellFormat;
         }
+
+
 
         /// <summary>
         /// 获取Border的Key
@@ -167,7 +185,7 @@ namespace Tools.OpenXML
         /// <param name="dColor"></param>
         /// <returns></returns>
         public static string GetBorderStyleKey(BorderStyleValues borderStyle = BorderStyleValues.None, DColor? dColor = null, bool includeDiagonal = false, bool isDiagonalDown = true)
-        => $"{borderStyle}.{dColor}.{includeDiagonal}.{isDiagonalDown}";
+        => $"Border.{borderStyle}.{dColor}.{includeDiagonal}.{isDiagonalDown}";
 
         /// <summary>
         /// 获取Fill的Key
@@ -177,18 +195,19 @@ namespace Tools.OpenXML
         /// <param name="backDColor"></param>
         /// <returns></returns>
         public static string GetFillStyleKey(PatternValues pattern = PatternValues.None, DColor? foreDColor = null, DColor? backDColor = null)
-        => $"{pattern}.{foreDColor}.{backDColor}";
+        => $"Fill.{pattern}.{foreDColor}.{backDColor}";
 
         /// <summary>
         /// 获取Font的Key
         /// </summary>
         /// <param name="size"></param>
         /// <param name="fontName"></param>
-        /// <param name="bold"></param>
         /// <param name="dColor"></param>
+        /// <param name="bold"></param>
+        /// <param name="underline"></param>
         /// <returns></returns>
-        public static string GetFontStyleKey(double size = DefaultFontSize, string fontName = DefaultFontName, Bold bold = null, DColor? dColor = null)
-            => $"{size}.{fontName}.{bold}.{dColor}";
+        public static string GetFontStyleKey(double size = DefaultFontSize, string fontName = DefaultFontName, DColor? dColor = null, Bold bold = null, Underline underline = null)
+            => $"Font.{size}.{fontName}.{dColor}.{bold}.{underline?.Val}";
 
         /// <summary>
         /// 获取CellFormat的Key
@@ -199,8 +218,11 @@ namespace Tools.OpenXML
         /// <param name="formatId"></param>
         /// <param name="alignment"></param>
         /// <returns></returns>
-        public static string GetCellFormatStyleKey(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, Alignment alignment = null)
-            => $"{borderId}.{fontId}.{fillId}.{formatId}.{alignment?.Vertical}.{alignment?.Horizontal}";
+        public static string GetCellFormatStyleKey(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null,uint? numberFormatId = null, Alignment alignment = null)
+            => $"CellFormat.{borderId}.{fontId}.{fillId}.{formatId}.{numberFormatId}.{alignment?.Vertical}.{alignment?.Horizontal}";
+
+        public static string GetNumberingFormatKey(string formatCode)
+            => $"NumberingFormat.{formatCode}";
 
         /// <summary>
         /// 通过索引获取列的符号,从 0 开始

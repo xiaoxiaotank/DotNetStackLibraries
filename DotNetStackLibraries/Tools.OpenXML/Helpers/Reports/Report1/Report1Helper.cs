@@ -35,17 +35,21 @@ namespace Tools.OpenXML.Helpers.Reports.Report1
         {
             InitDocument();
 
-            var worksheet1 = _openXMLExcel.AddWorksheet("TestSheet-1");
+            var worksheet1 = _openXMLExcel.AddWorksheet("TestSheet-0", 1);
             FillSheet1ByMemory(worksheet1);
         }
 
         /// <summary>
         /// 通过操作硬盘生成报告
         /// </summary>
-        public override void Generate()
+        public override async Task GenerateAsync()
         {
-            base.Generate();
-            new Sheet1Helper("TestSheet-2", _openXMLExcel, _data.Sheet1Data).Generate();
+            await base.GenerateAsync();
+
+            var task1 = Task.Factory.StartNew(() => new Sheet1Helper("TestSheet-1", _openXMLExcel, _data.Sheet1Data, 2).Generate());
+            var task2 = Task.Factory.StartNew(() => new Sheet2Helper("TestSheet-2", _openXMLExcel, _data.Sheet2Data, 3).Generate());
+            
+            await Task.WhenAll(task1, task2);
         }
 
         #endregion

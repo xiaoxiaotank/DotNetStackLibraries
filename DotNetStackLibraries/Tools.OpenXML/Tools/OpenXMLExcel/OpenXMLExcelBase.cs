@@ -2,6 +2,7 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// key:key
         /// value:样式下标
         /// </summary>
-        protected Lazy<Dictionary<string, uint>> _styleIdDic = new Lazy<Dictionary<string, uint>>();
+        protected Lazy<ConcurrentDictionary<string, uint>> _styleIdDic = new Lazy<ConcurrentDictionary<string, uint>>();
 
         public SpreadsheetDocument Document { get; protected set; }
 
@@ -38,15 +39,17 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// 添加工作表
         /// </summary>
         /// <param name="sheetName"></param>
+        /// <param name="sheetId"></param>
         /// <returns></returns>
-        public abstract Worksheet AddWorksheet(string sheetName);
+        public abstract Worksheet AddWorksheet(string sheetName, uint? sheetId = null);
 
         /// <summary>
         /// 添加Sheet
         /// </summary>
-        /// <param name="sheetName"></param>
         /// <param name="worksheetPart"></param>
-        public abstract void AddSheetToPart(string sheetName, WorksheetPart worksheetPart);
+        /// <param name="sheetName"></param>
+        /// <param name="sheetId"></param>
+        public abstract void AddSheetToPart(WorksheetPart worksheetPart, string sheetName, uint? sheetId = null);       
 
         /// <summary>
         /// 添加字体
@@ -70,6 +73,13 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         public abstract uint AddFills(params Fill[] fills);
 
         /// <summary>
+        /// 添加数字格式
+        /// </summary>
+        /// <param name="numberingFormats"></param>
+        /// <returns></returns>
+        public abstract uint AddNumberingFormats(params NumberingFormat[] numberingFormats);
+
+        /// <summary>
         /// 添加单元格格式
         /// </summary>
         /// <param name="cellFormat"></param>
@@ -81,10 +91,11 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// </summary>
         /// <param name="fontSize"></param>
         /// <param name="fontName"></param>
-        /// <param name="bold"></param>
         /// <param name="dColor"></param>
+        /// <param name="bold"></param>
+        /// <param name="underline"></param>
         /// <returns></returns>
-        public abstract uint GetFontId(double fontSize, string fontName, Bold bold, DColor dColor);
+        public abstract uint GetFontId(double fontSize, string fontName, DColor dColor, Bold bold = null, Underline underline = null);
 
         /// <summary>
         /// 获取边框Id
@@ -104,15 +115,23 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         public abstract uint GetFillId(PatternValues pattern, DColor foreDColor, DColor backDColor);
 
         /// <summary>
+        /// 获取数字格式Id
+        /// </summary>
+        /// <param name="formatCode"></param>
+        /// <returns></returns>
+        public abstract uint GetNumberingFormatId(string formatCode);
+
+        /// <summary>
         /// 获取单元格格式Id
         /// </summary>
         /// <param name="borderId"></param>
         /// <param name="fontId"></param>
         /// <param name="fillId"></param>
         /// <param name="formatId"></param>
+        /// <param name="numberFormatId"></param>
         /// <param name="alignment"></param>
         /// <returns></returns>
-        public abstract uint GetCellFormatIndex(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, Alignment alignment = null);
+        public abstract uint GetCellFormatIndex(uint? borderId = null, uint? fontId = null, uint? fillId = null, uint? formatId = null, uint? numberFormatId = null, Alignment alignment = null);
 
         /// <summary>
         /// 获取默认样式表
@@ -121,16 +140,19 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         protected static Stylesheet GetDefaultStylesheet()
         {
             var fonts = new Fonts() { Count = 1 };
-            fonts.Append(OpenXMLExcels.DefaultFont);
+            fonts.Append(OpenXMLExcels.DefaultFont.Clone() as Font);
 
             var borders = new Borders() { Count = 1 };
-            borders.Append(OpenXMLExcels.DefaultBorder);
+            borders.Append(OpenXMLExcels.DefaultBorder.Clone() as Border);
 
-            var fills = new Fills() { Count = 2 };
-            fills.Append(OpenXMLExcels.DefaultFills);
+            var fills = new Fills() { Count = (uint)OpenXMLExcels.DefaultFills.Count() };
+            fills.Append(OpenXMLExcels.DefaultFills.Select(f => f.Clone() as Fill));
+
+            var numberingFormats = new NumberingFormats() { Count = 1 };
+            numberingFormats.Append(OpenXMLExcels.DefaultNumberingFormat.Clone() as NumberingFormat);
 
             var cellStyleFormats = new CellStyleFormats() { Count = 1 };
-            cellStyleFormats.Append(OpenXMLExcels.DefaultCellForamt);
+            cellStyleFormats.Append(OpenXMLExcels.DefaultCellForamt.Clone() as Border);
             var cellFormats = new CellFormats() { Count = 1 };
             //一个对象只能属于一个XML节点，所以使用clone
             cellFormats.Append(OpenXMLExcels.DefaultCellForamt.Clone() as OpenXmlElement);
@@ -141,7 +163,8 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
                 Borders = borders,
                 Fills = fills,
                 CellFormats = cellFormats,
-                CellStyleFormats = cellStyleFormats
+                CellStyleFormats = cellStyleFormats,
+                NumberingFormats = numberingFormats
             };
             return stylesheet;
         }
@@ -153,7 +176,7 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// <returns></returns>
         protected uint? GetStyleId(string key)
         {
-            return _styleIdDic.Value.ContainsKey(key) ? _styleIdDic.Value[key] : default(uint?);
+            return key != null && _styleIdDic.Value.ContainsKey(key) ? _styleIdDic.Value[key] : default(uint?);
         }
     }
 }

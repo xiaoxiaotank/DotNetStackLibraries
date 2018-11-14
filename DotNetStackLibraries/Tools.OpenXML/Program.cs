@@ -10,12 +10,15 @@ namespace Tools.OpenXML
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            using (var helper = new Report1Helper("test.xlsx", new ReportDataModel()))
+            for (int i = 0; i < 1; i++)
             {
-                helper.GenerateReportByMemory();
-                helper.Generate();
+                using (var helper = new Report1Helper("test.xlsx", new ReportDataModel()))
+                {
+                    helper.GenerateReportByMemory();
+                    await helper.GenerateAsync();
+                }
             }
         }
     }
