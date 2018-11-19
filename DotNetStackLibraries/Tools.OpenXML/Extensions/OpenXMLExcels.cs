@@ -31,11 +31,11 @@ namespace Tools.OpenXML
         /// <summary>
         /// 默认字体
         /// </summary>
-        public static readonly Font DefaultFont = new Font() { FontSize = new FontSize() { Val = DefaultFontSize }, FontName = new FontName() { Val = DefaultFontName } };
+        public static readonly Font DefaultFont = new Font() { FontSize = new FontSize() { Val = DefaultFontSize }, FontName = new FontName() { Val = DefaultFontName }, FontScheme = new FontScheme() { Val = FontSchemeValues.Minor } };
         /// <summary>
         /// 默认边框
         /// </summary>
-        public static readonly Border DefaultBorder = new Border() { LeftBorder = new LeftBorder(), TopBorder = new TopBorder(), RightBorder = new RightBorder(), BottomBorder = new BottomBorder() };
+        public static readonly Border DefaultBorder = new Border() { LeftBorder = new LeftBorder(), TopBorder = new TopBorder(), RightBorder = new RightBorder(), BottomBorder = new BottomBorder(), DiagonalBorder = new DiagonalBorder() };
         /// <summary>
         /// 默认填充数组
         /// </summary>
@@ -47,7 +47,13 @@ namespace Tools.OpenXML
         /// <summary>
         /// 默认数字格式
         /// </summary>
-        public static readonly NumberingFormat DefaultNumberingFormat = new NumberingFormat() { FormatCode = string.Empty, NumberFormatId = 0 };
+        public static readonly NumberingFormat[] DefaultNumberingFormats = new NumberingFormat[]
+        {
+            new NumberingFormat() { NumberFormatId = 42, FormatCode = "_ \"￥\"* #,##0_ ;_ \"￥\"* \\-#,##0_ ;_ \"￥\"* \"-\"_ ;_ @_ " },
+            new NumberingFormat() { NumberFormatId = 44, FormatCode = "_ \"￥\"* #,##0.00_ ;_ \"￥\"* \\-#,##0.00_ ;_ \"￥\"* \"-\"??_ ;_ @_ " },
+            new NumberingFormat() { NumberFormatId = 41, FormatCode = "_ * #,##0_ ;_ * \\-#,##0_ ;_ * \"-\"_ ;_ @_ " },
+            new NumberingFormat() { NumberFormatId = 43, FormatCode = "_ * #,##0.00_ ;_ * \\-#,##0.00_ ;_ * \"-\"??_ ;_ @_ " },
+        };
         /// <summary>
         /// 默认单元格格式
         /// </summary>

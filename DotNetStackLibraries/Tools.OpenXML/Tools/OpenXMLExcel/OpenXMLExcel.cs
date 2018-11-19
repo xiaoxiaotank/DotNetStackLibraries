@@ -10,6 +10,9 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using Tools.OpenXML.Enums;
 using Tools.OpenXML.Extensions;
 using DColor = System.Drawing.Color;
+using C = DocumentFormat.OpenXml.Drawing.Charts;
+using Xdr = DocumentFormat.OpenXml.Drawing.Spreadsheet;
+
 
 namespace Tools.OpenXML.Tools.OpenXMLExcel
 {
@@ -33,13 +36,18 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
 
         public override void AddWorkbook()
         {
+            var workbook = new Workbook()
+            {
+                Sheets = new Sheets(),
+                WorkbookProperties = new WorkbookProperties(),
+                BookViews = new BookViews(),
+                FileVersion = new FileVersion(),
+            };
+            workbook.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
+
             //添加工作簿区域，除了包含工作簿外，还有其他属性
             var workbookPart = Document.AddWorkbookPart();
-            workbookPart.Workbook = new Workbook()
-            {
-                Sheets = new Sheets()
-            };
-
+            workbookPart.Workbook = workbook;
             workbookPart.AddNewPart<WorkbookStylesPart>();
             workbookPart.WorkbookStylesPart.Stylesheet = GetDefaultStylesheet();
         }
@@ -48,8 +56,10 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         {
             var worksheet = new Worksheet(new SheetData());
             worksheet.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
+            worksheet.AddNamespaceDeclaration("xdr", "http://schemas.openxmlformats.org/drawingml/2006/spreadsheetDrawing");
+            worksheet.AddNamespaceDeclaration("x14", "http://schemas.microsoft.com/office/spreadsheetml/2009/9/main");
             worksheet.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
-            worksheet.AddNamespaceDeclaration("x14ac", "http://schemas.microsoft.com/office/spreadsheetml/2009/9/ac");
+            worksheet.AddNamespaceDeclaration("etc", "http://www.wps.cn/officeDocument/2017/etCustomData");
 
             var worksheetPart = Document.WorkbookPart.AddNewPart<WorksheetPart>();
             worksheetPart.Worksheet = worksheet;
@@ -77,6 +87,45 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
             {
                 sheets.Append(sheet);
             }
+        }
+
+        public override Xdr.WorksheetDrawing AddWorksheetDrawing(WorksheetPart worksheetPart)
+        {
+            var drawingsPart = worksheetPart.AddNewPart<DrawingsPart>();
+            return drawingsPart.WorksheetDrawing = new Xdr.WorksheetDrawing();
+        }
+
+        public override C.Chart AddChart(DrawingsPart drawingsPart, EditingLanguage language)
+        {
+            var chartPart = drawingsPart.AddNewPart<ChartPart>();
+            chartPart.ChartSpace = new C.ChartSpace() { EditingLanguage = new C.EditingLanguage() { Val = language.GetEnumMemberValue() } };
+
+            return chartPart.ChartSpace.AppendChild(new C.Chart() { PlotArea = new C.PlotArea() });
+        }
+
+
+        public override C.LineChart AddLineChart(C.Chart chart, C.CategoryAxisData axisData, IReadOnlyDictionary<C.Values, C.SeriesText> dataDic)
+        {
+            var plotArea = chart.ChildElements.OfType<C.PlotArea>().FirstOrDefault();
+            var lineChart = plotArea.AppendChild(new C.LineChart() { Grouping = new C.Grouping() { Val = C.GroupingValues.Standard } });
+
+            uint i = 0;
+            foreach (var dataKvp in dataDic)
+            {
+                var chartSeries = lineChart.AppendChild(new C.LineChartSeries(dataKvp.Key)
+                {
+                    Index = new C.Index() { Val = i },
+                    Order = new C.Order() { Val = i },
+                    SeriesText = dataKvp.Value
+                });
+
+                if(i++ == 0)
+                {
+                    chartSeries.Append(axisData);
+                }
+            }
+
+            return lineChart;
         }
 
         public override uint AddFonts(params Font[] fonts)
@@ -110,15 +159,16 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         public override uint AddNumberingFormats(params NumberingFormat[] numberingFormats)
         {
             var styleNumberingFormats = Document.WorkbookPart.WorkbookStylesPart.Stylesheet.NumberingFormats;
-            for (int i = 0; i < numberingFormats.Length; i++)
+            var startFormatId = OpenXMLExcels.DefaultNumberingFormats.Min(n => (uint)n.NumberFormatId) + styleNumberingFormats.Count;
+            for (uint i = 0; i < numberingFormats.Length; i++)
             {
-                numberingFormats[i].NumberFormatId = (uint)(styleNumberingFormats.Count + i);
+                numberingFormats[i].NumberFormatId = startFormatId + i;
             }
 
             styleNumberingFormats.Append(numberingFormats);
             styleNumberingFormats.Count += (uint)numberingFormats.Length;
 
-            return styleNumberingFormats.Count - 1;
+            return numberingFormats.Last().NumberFormatId;
         }
 
         public override uint AddCellFormats(params CellFormat[] cellFormats)

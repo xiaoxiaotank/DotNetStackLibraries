@@ -46,10 +46,12 @@ namespace Tools.OpenXML.Helpers.Reports.Report1
         {
             await base.GenerateAsync();
 
-            var task1 = Task.Factory.StartNew(() => new Sheet1Helper("TestSheet-1", _openXMLExcel, _data.Sheet1Data, 2).Generate());
-            var task2 = Task.Factory.StartNew(() => new Sheet2Helper("TestSheet-2", _openXMLExcel, _data.Sheet2Data, 3).Generate());
+            //var task1 = Task.Factory.StartNew(() => new Sheet1Helper("TestSheet-1", _openXMLExcel, _data.Sheet1Data, 2).Generate());
+            //var task2 = Task.Factory.StartNew(() => new Sheet2Helper("TestSheet-2", _openXMLExcel, _data.Sheet2Data, 3).Generate());
+            //需要公式的表格命名不能带 “-”
+            var task3 = Task.Factory.StartNew(() => new Sheet3Helper("TestSheet3", _openXMLExcel, _data.Sheet3DataList, 4).Generate(true));
             
-            await Task.WhenAll(task1, task2);
+            await Task.WhenAll(task3);
         }
 
         #endregion

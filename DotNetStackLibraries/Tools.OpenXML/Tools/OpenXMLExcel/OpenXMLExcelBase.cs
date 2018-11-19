@@ -9,6 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Tools.OpenXML.Enums;
 using DColor = System.Drawing.Color;
+using C = DocumentFormat.OpenXml.Drawing.Charts;
+using Xdr = DocumentFormat.OpenXml.Drawing.Spreadsheet;
+
 
 namespace Tools.OpenXML.Tools.OpenXMLExcel
 {
@@ -54,6 +57,29 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         /// <param name="sheetName"></param>
         /// <param name="sheetId">null表示自动赋值</param>
         public abstract void AddSheetToPart(WorksheetPart worksheetPart, string sheetName, uint? sheetId = null);
+
+        /// <summary>
+        /// 添加工作表绘图
+        /// </summary>
+        /// <param name="worksheetPart"></param>
+        public abstract Xdr.WorksheetDrawing AddWorksheetDrawing(WorksheetPart worksheetPart);
+
+        /// <summary>
+        /// 添加图表
+        /// </summary>
+        /// <param name="drawingsPart"></param>
+        /// <param name="language"></param>
+        /// <returns></returns>
+        public abstract C.Chart AddChart(DrawingsPart drawingsPart, EditingLanguage language);
+
+        /// <summary>
+        /// 添加折线图
+        /// </summary>
+        /// <param name="chart"></param>
+        /// <param name="axisData"></param>
+        /// <param name="dataDic"></param>
+        /// <returns></returns>
+        public abstract C.LineChart AddLineChart(C.Chart chart, C.CategoryAxisData axisData, IReadOnlyDictionary<C.Values, C.SeriesText> dataDic);
 
         /// <summary>
         /// 添加字体
@@ -148,22 +174,22 @@ namespace Tools.OpenXML.Tools.OpenXMLExcel
         {
             //一个对象只能属于一个XML节点，所以使用clone
             var fonts = new Fonts() { Count = 1 };
-            fonts.Append(OpenXMLExcels.DefaultFont.Clone() as Font);
+            fonts.Append(OpenXMLExcels.DefaultFont.CloneSafely());
 
             var borders = new Borders() { Count = 1 };
-            borders.Append(OpenXMLExcels.DefaultBorder.Clone() as Border);
+            borders.Append(OpenXMLExcels.DefaultBorder.CloneSafely());
 
             var fills = new Fills() { Count = (uint)OpenXMLExcels.DefaultFills.Count() };
-            fills.Append(OpenXMLExcels.DefaultFills.Select(f => f.Clone() as Fill));
+            fills.Append(OpenXMLExcels.DefaultFills.Select(f => f.CloneSafely()));
 
-            var numberingFormats = new NumberingFormats() { Count = 1 };
-            numberingFormats.Append(OpenXMLExcels.DefaultNumberingFormat.Clone() as NumberingFormat);
+            var numberingFormats = new NumberingFormats() { Count = (uint)OpenXMLExcels.DefaultNumberingFormats.Count() };
+            numberingFormats.Append(OpenXMLExcels.DefaultNumberingFormats.Select(n => n.CloneSafely()));
 
             var cellStyleFormats = new CellStyleFormats() { Count = 1 };
-            cellStyleFormats.Append(OpenXMLExcels.DefaultCellForamt.Clone() as Border);
+            cellStyleFormats.Append(OpenXMLExcels.DefaultCellForamt.CloneSafely());
 
             var cellFormats = new CellFormats() { Count = 1 };
-            cellFormats.Append(OpenXMLExcels.DefaultCellForamt.Clone() as OpenXmlElement);
+            cellFormats.Append(OpenXMLExcels.DefaultCellForamt.CloneSafely());
 
             var stylesheet = new Stylesheet()
             {

@@ -23,6 +23,7 @@ namespace Tools.OpenXML.Extensions
         public static bool IsBusy(string fileFullName)
         {
             bool isBusy = false;
+            if (!File.Exists(fileFullName)) return isBusy;
 
             FileStream fs = null;
             try
