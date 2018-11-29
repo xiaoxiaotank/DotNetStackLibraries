@@ -101,6 +101,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConnectDbByEF", "ConnectDbB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.WebApi.ConnectDbByEF.MySql", "AspNet.WebApi.ConnectDbByEF.MySql\AspNet.WebApi.ConnectDbByEF.MySql.csproj", "{65932B38-DAAC-4DC5-A84C-AE55FD439777}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.WebApi.RESTful", "AspNet.WebApi.RESTful\AspNet.WebApi.RESTful.csproj", "{5877619A-33D3-4C47-A22F-373523E9CBC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -219,6 +221,10 @@ Global
 		{65932B38-DAAC-4DC5-A84C-AE55FD439777}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65932B38-DAAC-4DC5-A84C-AE55FD439777}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65932B38-DAAC-4DC5-A84C-AE55FD439777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5877619A-33D3-4C47-A22F-373523E9CBC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5877619A-33D3-4C47-A22F-373523E9CBC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5877619A-33D3-4C47-A22F-373523E9CBC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5877619A-33D3-4C47-A22F-373523E9CBC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -268,6 +274,7 @@ Global
 		{4BAF67A5-A73B-4D99-B479-0D3FC35B3830} = {EF2BCCF2-6882-4E11-96CB-25DF633905E6}
 		{05C02B5E-616B-4312-9175-0B6B0F97655D} = {3ECC12B6-7CB4-4640-A58A-B1A4773EEA89}
 		{65932B38-DAAC-4DC5-A84C-AE55FD439777} = {05C02B5E-616B-4312-9175-0B6B0F97655D}
+		{5877619A-33D3-4C47-A22F-373523E9CBC1} = {3ECC12B6-7CB4-4640-A58A-B1A4773EEA89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}
