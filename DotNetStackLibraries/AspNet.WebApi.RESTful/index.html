@@ -8,6 +8,8 @@
     <button id="get-all">get all</button>
     <button id="get-by-id">get by id</button>
     <button id="delete">delete</button>
+    <button id="get-date">Get by date</button>
+    <button id="get-by-timespan">Get by timespan</button>
 
     <script src="jquery-1.10.2.min.js"></script>
     <script>
@@ -35,9 +37,30 @@
             $("#delete").click(function () {
                 $.ajax({
                     method: "DELETE",
-                    url: "/api/product/4",
+                    url: "/api/product/deleteproduct/4",
                     success: function (data) {
                         alert("删除");
+                    }
+                })
+            })
+            $("#get-date").click(function () {
+                $.ajax({
+                    method: "GET",
+                    //url: "/api/product/2016/04/01",
+                    url:"api/product/2018-01-01",
+                    success: function (date) {
+                        alert(date);
+                    }
+                })
+            })
+            $("#get-by-timespan").click(function () {
+                $.ajax({
+                    method: "GET",
+                    url: "api/product/",
+                    data: { "startTime": null, "stopTime": "2018-9-9"},
+                    success: function (dates) {
+                        console.log(dates);
+                        alert(`${dates.startTime}-${dates.stopTime}`);
                     }
                 })
             })
