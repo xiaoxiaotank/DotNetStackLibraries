@@ -109,6 +109,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.WebApi.OData.Server"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.WebApi.OData.Client", "AspNet.WebApi.OData.Client\AspNet.WebApi.OData.Client.csproj", "{4E68D19B-B8A0-4F00-8BEA-127ED95C1233}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.WebApi.Swagger", "AspNet.WebApi.Swagger\AspNet.WebApi.Swagger.csproj", "{147E2192-9831-4373-9BC8-9592CF8EF48D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -239,6 +241,10 @@ Global
 		{4E68D19B-B8A0-4F00-8BEA-127ED95C1233}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E68D19B-B8A0-4F00-8BEA-127ED95C1233}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E68D19B-B8A0-4F00-8BEA-127ED95C1233}.Release|Any CPU.Build.0 = Release|Any CPU
+		{147E2192-9831-4373-9BC8-9592CF8EF48D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{147E2192-9831-4373-9BC8-9592CF8EF48D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{147E2192-9831-4373-9BC8-9592CF8EF48D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{147E2192-9831-4373-9BC8-9592CF8EF48D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -292,6 +298,7 @@ Global
 		{176ECC9A-72D5-4FB4-AB62-D5FC7C118AF1} = {3ECC12B6-7CB4-4640-A58A-B1A4773EEA89}
 		{2D2E4022-FC5A-482F-9DC9-CD355B4CC37B} = {176ECC9A-72D5-4FB4-AB62-D5FC7C118AF1}
 		{4E68D19B-B8A0-4F00-8BEA-127ED95C1233} = {176ECC9A-72D5-4FB4-AB62-D5FC7C118AF1}
+		{147E2192-9831-4373-9BC8-9592CF8EF48D} = {3ECC12B6-7CB4-4640-A58A-B1A4773EEA89}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}
