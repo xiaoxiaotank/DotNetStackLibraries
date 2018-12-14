@@ -74,15 +74,20 @@ namespace AspNet.WebApi.FileUploadAndDownload.Controllers
             return response;
         }
 
-
+        /// <summary>
+        /// 需要提交参数的下载文件
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("download")]
         public HttpResponseMessage Download([FromBody]FormDataCollection form)
         {
             var image64 = form["image64"];
             var stream = new MemoryStream();
+            var path = HttpContext.Current.Server.MapPath("/测试报告.docx");
 
-            using (var doc = DocX.Create("测试报告.docx"))
+            using (var doc = DocX.Create(path))
             {
                 using (var ms = new MemoryStream(Convert.FromBase64String(image64.Split(',').Last())))
                 {
@@ -94,18 +99,30 @@ namespace AspNet.WebApi.FileUploadAndDownload.Controllers
                     ms.Close();
                 }
 
+                //只能Save一次
                 doc.SaveAs(stream);
+                //doc.Save();
             }
 
-            var response = new HttpResponseMessage(HttpStatusCode.OK)
+            var response = new HttpResponseMessage()
             {
-                Content = new ByteArrayContent(stream.ToArray())
+                Content = new FileContent(stream, "测试报告.docx")
             };
-            response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
-            response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
-            {
-                FileName = "测试报告.docx"
-            };
+
+            //var response = new HttpResponseMessage()
+            //{
+            //    Content = new FileContent(path, "测试报告.docx")
+            //};
+
+            //var response = new HttpResponseMessage(HttpStatusCode.OK)
+            //{
+            //    Content = new ByteArrayContent(stream.ToArray())
+            //};
+            //response.Content.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
+            //response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+            //{
+            //    FileName = "测试报告.docx"
+            //};
 
             return response;
         }

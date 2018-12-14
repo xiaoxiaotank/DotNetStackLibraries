@@ -27,8 +27,8 @@ namespace AspNetCore.WebApi.UnitTests.xUnit
 
             var result = _controller.Get();
 
-            var value = Assert.IsType<OkObjectResult>(result.Result).Value;
-            var content = Assert.IsAssignableFrom<IEnumerable<User>>(value);
+            var okResult = Assert.IsType<OkObjectResult>(result.Result).Value;
+            var content = Assert.IsAssignableFrom<IEnumerable<User>>(okResult);
             Assert.NotNull(content);
             Assert.Equal(2, content.Count());
         }
