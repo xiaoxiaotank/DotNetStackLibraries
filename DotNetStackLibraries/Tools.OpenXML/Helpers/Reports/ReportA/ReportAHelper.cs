@@ -12,9 +12,9 @@ using Tools.OpenXML.Models;
 using Tools.OpenXML.Tools.OpenXMLExcel;
 using DColor = System.Drawing.Color;
 
-namespace Tools.OpenXML.Helpers.Reports.Report1
+namespace Tools.OpenXML.Helpers.Reports.ReportA
 {
-    partial class Report1Helper : ReportHelper<ReportDataModel>
+    partial class ReportAHelper : ReportHelper<ReportDataModel>
     {
         #region 构造器
         /// <summary>
@@ -22,7 +22,7 @@ namespace Tools.OpenXML.Helpers.Reports.Report1
         /// </summary>
         /// <param name="fileName">文件名</param>
         /// <param name="data">数据</param>
-        public Report1Helper(string fileName, ReportDataModel data) : base(fileName, data)
+        public ReportAHelper(string fileName, ReportDataModel data) : base(fileName, data)
         {
         }
         #endregion
@@ -46,12 +46,13 @@ namespace Tools.OpenXML.Helpers.Reports.Report1
         {
             await base.GenerateAsync();
 
-            var task1 = Task.Factory.StartNew(() => new Sheet1Helper("TestSheet-1", _openXMLExcel, _data.Sheet1Data, 2).Generate());
-            var task2 = Task.Factory.StartNew(() => new Sheet2Helper("TestSheet-2", _openXMLExcel, _data.Sheet2Data, 3).Generate());
-            //需要公式的表格命名不能带 “-”
-            var task3 = Task.Factory.StartNew(() => new Sheet3Helper("TestSheet3", _openXMLExcel, _data.Sheet3DataList, 4).Generate(true));
-            
-            await Task.WhenAll(task3);
+            await Task.Factory.StartNew(() =>
+            {
+                new Sheet1Helper("TestSheet-1", _openXMLExcel, _data.Sheet1Data, 2).Generate();
+                new Sheet2Helper("TestSheet-2", _openXMLExcel, _data.Sheet2Data, 3).Generate();
+                //需要公式的Sheet命名不能带 “-”，否则不能正确生成公式
+                new Sheet3Helper("TestSheet3", _openXMLExcel, _data.Sheet3DataList, 4).Generate(true);
+            });
         }
 
         #endregion

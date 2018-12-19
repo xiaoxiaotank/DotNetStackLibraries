@@ -60,7 +60,6 @@ namespace Tools.OpenXML.Helpers.Reports
         /// </summary>
         protected abstract uint _lastCellIndex { get; }
 
-        public C.Chart Chart { get; set; }
         #endregion
 
         /// <summary>
@@ -132,8 +131,6 @@ namespace Tools.OpenXML.Helpers.Reports
         private void CreateDrawingBySAX(DrawingsPart drawingsPart)
         {
             var data = _data as IReadOnlyList<Sheet3Data>;
-            var chartPart = drawingsPart.AddNewPart<ChartPart>();
-
             var dataDic = new Dictionary<C.Values, C.SeriesText>();
             for (uint i = 1; i <= data.First().DataDic.Count; i++)
             {
@@ -141,6 +138,8 @@ namespace Tools.OpenXML.Helpers.Reports
                 dataDic[new C.Values() { NumberReference = new C.NumberReference() { Formula = new C.Formula($"{_sheetName}!${columnName}$2:${columnName}${data.Count + 2}") } }]
                     = new C.SeriesText() { StringReference = new C.StringReference() { Formula = new C.Formula($"{_sheetName}!${columnName}$1") } };
             }
+
+            var chartPart = drawingsPart.AddNewPart<ChartPart>();
             drawingsPart.WorksheetDrawing = new Xdr.WorksheetDrawing();
             var twoCellAnchor = drawingsPart.WorksheetDrawing.AppendChild(new Xdr.TwoCellAnchor()
             {
@@ -159,8 +158,6 @@ namespace Tools.OpenXML.Helpers.Reports
                     RowOffset = new Xdr.RowOffset("0")
                 }
             });
-
-            // Append a GraphicFrame to the TwoCellAnchor object.
             twoCellAnchor.Append(new Xdr.GraphicFrame()
             {
                 NonVisualGraphicFrameProperties = new Xdr.NonVisualGraphicFrameProperties()
@@ -178,8 +175,8 @@ namespace Tools.OpenXML.Helpers.Reports
                     Uri = "http://schemas.openxmlformats.org/drawingml/2006/chart",
                 })
             });
-
             twoCellAnchor.Append(new Xdr.ClientData());
+
             using (var writer = OpenXmlWriter.Create(chartPart))
             {
                 //S: ChartSpace
@@ -264,9 +261,7 @@ namespace Tools.OpenXML.Helpers.Reports
                 writer.WriteEndElement();
 
                 writer.Close();
-            }
-
-           
+            }           
         }
 
         /// <summary>

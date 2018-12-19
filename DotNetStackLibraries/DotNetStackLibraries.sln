@@ -115,15 +115,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.WebApi.FileUploadAnd
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{ED57FF06-0820-4277-809B-7681F74AC7A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.UnitTest.ApiDemo", "AspNetCore.WebApi.UnitTest.ApiDemo\AspNetCore.WebApi.UnitTest.ApiDemo.csproj", "{A993EBDC-594A-498E-A393-64989D52DD48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.UnitTest.ApiDemo", "AspNetCore.WebApi.UnitTest.ApiDemo\AspNetCore.WebApi.UnitTest.ApiDemo.csproj", "{A993EBDC-594A-498E-A393-64989D52DD48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.UnitTests.ServiceDemo", "AspNetCore.WebApi.UnitTests.ServiceDemo\AspNetCore.WebApi.UnitTests.ServiceDemo.csproj", "{C3591F23-D560-4A56-8272-16A42D2FD0EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.UnitTests.ServiceDemo", "AspNetCore.WebApi.UnitTests.ServiceDemo\AspNetCore.WebApi.UnitTests.ServiceDemo.csproj", "{C3591F23-D560-4A56-8272-16A42D2FD0EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.UnitTests.MSTest", "AspNetCore.WebApi.UnitTests.MSTest\AspNetCore.WebApi.UnitTests.MSTest.csproj", "{11617201-BD2F-40DB-B8F7-963EC814FC39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.UnitTests.MSTest", "AspNetCore.WebApi.UnitTests.MSTest\AspNetCore.WebApi.UnitTests.MSTest.csproj", "{11617201-BD2F-40DB-B8F7-963EC814FC39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.UnitTests.NUnit", "AspNetCore.WebApi.UnitTests.NUnit\AspNetCore.WebApi.UnitTests.NUnit.csproj", "{CF0CA552-2295-49A0-98DE-D617BFF0EBEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.UnitTests.NUnit", "AspNetCore.WebApi.UnitTests.NUnit\AspNetCore.WebApi.UnitTests.NUnit.csproj", "{CF0CA552-2295-49A0-98DE-D617BFF0EBEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.UnitTests.xUnit", "AspNetCore.WebApi.UnitTests.xUnit\AspNetCore.WebApi.UnitTests.xUnit.csproj", "{9835CBA5-BF42-43DD-9B69-D9521C3A5950}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.UnitTests.xUnit", "AspNetCore.WebApi.UnitTests.xUnit\AspNetCore.WebApi.UnitTests.xUnit.csproj", "{9835CBA5-BF42-43DD-9B69-D9521C3A5950}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Login", "WPF.Login\WPF.Login.csproj", "{DD9DE7E9-7607-40CA-9269-FB7C082B05C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -283,6 +285,10 @@ Global
 		{9835CBA5-BF42-43DD-9B69-D9521C3A5950}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9835CBA5-BF42-43DD-9B69-D9521C3A5950}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9835CBA5-BF42-43DD-9B69-D9521C3A5950}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD9DE7E9-7607-40CA-9269-FB7C082B05C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD9DE7E9-7607-40CA-9269-FB7C082B05C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD9DE7E9-7607-40CA-9269-FB7C082B05C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD9DE7E9-7607-40CA-9269-FB7C082B05C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -344,6 +350,7 @@ Global
 		{11617201-BD2F-40DB-B8F7-963EC814FC39} = {ED57FF06-0820-4277-809B-7681F74AC7A3}
 		{CF0CA552-2295-49A0-98DE-D617BFF0EBEA} = {ED57FF06-0820-4277-809B-7681F74AC7A3}
 		{9835CBA5-BF42-43DD-9B69-D9521C3A5950} = {ED57FF06-0820-4277-809B-7681F74AC7A3}
+		{DD9DE7E9-7607-40CA-9269-FB7C082B05C0} = {86C76B0A-6CAA-4DD2-BD82-F355CD8CE04C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using Tools.OpenXML.Tools.OpenXMLExcel;
 using DColor = System.Drawing.Color;
 
-namespace Tools.OpenXML.Helpers.Reports.Report1
+namespace Tools.OpenXML.Helpers.Reports.ReportA
 {
-    partial class Report1Helper
+    partial class ReportAHelper
     {
         class Sheet2Helper : SheetHelper<object>
         {

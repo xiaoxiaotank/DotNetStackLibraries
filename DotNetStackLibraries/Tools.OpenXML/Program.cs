@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tools.OpenXML.Helpers.Reports.Report1;
+using Tools.OpenXML.Helpers.Reports.ReportA;
 using Tools.OpenXML.Models;
 
 namespace Tools.OpenXML
@@ -12,9 +12,9 @@ namespace Tools.OpenXML
     {
         static async Task Main(string[] args)
         {
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 10; i++)
             {
-                using (var helper = new Report1Helper("test.xlsx", new ReportDataModel()))
+                using (var helper = new ReportAHelper("test.xlsx", new ReportDataModel()))
                 {
                     helper.GenerateReportByMemory();
                     await helper.GenerateAsync();
