@@ -12,9 +12,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Web;
 
-namespace AspNet.WebApi.JwtBearer.Extensions
+namespace AspNet.WebApi.JwtBearer.Helpers
 {
-    public static class JwtExtension
+    public static class JwtHelper
     {
         #region 从配置中读取参数值
 

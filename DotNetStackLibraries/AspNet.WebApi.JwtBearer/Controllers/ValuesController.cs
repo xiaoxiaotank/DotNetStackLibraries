@@ -8,7 +8,6 @@ using System.Web.Http;
 
 namespace AspNet.WebApi.JwtBearer.Controllers
 {
-    [ApiAuthorize]
     public class ValuesController : ControllerBase
     {
         // GET api/values

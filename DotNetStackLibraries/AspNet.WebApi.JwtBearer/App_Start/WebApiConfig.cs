@@ -11,6 +11,7 @@ namespace AspNet.WebApi.JwtBearer
         public static void Register(HttpConfiguration config)
         {
             // Web API 配置和服务
+            config.Filters.Add(new AuthenticationFilter());
             //异常过滤器
             config.Filters.Add(new GlobalApiExceptionFilterAttribute());
 
