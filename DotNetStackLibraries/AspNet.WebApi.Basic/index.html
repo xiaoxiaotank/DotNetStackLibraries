@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+
+    <input id="username" />
+    <input id="password" type="password" />
+    <button id="submit">登录</button>
+    <button id="get">Get</button>
+
+
+    <script src="jquery-1.6.4.min.js"></script>
+    <script>
+        $(function () {
+            var ticket;
+
+            $("#submit").click(function () {
+                $.ajax({
+                    type: "post",
+                    url: "api/Account/Login",
+                    data: { "userName": $("#username").val(), "password": $("#password").val() },
+                    success: function (data) {
+                        ticket = data;
+                        console.log(ticket);
+                    },
+                    error: function (e) {
+                        alert(e);
+                    }
+                });
+            })
+
+            $("#get").click(function () {
+                $.ajax({
+                    type: "get",
+                    url: "api/values",
+                    headers: {
+                        Authorization: `Basic ${ticket}`
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (e) {
+                        console.log(JSON.parse(e.responseText));
+                        alert(JSON.parse(e.responseText).Message);
+                    }
+                });
+            })
+        });
+    </script>
+</body>
+</html>
