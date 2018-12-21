@@ -37,7 +37,7 @@ namespace AspNet.WebApi.Basic
             try
             {
                 var ticket = FormsAuthentication.Decrypt(encryptTicket);
-                var user = ticket.UserData.Split(',');
+                var user = ticket.UserData.Split(':');
                 if(ticket.Expired || !new UserService().Login(user[0], user[1]))
                 {
                     context.ErrorResult = new AuthenticationFailureResult("票据无效", context.Request);

@@ -22,7 +22,7 @@ namespace AspNet.WebApi.Basic.Controllers
                     DateTime.UtcNow,
                     DateTime.UtcNow.AddHours(1),
                     true,
-                    $"{dto.UserName},{dto.Password}",
+                    $"{dto.UserName}:{dto.Password}",
                     FormsAuthentication.FormsCookiePath);
                 return Ok(FormsAuthentication.Encrypt(ticket));
             }
