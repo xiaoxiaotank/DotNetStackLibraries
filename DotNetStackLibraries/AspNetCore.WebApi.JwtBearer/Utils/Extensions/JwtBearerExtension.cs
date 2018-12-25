@@ -51,7 +51,7 @@ namespace AspNetCore.WebApi.JwtBearer.Utils.Extensions
 
             var tokenValidationParameters = new TokenValidationParameters()
             {
-                //配置为jwt声明类型，默认是微软的ClaimTypes
+                //配置为jwt声明类型，默认是微软的ClaimTypes(名称太长，推荐使用jwt版本)
                 NameClaimType = JwtClaimTypes.Name,
                 RoleClaimType = JwtClaimTypes.Role,
 
@@ -76,11 +76,7 @@ namespace AspNetCore.WebApi.JwtBearer.Utils.Extensions
                 ClockSkew = TimeSpan.Zero
             };
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = tokenValidationParameters;
@@ -113,7 +109,10 @@ namespace AspNetCore.WebApi.JwtBearer.Utils.Extensions
         /// <returns></returns>
         public static JwtResponse ToJwtResponse(this User user,IConfiguration configuration)
         {
-            if (user == null || configuration == null) return null;
+            if (user == null || configuration == null)
+            {
+                throw new ArgumentNullException("services与configuration不能为null");
+            }
 
             var now = DateTime.UtcNow;
             var root = configuration.GetSection(Config_Root_Name);
@@ -128,47 +127,83 @@ namespace AspNetCore.WebApi.JwtBearer.Utils.Extensions
             //过期时间段
             var expiresIn = TimeSpan.Parse(root[Expiration_Name]);
             //过期时间
-            var expiration = now.Add(expiresIn);
+            var expires = now.Add(expiresIn);
 
-            var claims = new Claim[]
+            var tokenHandler = new JwtSecurityTokenHandler();
+            #region 创建Token方法1
+            //var claims = new Claim[]
+            //    {
+            //    //签发方
+            //    new Claim(JwtClaimTypes.Issuer,issuer),
+            //    //面向用户
+            //    new Claim(JwtClaimTypes.Subject, user.Id.ToString()),
+            //    //接收方
+            //    new Claim(JwtClaimTypes.Audience,audience),
+            //    //过期时间
+            //    new Claim(JwtClaimTypes.Expiration, expires.ToUnixTimeSeconds().ToString()),
+            //    //该时间之前jwt不可用
+            //    new Claim(JwtClaimTypes.NotBefore,now.ToUnixTimeSeconds().ToString()),
+            //    //签发时间
+            //    new Claim(JwtClaimTypes.IssuedAt, now.ToUnixTimeSeconds().ToString()),
+            //    //身份标识
+            //    new Claim(JwtClaimTypes.JwtId, Guid.NewGuid().ToString()),
+            //    //用户名
+            //    new Claim(JwtClaimTypes.Name,user.Name),
+            //    //角色,这里设置为固定的了
+            //    new Claim(JwtClaimTypes.Role,"User"),
+            //    //Id
+            //    new Claim(JwtClaimTypes.Id,user.Id.ToString()),
+            //    //Email
+            //    new Claim(JwtClaimTypes.Email,user.Email),
+            //    //电话号码
+            //    new Claim(JwtClaimTypes.PhoneNumber,user.PhoneNumber),
+            //    };
+            //var jwt = new JwtSecurityToken(
+            //    claims: claims,
+            //    signingCredentials: new SigningCredentials(issuerSigningKey, SecurityAlgorithms.HmacSha256Signature)
+            //);
+
+            //var jwtResponse = new JwtResponse()
+            //{
+            //    Status = true,
+            //    AccessToken = tokenHandler.WriteToken(jwt),
+            //    ExpiresIn = (int)expiresIn.TotalSeconds,
+            //    TokenType = "Bearer"
+            //};
+            #endregion
+
+            #region 创建Token方法二（推荐）
+            var tokenDescriptor = new SecurityTokenDescriptor()
             {
-                //签发方
-                new Claim(JwtClaimTypes.Issuer,issuer),
-                //面向用户
-                new Claim(JwtClaimTypes.Subject, user.Id.ToString()),
-                //接收方
-                new Claim(JwtClaimTypes.Audience,audience),
-                //过期时间
-                new Claim(JwtClaimTypes.Expiration, expiration.ToUnixTimeSeconds().ToString()),
-                //该时间之前jwt不可用
-                new Claim(JwtClaimTypes.NotBefore,now.ToUnixTimeSeconds().ToString()),
-                //签发时间
-                new Claim(JwtClaimTypes.IssuedAt, now.ToUnixTimeSeconds().ToString()),
-                //身份标识
-                new Claim(JwtClaimTypes.JwtId, Guid.NewGuid().ToString()),
-                //用户名
-                new Claim(JwtClaimTypes.Name,user.Name),
-                //角色,这里设置为固定的了
-                new Claim(JwtClaimTypes.Role,"User"),
-                //Id
-                new Claim(JwtClaimTypes.Id,user.Id.ToString()),
-                //Email
-                new Claim(JwtClaimTypes.Email,user.Email),
-                //电话号码
-                new Claim(JwtClaimTypes.PhoneNumber,user.PhoneNumber),
+                Issuer = issuer,
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+                    //Id
+                    new Claim(JwtClaimTypes.Id,user.Id.ToString()),
+                    //用户名
+                    new Claim(JwtClaimTypes.Name,user.Name),
+                     //Email
+                    new Claim(JwtClaimTypes.Email,user.Email),
+                    //电话号码
+                    new Claim(JwtClaimTypes.PhoneNumber,user.PhoneNumber),
+                }),
+                Audience = audience,
+                IssuedAt = now,
+                NotBefore = now,
+                Expires = expires,
+                SigningCredentials = new SigningCredentials(issuerSigningKey, SecurityAlgorithms.HmacSha256Signature)
             };
-            var jwt = new JwtSecurityToken(
-                claims: claims,
-                signingCredentials:new SigningCredentials(issuerSigningKey,SecurityAlgorithms.HmacSha256Signature)
-            );
+            var jwt = tokenHandler.CreateEncodedJwt(tokenDescriptor);
 
             var jwtResponse = new JwtResponse()
             {
                 Status = true,
-                AccessToken = new JwtSecurityTokenHandler().WriteToken(jwt),
+                AccessToken = jwt,
                 ExpiresIn = (int)expiresIn.TotalSeconds,
                 TokenType = "Bearer"
             };
+            #endregion
+
 
             return jwtResponse;
         }

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCore.Authentication.Basic\AspNetCore.Authentication.Basic.csproj" />
+    <ProjectReference Include="..\AspNetCore.Authentication.Basic\AspNetCore.WebApi.Authentication.Basic.csproj" />
   </ItemGroup>
 
 </Project>
