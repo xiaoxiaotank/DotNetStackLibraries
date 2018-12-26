@@ -137,6 +137,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.Authentic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.Authentications", "AspNetCore.Authentications\AspNetCore.WebApi.Authentications.csproj", "{D8E3BA16-2F82-4A2D-82C5-AFE1734C9B77}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JwtBearer-RSA", "JwtBearer-RSA", "{80650AD6-8C76-4291-953D-B67F3740BD96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.Authentication.IdentityProvider", "AspNetCore.WebApi.Authentication.IdentityProvider\AspNetCore.WebApi.Authentication.IdentityProvider.csproj", "{1B981CB6-AE52-4944-98DA-B8CDCEE4437A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.Authentication.JwtBearer-RSA", "AspNetCore.WebApi.Authentication.JwtBearer-RSA\AspNetCore.WebApi.Authentication.JwtBearer-RSA.csproj", "{DDD1DDEE-FAAA-4B00-9872-E85C07920EB3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -311,6 +317,14 @@ Global
 		{D8E3BA16-2F82-4A2D-82C5-AFE1734C9B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8E3BA16-2F82-4A2D-82C5-AFE1734C9B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8E3BA16-2F82-4A2D-82C5-AFE1734C9B77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B981CB6-AE52-4944-98DA-B8CDCEE4437A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B981CB6-AE52-4944-98DA-B8CDCEE4437A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B981CB6-AE52-4944-98DA-B8CDCEE4437A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B981CB6-AE52-4944-98DA-B8CDCEE4437A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDD1DDEE-FAAA-4B00-9872-E85C07920EB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDD1DDEE-FAAA-4B00-9872-E85C07920EB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDD1DDEE-FAAA-4B00-9872-E85C07920EB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDD1DDEE-FAAA-4B00-9872-E85C07920EB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -378,6 +392,9 @@ Global
 		{F778DA4A-B6FF-4A35-823F-D9E748EF0983} = {FDBB07C5-4313-48D0-A487-CCD19EB4FCB8}
 		{A6A870A1-76EA-4131-8AB3-E5EBBE335507} = {F778DA4A-B6FF-4A35-823F-D9E748EF0983}
 		{D8E3BA16-2F82-4A2D-82C5-AFE1734C9B77} = {F778DA4A-B6FF-4A35-823F-D9E748EF0983}
+		{80650AD6-8C76-4291-953D-B67F3740BD96} = {F778DA4A-B6FF-4A35-823F-D9E748EF0983}
+		{1B981CB6-AE52-4944-98DA-B8CDCEE4437A} = {80650AD6-8C76-4291-953D-B67F3740BD96}
+		{DDD1DDEE-FAAA-4B00-9872-E85C07920EB3} = {80650AD6-8C76-4291-953D-B67F3740BD96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}
