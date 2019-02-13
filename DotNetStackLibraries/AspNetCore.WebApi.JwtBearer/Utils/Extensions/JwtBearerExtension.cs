@@ -200,7 +200,7 @@ namespace AspNetCore.WebApi.JwtBearer.Utils.Extensions
                 Status = true,
                 AccessToken = jwt,
                 ExpiresIn = (int)expiresIn.TotalSeconds,
-                TokenType = "Bearer"
+                TokenType = JwtBearerDefaults.AuthenticationScheme
             };
             #endregion
 
