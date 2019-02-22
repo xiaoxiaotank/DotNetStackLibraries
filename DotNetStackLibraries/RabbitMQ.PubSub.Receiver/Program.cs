@@ -51,16 +51,16 @@ namespace RabbitMQ.Exchange.Receiver
                     arguments: new Dictionary<string, object>()
                     {
                         //队列过期时间，如果该队列出现在指定时间内未被消费，则立即删除此队列
-                        ["x-expires"] = 10000,
+                        [Headers.XExpires] = 10000,
                         //统一设置该队列的消息过期时间为 60s
-                        ["x-message-ttl"] = 60000,
+                        [Headers.XMessageTTL] = 60000,
                         //队列中消息的个数，如不指定为无限长，当超出时，前面的消息被删除，后来的消息入队
-                        //["x-max-length"] = 4,
+                        //[Headers.XMaxLength] = 4,
                         //队列中消息的存储空间，单位：byte（字节），同样，超出时删除之前的消息
-                        //["x-max-length-bytes"] = 1024,
+                        //[Headers.XMaxLengthInBytes] = 1024,
                         //因过期或达到最大长度（被后来的消息挤出）/空间被删除的消息放入到绑定了该交换机和路由的队列
-                        //["x-dead-letter-exchange"] = "exchange_dead",
-                        //["x-dead-letter-routing-key"] = "routingkey_dead",
+                        //[Headers.XDeadLetterExchange] = "exchange_dead",
+                        //[Headers.XDeadLetterRoutingKey] = "routingkey_dead",
                     }
                 );
                 switch (type)
