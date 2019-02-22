@@ -9,4 +9,8 @@
     <PackageReference Include="rabbitmq.client" Version="5.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RabbitMQ.PubSub.Sender\RabbitMQ.Exchange.Sender.csproj" />
+  </ItemGroup>
+
 </Project>

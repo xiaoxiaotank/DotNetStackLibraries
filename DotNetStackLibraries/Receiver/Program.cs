@@ -37,6 +37,7 @@ namespace RabbitMQ.Worker.Receiver
                 consumer.Received += (sender, e) =>
                 {
                     Console.WriteLine($"接收到消息：{Encoding.UTF8.GetString(e.Body)}");
+                    //发送确认应答   multiple：是否是多个消息一次性确认
                     channel.BasicAck(e.DeliveryTag, true);
                 };
                 channel.BasicConsume(
