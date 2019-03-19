@@ -11,6 +11,9 @@ using Microsoft.Extensions.Logging;
 
 namespace MicroService.Ocelot.APIGateway
 {
+    /// <summary>
+    /// https://www.jianshu.com/p/c967eda8b04d
+    /// </summary>
     public class Program
     {
         public static void Main(string[] args)
@@ -20,28 +23,9 @@ namespace MicroService.Ocelot.APIGateway
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            //var config = new ConfigurationBuilder()
-            //    .AddCommandLine(args)
-            //    .Build();
-
-            //var ip = config["ip"];
-            //var port = Convert.ToInt32(config["port"]);
-
-            //if (string.IsNullOrEmpty(ip))
-            //{
-            //    ip = NetworkHelper.LocalIPAddress;
-            //}
-            //if (port == 0)
-            //{
-            //    port = NetworkHelper.GetRandomAvaliablePort();
-            //}
-
-            var ip = "127.0.0.1";
-            var port = "8830";
-
             return WebHost.CreateDefaultBuilder(args)
                .UseStartup<Startup>()
-               .UseUrls($"http://{ip}:{port}")
+               .UseUrls($"http://127.0.0.1:8800")
                .ConfigureAppConfiguration((hostingContext, builder) =>
                {
                    builder.AddJsonFile("configuration.json", false, true);

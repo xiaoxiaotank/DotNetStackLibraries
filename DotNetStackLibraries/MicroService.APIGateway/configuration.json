@@ -2,16 +2,23 @@
   "ReRoutes": [
     // API:ClientService
     {
+      //下游路径模板
       "DownstreamPathTemplate": "/api/{url}",
+      //下游协议
       "DownstreamScheme": "http",
+      //下游主机和端口，可包含多个host和port
       "DownstreamHostAndPorts": [
         {
           "Host": "127.0.0.1",
           "Port": "8810"
         }
       ],
-      "UpstreamPathTemplate": "/ClientService/{url}",
-      "UpstreamHttpMethod": [ "Get", "Post" ]
+      //上游路径模板：用户输入上游路由，网关将其转发到下游路径
+      "UpstreamPathTemplate": "/A/{url}",
+      //上游HTTP方法
+      "UpstreamHttpMethod": [ "Get", "Post" ],
+      //是否启用上游链接大小写敏感，默认false
+      "ReRouteIsCaseSensitive": false
     },
     // API:ProductService
     {
@@ -23,8 +30,155 @@
           "Port": "8820"
         }
       ],
-      "UpstreamPathTemplate": "/ProductService/{url}",
+      "UpstreamPathTemplate": "/B/{url}",
       "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+
+
+    //路由聚合Demo：有获取用户和角色两个接口，当请求用户(附带角色)时，自动请求两个接口并合并结果
+    {
+      "DownstreamPathTemplate": "/api/Users/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8810
+        }
+      ],
+      "UpstreamPathTemplate": "/Users/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "User"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Roles/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8810
+        }
+      ],
+      "UpstreamPathTemplate": "/Roles/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "Role"
+    },
+    {
+      "DownstreamPathTemplate": "/api/NotFound",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8810
+        }
+      ],
+      "UpstreamPathTemplate": "/NotFound",
+      "UpstreamHttpMethod": [ "Get" ],
+      "Key": "NotFound"
+    },
+
+
+    //服务发现：根据服务名称发现服务的可用地址的机制就叫做服务发现
+    //consul是google开源的一个使用go语言开发的服务发现、配置管理中心服务。内置了服务注册与发现框 架、分布一致性协议实现、健康检查、Key/Value存储、多数据中心方案，不再需要依赖其他工具（比如ZooKeeper等）。
+    //此处使用时间片轮询的负载均衡模式进行服务的选择
+    {
+      "DownstreamPathTemplate": "/api/Counters/Count",
+      "DownstreamScheme": "http",
+      "UpstreamPathTemplate": "/count",
+      "UpstreamHttpMethod": [ "Get" ],
+      //服务名称，用于consul进行服务注册
+      "ServiceName": "Count",
+      //负载均衡模式，目前Ocelot支持：时间片轮询(RoundRobin)、最少连接(LeastConnection)、无负载均衡(NoLoadBalancer)和会话保持(CookieStickySessions)
+      //如果不指定，则默认无负载均衡
+      "LoadBalancerOptions": {
+        "Type": "RoundRobin"
+      },
+      "UseServiceDiscovery": true
+    },
+
+
+    //认证和授权
+    {
+      "DownstreamPathTemplate": "/api/values",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "127.0.0.1",
+          "Port": "8810"
+        }
+      ],
+      "UpstreamPathTemplate": "/authentication/values",
+      "UpstreamHttpMethod": [ "Get" ],
+      "AuthenticationOptions": {
+        //必须与startup中的一致
+        "AuthenticationProviderKey": "TestKey",
+        "AllowScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Tokens",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8801
+        }
+      ],
+      "UpstreamPathTemplate": "/Login",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    //限流
+    {
+      "DownstreamPathTemplate": "/api/Limits",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 8810
+        }
+      ],
+      "UpstreamPathTemplate": "/Limits",
+      "UpstreamHttpMethod": [ "Get" ],
+      //在未达到限制时的header会返回前面配置的Perid和剩余请求次数
+      //在达到限制时的header会返回剩余多长时间（秒）重置
+      "RateLimitOptions": {
+        //白名单的client_id不被限流，在请求时Header中加入{ClientId: white client}
+        "ClientWhiteList": [
+          "white client"
+        ],
+        "EnableRateLimiting": true,
+        //限流周期（s/m/h/d），本例为1分钟内限制两次请求，超过后，需要等待30s才能恢复，且重置限流周期
+        "Period": "1m",
+        //超过限流次数后，需要等待的时间，单位：s
+        "PeriodTimespan": 30,
+        "Limit": 2
+      }
     }
-  ]
+  ],
+  //路由聚合,目前只支持get
+  "Aggregates": [
+    {
+      "UpstreamPathTemplate": "/GetUserWithRole/{id}",
+      "ReRouteKeys": [
+        "User",
+        "Role",
+        "NotFound"
+      ]
+    }
+  ],
+  //全局配置
+  "GlobalConfiguration": {
+    "BaseUrl": "http://127.0.0.1:8800",
+    //限流全局配置
+    "RateLimitOptions": {
+      //是否禁止response中返回限流信息
+      //"DisableRateLimitHeaders": true,
+      //限流后的返回信息
+      "QuotaExceededMessage": "Stop request plz!",
+      //状态码
+      "HttpStatusCode": 999,
+      //设置“ClientId”的名字为“cid”，即在Header中加入{cid:white client}
+      //"ClientIdHeader": "cid"
+    }
+  }
 }
