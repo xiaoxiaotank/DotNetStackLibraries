@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCore.WebApi.UnitTest.ApiDemo\AspNetCore.WebApi.UnitTest.ApiDemo.csproj" />
+    <ProjectReference Include="..\AspNetCore.WebApi.UnitTest.ApiDemo\AspNetCore.WebApi.UnitTests.ApiDemo.csproj" />
     <ProjectReference Include="..\AspNetCore.WebApi.UnitTests.ServiceDemo\AspNetCore.WebApi.UnitTests.ServiceDemo.csproj" />
   </ItemGroup>
 

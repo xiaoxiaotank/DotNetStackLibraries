@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AspNetCore.WebApi.Swaggers.Versioning</name>
+    </assembly>
+    <members>
+        <member name="P:AspNetCore.WebApi.Swaggers.Versioning.Constants.SwaggerCommontXmlPath">
+            <summary>
+            Swagger 注释文档路径
+            </summary>
+        </member>
+    </members>
+</doc>
