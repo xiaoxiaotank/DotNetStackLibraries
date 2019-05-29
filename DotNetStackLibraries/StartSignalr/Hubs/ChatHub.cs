@@ -113,7 +113,7 @@ namespace StartSignalr.Hubs
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="stopCalled">如果故意断开而非超时导致，则为true,否则为false</param>
+        /// <param name="stopCalled">故意断开（如关闭浏览器、关闭页面等）为true,超时为false</param>
         /// <returns></returns>
         public override Task OnDisconnected(bool stopCalled)
         {
