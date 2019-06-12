@@ -32,20 +32,8 @@ namespace AspNetCore.Authentication.Basic
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
-            string authorization = Request.Headers[HeaderNames.Authorization];
-            if (string.IsNullOrWhiteSpace(authorization))
-            {
-                return AuthenticateResult.NoResult();
-            }
-
-            var credentials = string.Empty;
-            var scheme = $"{BasicAuthenticationDefaults.AuthenticationScheme} ";
-            if (authorization.StartsWith(scheme, StringComparison.OrdinalIgnoreCase))
-            {
-                credentials = authorization.Substring(scheme.Length).Trim();
-            }
-
-            if (string.IsNullOrEmpty(credentials))
+            var credentials = GetCredentials(Request);
+            if(credentials == null)
             {
                 return AuthenticateResult.NoResult();
             }
@@ -89,9 +77,26 @@ namespace AspNetCore.Authentication.Basic
         protected override Task HandleChallengeAsync(AuthenticationProperties properties)
         {
             Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-            Response.Headers.Append(HeaderNames.WWWAuthenticate, $"{BasicAuthenticationDefaults.AuthenticationScheme} realm={Options.Realm}");
+            Response.Headers.Append(HeaderNames.WWWAuthenticate, $"{ BasicAuthenticationDefaults.AuthenticationScheme } realm={ Options.Realm }");
 
             return Task.CompletedTask;
+        }
+
+        private string GetCredentials(HttpRequest request)
+        {
+            string credentials = null;
+
+            string authorization = request.Headers[HeaderNames.Authorization];
+            if (authorization != null)
+            {
+                var scheme = BasicAuthenticationDefaults.AuthenticationScheme;
+                if (authorization.StartsWith(scheme, StringComparison.OrdinalIgnoreCase))
+                {
+                    credentials = authorization.Substring(scheme.Length).Trim();
+                }
+            }
+
+            return credentials;
         }
     }
 }

@@ -31,12 +31,12 @@ namespace AspNetCore.Authentications
             services.AddAuthentication(BasicAuthenticationDefaults.AuthenticationScheme)
                 .AddBasic(options =>
                 {
-                    options.Realm = "TEst Realm";
+                    options.Realm = "Test Realm";
                     options.Events = new BasicAuthenticationEvents
                     {
                         OnValidateCredentials = context =>
                         {
-                            var user = new UserService().Login(context.UserName, context.Password);
+                            var user = UserService.Login(context.UserName, context.Password);
                             if (user != null)
                             {
                                 var claim = new Claim(ClaimTypes.Name, context.UserName);
