@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AspNetCore.Authentication.Basic
 {
-    public static class BasicAuthenticationDefaults
+    public static class BasicDefaults
     {
         public const string AuthenticationScheme = "Basic";
     }

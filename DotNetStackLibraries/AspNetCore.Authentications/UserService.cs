@@ -7,7 +7,7 @@ namespace AspNetCore.Authentications
 {
     public class UserService
     {
-        public static User Login(string userName, string password)
+        public static User Authenticate(string userName, string password)
         {
             if(userName == password)
             {

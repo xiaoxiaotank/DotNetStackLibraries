@@ -1,5 +1,4 @@
-﻿using AspNetCore.Authentication.Basic.Events;
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -14,21 +13,23 @@ using System.Threading.Tasks;
 
 namespace AspNetCore.Authentication.Basic
 {
-    public class BasicAuthenticationHandler : AuthenticationHandler<BasicAuthenticationOptions>
+    public class BasicHandler : AuthenticationHandler<BasicOptions>
     {
-        public BasicAuthenticationHandler(IOptionsMonitor<BasicAuthenticationOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock) : base(options, logger, encoder, clock)
+        public BasicHandler(IOptionsMonitor<BasicOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock) : base(options, logger, encoder, clock)
         {
         }
-        protected new BasicAuthenticationEvents Events
+
+        protected new BasicEvents Events
         {
-            get { return (BasicAuthenticationEvents)base.Events; }
-            set { base.Events = value; }
+            get => (BasicEvents)base.Events; 
+            set => base.Events = value; 
         }
-            
-        protected override Task<object> CreateEventsAsync()
-        {
-            return Task.FromResult<object>(new BasicAuthenticationEvents());
-        }
+
+        /// <summary>
+        /// 确保创建的 Event 类型是 BasicEvents
+        /// </summary>
+        /// <returns></returns>
+        protected override Task<object> CreateEventsAsync() => Task.FromResult<object>(new BasicEvents());
 
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
@@ -47,12 +48,10 @@ namespace AspNetCore.Authentication.Basic
                     return AuthenticateResult.Fail("Invalid credentials, error format.");
                 }
 
-                var userName = data[0];
-                var password = data[1];
                 var validateCredentialsContext = new ValidateCredentialsContext(Context, Scheme, Options)
                 {
-                    UserName = userName,
-                    Password = password
+                    UserName = data[0],
+                    Password = data[1]
                 };
                 await Events.ValidateCredentials(validateCredentialsContext);
 
@@ -74,12 +73,27 @@ namespace AspNetCore.Authentication.Basic
             }
         }
 
-        protected override Task HandleChallengeAsync(AuthenticationProperties properties)
+        protected override async Task HandleChallengeAsync(AuthenticationProperties properties)
         {
-            Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-            Response.Headers.Append(HeaderNames.WWWAuthenticate, $"{ BasicAuthenticationDefaults.AuthenticationScheme } realm={ Options.Realm }");
+            var authResult = await HandleAuthenticateOnceSafeAsync();
+            var challengeContext = new BasicChallengeContext(Context, Scheme, Options, properties)
+            {
+                AuthenticateFailure = authResult?.Failure
+            };
+            await Events.Challenge(challengeContext);
+            //质询已处理
+            if (challengeContext.Handled) return;
 
-            return Task.CompletedTask;
+            var challengeValue = $"{ BasicDefaults.AuthenticationScheme } realm={ Options.Realm }";
+            var error = challengeContext.AuthenticateFailure?.Message;
+            if(string.IsNullOrWhiteSpace(error))
+            {
+                //将错误信息封装到内部
+                challengeValue += $" error={ error }";
+            }
+
+            Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            Response.Headers.Append(HeaderNames.WWWAuthenticate, challengeValue);
         }
 
         private string GetCredentials(HttpRequest request)
@@ -89,7 +103,7 @@ namespace AspNetCore.Authentication.Basic
             string authorization = request.Headers[HeaderNames.Authorization];
             if (authorization != null)
             {
-                var scheme = BasicAuthenticationDefaults.AuthenticationScheme;
+                var scheme = BasicDefaults.AuthenticationScheme;
                 if (authorization.StartsWith(scheme, StringComparison.OrdinalIgnoreCase))
                 {
                     credentials = authorization.Substring(scheme.Length).Trim();

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AspNetCore.Authentication.Basic;
-using AspNetCore.Authentication.Basic.Events;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,28 +27,37 @@ namespace AspNetCore.Authentications
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(BasicAuthenticationDefaults.AuthenticationScheme)
+            services.AddAuthentication(BasicDefaults.AuthenticationScheme)
                 .AddBasic(options =>
                 {
                     options.Realm = "Test Realm";
-                    options.Events = new BasicAuthenticationEvents
+                    options.Events = new BasicEvents
                     {
                         OnValidateCredentials = context =>
                         {
-                            var user = UserService.Login(context.UserName, context.Password);
+                            var user = UserService.Authenticate(context.UserName, context.Password);
                             if (user != null)
                             {
                                 var claim = new Claim(ClaimTypes.Name, context.UserName);
-                                var identity = new ClaimsIdentity(BasicAuthenticationDefaults.AuthenticationScheme);
+                                var identity = new ClaimsIdentity(BasicDefaults.AuthenticationScheme);
                                 identity.AddClaim(claim);
 
                                 context.Principal = new ClaimsPrincipal(identity);
                                 context.Success();
                             }
                             return Task.CompletedTask;
-                        }
+                        },
+                        //OnChallenge = context =>
+                        //{
+                        //    //跳过默认认证逻辑
+                        //    context.HandleResponse();
+                        //    return Task.CompletedTask;
+                        //}
                     };
                 });
+
+            //services.AddAuthentication("jjj")
+            //    .AddBasic("jjj", options =>{ });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
