@@ -86,7 +86,7 @@ namespace AspNetCore.Authentication.Basic
 
             var challengeValue = $"{ BasicDefaults.AuthenticationScheme } realm={ Options.Realm }";
             var error = challengeContext.AuthenticateFailure?.Message;
-            if(string.IsNullOrWhiteSpace(error))
+            if(!string.IsNullOrWhiteSpace(error))
             {
                 //将错误信息封装到内部
                 challengeValue += $" error={ error }";
