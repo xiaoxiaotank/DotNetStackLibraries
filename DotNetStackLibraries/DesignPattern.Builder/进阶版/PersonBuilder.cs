@@ -14,35 +14,28 @@ namespace DesignPattern.Builder
 
     class PersonBuilder : IPersonBuilder
     {
-        private string _name;
-        private int _gender;
-        private int _age;
+        private readonly Person _person = new Person();
 
         public IPerson Build()
         {
-            return new Person()
-            {
-                Name = _name,
-                Gender = _gender,
-                Age = _age
-            };
+            return _person;
         }
 
         public IPersonBuilder SetName(string name)
         {
-            _name = name;
+            _person.Name = name;
             return this;
         }
 
         public IPersonBuilder SetGender(int gender)
         {
-            _gender = gender;
+            _person.Gender = gender;
             return this;
         }
 
         public IPersonBuilder SetAge(int age)
         {
-            _age = age;
+            _person.Age = age;
             return this;
         }      
     }

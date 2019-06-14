@@ -6,16 +6,15 @@ namespace DesignPattern.Builder
 {
     class Director
     {
-        private readonly IBuilder _builder;
+        private readonly IAnimalBuilder _builder;
 
-        public Director(IBuilder builder)
+        public Director(IAnimalBuilder builder)
         {
             _builder = builder;
         }
 
-        public void Build()
+        public void Construct()
         {
-            _builder.SetHair();
             _builder.SetHead();
             _builder.SetBody();
             _builder.SetFoots();

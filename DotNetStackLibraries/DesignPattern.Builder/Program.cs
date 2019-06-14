@@ -7,11 +7,15 @@ namespace DesignPattern.Builder
         static void Main(string[] args)
         {
             #region 基础版
-            var humanDirector = new Director(new HumanBuilder());
-            var aliensDirector = new Director(new AliensBuilder());
+            var dogBuilder = new DogBuilder();
+            var dogDirector = new Director(dogBuilder);
+            dogDirector.Construct();
+            dogBuilder.GetAnimal().Display();
 
-            humanDirector.Build();
-            aliensDirector.Build();
+            var catBuilder = new CatBuilder();
+            var catDirector = new Director(catBuilder);
+            catDirector.Construct();
+            catBuilder.GetAnimal().Display();
             #endregion
 
             #region 进阶版
