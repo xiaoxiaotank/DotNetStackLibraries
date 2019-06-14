@@ -36,7 +36,7 @@ namespace DesignPattern.Builder
             Console.WriteLine("-------------- 狗的基本信息 -------------------");
             Console.WriteLine($"头：{Head}");
             Console.WriteLine($"身体：{Body}");
-            Console.WriteLine($"脚：{Body}");
+            Console.WriteLine($"脚：{Foots}");
         }
     }
 
@@ -47,7 +47,7 @@ namespace DesignPattern.Builder
             Console.WriteLine("-------------- 猫的基本信息 -------------------");
             Console.WriteLine($"头：{Head}");
             Console.WriteLine($"身体：{Body}");
-            Console.WriteLine($"脚：{Body}");
+            Console.WriteLine($"脚：{Foots}");
         }
     }
 }

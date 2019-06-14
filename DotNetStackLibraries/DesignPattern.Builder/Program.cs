@@ -6,7 +6,7 @@ namespace DesignPattern.Builder
     {
         static void Main(string[] args)
         {
-            #region 基础版
+            #region 经典版
             var dogBuilder = new DogBuilder();
             var dogDirector = new Director(dogBuilder);
             dogDirector.Construct();
@@ -19,8 +19,10 @@ namespace DesignPattern.Builder
             #endregion
 
             #region 进阶版
-            var personBuilder = PersonBuilderHelper.CreatePersonBuilder();
-            var person = personBuilder.SetAge(1).SetName("jjj").Build();
+            var person = PersonBuilderHelper.CreatePersonBuilder()
+                .SetAge(20)
+                .SetName("jjj")
+                .Build();
             Console.WriteLine($"{person.Name},{person.Gender},{person.Age}");
             #endregion
 
