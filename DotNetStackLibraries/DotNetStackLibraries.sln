@@ -93,7 +93,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools.OpenXML", "Tools.Open
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DesignPattern", "DesignPattern", "{BB9A5C51-B07E-4B43-A46F-06AFA3B9D3C3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "创建型", "创建型", "{EF2BCCF2-6882-4E11-96CB-25DF633905E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01创建型", "01创建型", "{EF2BCCF2-6882-4E11-96CB-25DF633905E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern.Builder", "DesignPattern.Builder\DesignPattern.Builder.csproj", "{4BAF67A5-A73B-4D99-B479-0D3FC35B3830}"
 EndProject
@@ -167,9 +167,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Swaggers", "Swaggers", "{8D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.Swaggers.Versioning", "AspNetCore.WebApi.Swaggers.Versioning\AspNetCore.WebApi.Swaggers.Versioning.csproj", "{126D0C5A-86CC-4433-8A80-894CE251E8B3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "结构型", "结构型", "{F828ED1B-70B6-4A22-BEBD-623F2E5CF1DA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02结构型", "02结构型", "{F828ED1B-70B6-4A22-BEBD-623F2E5CF1DA}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "行为型", "行为型", "{F3BFC359-A037-430F-9527-940D7AA3FEA7}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03行为型", "03行为型", "{F3BFC359-A037-430F-9527-940D7AA3FEA7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern.Proxy", "DesignPattern.Proxy\DesignPattern.Proxy.csproj", "{2CAA6D2C-0616-4D72-8883-291B498421A5}"
 EndProject
@@ -177,7 +177,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools.AutoMapper.ConsoleEx"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesignPattern.Mediator", "DesignPattern.Mediator\DesignPattern.Mediator.csproj", "{327E2AEE-E3E4-4D01-82B4-8D97FB3BF28A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools.MediatR", "Tools.MediatR\Tools.MediatR.csproj", "{4184BDDE-0EEE-4AAA-B40A-5427641BB2C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools.MediatR", "Tools.MediatR\Tools.MediatR.csproj", "{4184BDDE-0EEE-4AAA-B40A-5427641BB2C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

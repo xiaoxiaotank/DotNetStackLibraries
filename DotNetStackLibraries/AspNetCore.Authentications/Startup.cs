@@ -30,7 +30,7 @@ namespace AspNetCore.Authentications
             services.AddAuthentication(BasicDefaults.AuthenticationScheme)
                 .AddBasic(options =>
                 {
-                    options.Realm = "Test Realm";
+                    options.Realm = "http://localhost:44550";
                     options.Events = new BasicEvents
                     {
                         OnValidateCredentials = context =>
