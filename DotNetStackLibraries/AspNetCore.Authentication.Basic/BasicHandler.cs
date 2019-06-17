@@ -89,7 +89,7 @@ namespace AspNetCore.Authentication.Basic
             if(!string.IsNullOrWhiteSpace(error))
             {
                 //将错误信息封装到内部
-                challengeValue += $" error={ error }";
+                challengeValue += $" error=\"{ error }\"";
             }
 
             Response.StatusCode = (int)HttpStatusCode.Unauthorized;
