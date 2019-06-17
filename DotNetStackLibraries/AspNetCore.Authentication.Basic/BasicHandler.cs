@@ -84,7 +84,7 @@ namespace AspNetCore.Authentication.Basic
             //质询已处理
             if (challengeContext.Handled) return;
 
-            var challengeValue = $"{ BasicDefaults.AuthenticationScheme } realm={ Options.Realm }";
+            var challengeValue = $"{ BasicDefaults.AuthenticationScheme } realm=\"{ Options.Realm }\"";
             var error = challengeContext.AuthenticateFailure?.Message;
             if(!string.IsNullOrWhiteSpace(error))
             {
