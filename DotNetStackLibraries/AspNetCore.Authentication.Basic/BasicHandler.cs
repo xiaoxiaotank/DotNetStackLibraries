@@ -45,7 +45,7 @@ namespace AspNetCore.Authentication.Basic
                 var data = credentials.Split(':');
                 if(data.Length != 2)
                 {
-                    return AuthenticateResult.Fail("Invalid credentials, error format.");
+                    return AuthenticateResult.Fail("Invalid credentials: error format.");
                 }
 
                 var validateCredentialsContext = new ValidateCredentialsContext(Context, Scheme, Options)
@@ -65,7 +65,7 @@ namespace AspNetCore.Authentication.Basic
             }
             catch(FormatException)
             {
-                return AuthenticateResult.Fail("Invalid credentials, error format.");
+                return AuthenticateResult.Fail("Invalid credentials: error format.");
             }
             catch(Exception ex)
             {
