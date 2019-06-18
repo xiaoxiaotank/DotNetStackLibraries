@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AspNetCore.Authentication.Basic;
+using AspNetCore.Authentication.Digest;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,37 +28,55 @@ namespace AspNetCore.Authentications
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthentication(BasicDefaults.AuthenticationScheme)
-                .AddBasic(options =>
-                {
-                    options.Realm = "http://localhost:44550";
-                    options.Events = new BasicEvents
+            #region Basic
+            //services.AddAuthentication(BasicDefaults.AuthenticationScheme)
+            //        .AddBasic(options =>
+            //        {
+            //            options.Realm = "http://localhost:44550";
+            //            options.Events = new BasicEvents
+            //            {
+            //                OnValidateCredentials = context =>
+            //                {
+            //                    var user = UserService.Authenticate(context.UserName, context.Password);
+            //                    if (user != null)
+            //                    {
+            //                        var claim = new Claim(ClaimTypes.Name, context.UserName);
+            //                        var identity = new ClaimsIdentity(BasicDefaults.AuthenticationScheme);
+            //                        identity.AddClaim(claim);
+
+            //                        context.Principal = new ClaimsPrincipal(identity);
+            //                        context.Success();
+            //                    }
+            //                    return Task.CompletedTask;
+            //                },
+            //                //OnChallenge = context =>
+            //                //{
+            //                //    //跳过默认认证逻辑
+            //                //    context.HandleResponse();
+            //                //    return Task.CompletedTask;
+            //                //}
+            //            };
+            //        });
+
+            ////services.AddAuthentication("jjj")
+            ////    .AddBasic("jjj", options =>{ }); 
+            #endregion
+
+            #region Digest
+            services.AddAuthentication(DigestDefaults.AuthenticationScheme)
+                    .AddDigest(options =>
                     {
-                        OnValidateCredentials = context =>
+                        options.Realm = "http://localhost:44550";
+                        options.Events = new DigestEvents
                         {
-                            var user = UserService.Authenticate(context.UserName, context.Password);
-                            if (user != null)
+                            OnValidateCredentials = context =>
                             {
-                                var claim = new Claim(ClaimTypes.Name, context.UserName);
-                                var identity = new ClaimsIdentity(BasicDefaults.AuthenticationScheme);
-                                identity.AddClaim(claim);
+                                return Task.FromResult(context.UserName);
+                            },
+                        };
+                    });
 
-                                context.Principal = new ClaimsPrincipal(identity);
-                                context.Success();
-                            }
-                            return Task.CompletedTask;
-                        },
-                        //OnChallenge = context =>
-                        //{
-                        //    //跳过默认认证逻辑
-                        //    context.HandleResponse();
-                        //    return Task.CompletedTask;
-                        //}
-                    };
-                });
-
-            //services.AddAuthentication("jjj")
-            //    .AddBasic("jjj", options =>{ });
+            #endregion
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
