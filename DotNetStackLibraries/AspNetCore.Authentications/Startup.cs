@@ -30,51 +30,46 @@ namespace AspNetCore.Authentications
         {
             #region Basic
             //services.AddAuthentication(BasicDefaults.AuthenticationScheme)
-            //        .AddBasic(options =>
+            //    .AddBasic(options =>
+            //    {
+            //        options.Realm = "http://localhost:44550";
+            //        options.Events = new BasicEvents
             //        {
-            //            options.Realm = "http://localhost:44550";
-            //            options.Events = new BasicEvents
+            //            OnValidateCredentials = context =>
             //            {
-            //                OnValidateCredentials = context =>
+            //                var user = UserService.Authenticate(context.UserName, context.Password);
+            //                if (user != null)
             //                {
-            //                    var user = UserService.Authenticate(context.UserName, context.Password);
-            //                    if (user != null)
-            //                    {
-            //                        var claim = new Claim(ClaimTypes.Name, context.UserName);
-            //                        var identity = new ClaimsIdentity(BasicDefaults.AuthenticationScheme);
-            //                        identity.AddClaim(claim);
+            //                    var claim = new Claim(ClaimTypes.Name, context.UserName);
+            //                    var identity = new ClaimsIdentity(BasicDefaults.AuthenticationScheme);
+            //                    identity.AddClaim(claim);
 
-            //                        context.Principal = new ClaimsPrincipal(identity);
-            //                        context.Success();
-            //                    }
-            //                    return Task.CompletedTask;
-            //                },
-            //                //OnChallenge = context =>
-            //                //{
-            //                //    //跳过默认认证逻辑
-            //                //    context.HandleResponse();
-            //                //    return Task.CompletedTask;
-            //                //}
-            //            };
-            //        });
+            //                    context.Principal = new ClaimsPrincipal(identity);
+            //                    context.Success();
+            //                }
+            //                return Task.CompletedTask;
+            //            },
+            //            //OnChallenge = context =>
+            //            //{
+            //            //    //跳过默认认证逻辑
+            //            //    context.HandleResponse();
+            //            //    return Task.CompletedTask;
+            //            //}
+            //        };
+            //    });
 
-            ////services.AddAuthentication("jjj")
-            ////    .AddBasic("jjj", options =>{ }); 
+            //services.AddAuthentication("jjj")
+            //    .AddBasic("jjj", options =>{ }); 
             #endregion
 
             #region Digest
             services.AddAuthentication(DigestDefaults.AuthenticationScheme)
-                    .AddDigest(options =>
-                    {
-                        options.Realm = "http://localhost:44550";
-                        options.Events = new DigestEvents
-                        {
-                            OnValidateCredentials = context =>
-                            {
-                                return Task.FromResult(context.UserName);
-                            },
-                        };
-                    });
+                .AddDigest(options =>
+                {
+                    options.Realm = "http://localhost:44550";
+                    options.PrivateKey = "test private key";
+                    options.Events = new DigestEvents(context => Task.FromResult(context.UserName));
+                });
 
             #endregion
 

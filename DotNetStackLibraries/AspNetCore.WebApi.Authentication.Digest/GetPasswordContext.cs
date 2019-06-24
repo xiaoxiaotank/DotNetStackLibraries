@@ -6,9 +6,9 @@ using System.Text;
 
 namespace AspNetCore.Authentication.Digest
 {
-    public class ValidateCredentialsContext : ResultContext<DigestOptions>
+    public class GetPasswordContext : ResultContext<DigestOptions>
     {
-        public ValidateCredentialsContext(
+        public GetPasswordContext(
             HttpContext context, 
             AuthenticationScheme scheme, 
             DigestOptions options) 

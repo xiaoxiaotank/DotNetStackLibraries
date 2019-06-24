@@ -7,11 +7,16 @@ namespace AspNetCore.Authentication.Digest
 {
     public class DigestEvents
     {
-        public Func<ValidateCredentialsContext, Task<string>> OnValidateCredentials { get; set; } = context => Task.FromResult(string.Empty);
+        public DigestEvents(Func<GetPasswordContext, Task<string>> onGetPassword)
+        {
+            OnGetPassword = onGetPassword;
+        }
+
+        public Func<GetPasswordContext, Task<string>> OnGetPassword { get; set; } = context => throw new NotImplementedException($"{nameof(OnGetPassword)} must be implemented!");
 
         public Func<DigestChallengeContext, Task> OnChallenge { get; set; } = context => Task.CompletedTask;
 
-        public virtual Task<string> ValidateCredentials(ValidateCredentialsContext context) => OnValidateCredentials(context);
+        public virtual Task<string> GetPassword(GetPasswordContext context) => OnGetPassword(context);
 
         public virtual Task Challenge(DigestChallengeContext context) => OnChallenge(context);
     }

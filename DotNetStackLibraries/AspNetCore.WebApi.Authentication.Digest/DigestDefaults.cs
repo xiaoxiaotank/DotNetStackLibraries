@@ -9,16 +9,18 @@ namespace AspNetCore.Authentication.Digest
         public const string AuthenticationScheme = "Digest";
     }
 
-    public static class AuthenticateHeaderNames
+    public static class AuthenticationHeaderNames
     {
         public const string UserName = "username";
         public const string Realm = "realm";
         public const string Nonce = "nonce";
-        public const string CNonce = "cnonce";
-        public const string NC = "nc";
+        public const string ClientNonce = "cnonce";
+        public const string NonceCounter = "nc";
         public const string Qop = "qop";
         public const string Response = "response";
-        public const string URI = "uri";
+        public const string Uri = "uri";
+        public const string RspAuth = "rspauth";
+        public const string Stale = "stale";
     }
 
     public static class QopValues

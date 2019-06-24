@@ -12,9 +12,9 @@ namespace AspNetCore.Authentication.Digest
 
         public string Nonce { get; set; }
 
-        public string CNonce { get; set; }
+        public string ClientNonce { get; set; }
 
-        public string NC { get; set; }
+        public string NonceCounter { get; set; }
 
         public string Qop { get; set; }
 
@@ -22,6 +22,6 @@ namespace AspNetCore.Authentication.Digest
 
         public string RequestMethod { get; set; }
 
-        public string URI { get; set; }
+        public string Uri { get; set; }
     }
 }

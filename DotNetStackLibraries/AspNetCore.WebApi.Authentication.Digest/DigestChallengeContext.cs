@@ -22,6 +22,8 @@ namespace AspNetCore.Authentication.Digest
         /// </summary>
         public Exception AuthenticateFailure { get; set; }
 
+        public bool Stale { get; set; }
+
         /// <summary>
         /// 指定是否已被处理，如果已处理，则跳过默认认证逻辑
         /// </summary>
