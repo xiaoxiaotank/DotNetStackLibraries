@@ -179,7 +179,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools.MediatR", "Tools.Medi
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JwtBearer", "JwtBearer", "{EB026BE5-C2F3-4825-8CB5-8ADFAEB33847}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.WebApi.Authentication.Digest", "AspNetCore.WebApi.Authentication.Digest\AspNetCore.WebApi.Authentication.Digest.csproj", "{AE2D66E6-B46A-473E-8957-0A75764483BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.WebApi.Authentication.Digest", "AspNetCore.WebApi.Authentication.Digest\AspNetCore.WebApi.Authentication.Digest.csproj", "{AE2D66E6-B46A-473E-8957-0A75764483BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesignPattern.Singleton", "DesignPattern.Singleton\DesignPattern.Singleton.csproj", "{6CCFACAF-0DB5-42E8-82F9-C0059AE93B6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -411,6 +413,10 @@ Global
 		{AE2D66E6-B46A-473E-8957-0A75764483BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE2D66E6-B46A-473E-8957-0A75764483BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE2D66E6-B46A-473E-8957-0A75764483BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CCFACAF-0DB5-42E8-82F9-C0059AE93B6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CCFACAF-0DB5-42E8-82F9-C0059AE93B6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CCFACAF-0DB5-42E8-82F9-C0059AE93B6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CCFACAF-0DB5-42E8-82F9-C0059AE93B6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -499,6 +505,7 @@ Global
 		{4184BDDE-0EEE-4AAA-B40A-5427641BB2C8} = {AA129E19-91CA-4041-8D8C-83589483BD6B}
 		{EB026BE5-C2F3-4825-8CB5-8ADFAEB33847} = {F778DA4A-B6FF-4A35-823F-D9E748EF0983}
 		{AE2D66E6-B46A-473E-8957-0A75764483BE} = {F778DA4A-B6FF-4A35-823F-D9E748EF0983}
+		{6CCFACAF-0DB5-42E8-82F9-C0059AE93B6E} = {EF2BCCF2-6882-4E11-96CB-25DF633905E6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}
