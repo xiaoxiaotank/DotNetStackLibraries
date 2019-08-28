@@ -41,7 +41,7 @@ namespace Tools.StackExchange.Redis
                 var sub = redis.GetSubscriber();
                 sub.Subscribe("message", (channel, message) =>
                  {
-                     Console.WriteLine((string)message);
+                     Console.WriteLine(message);
                  });
                 sub.Publish("message", "hello");
                 #endregion
