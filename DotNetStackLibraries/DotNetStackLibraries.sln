@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.89
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Net.StartSignalr", "StartSignalr\SignalR.Net.StartSignalr.csproj", "{A540862C-87E4-4074-B679-5BFAE175C5B9}"
 EndProject
@@ -191,7 +191,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoSQL.StackExchange.Redis.C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Redis", "Redis", "{AAEAA48A-6FA2-49B3-B9E2-0C1E37EA34F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoSQL.StackExchange.Redis.MQ", "NoSQL.StackExchange.Redis.MQ\NoSQL.StackExchange.Redis.MQ.csproj", "{2C8E81AD-F934-4AAA-BCEF-DA7D0FAAC79C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoSQL.StackExchange.Redis.MQ", "NoSQL.StackExchange.Redis.MQ\NoSQL.StackExchange.Redis.MQ.csproj", "{2C8E81AD-F934-4AAA-BCEF-DA7D0FAAC79C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Thread.Synchronization", "CSharp.Thread.Synchronization\CSharp.Thread.Synchronization.csproj", "{47B14AF1-80A3-40DB-889C-C658BAF8A2DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Thread", "Thread", "{6376BFF6-C562-4723-B5CF-A1E3F54A4F1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -439,6 +443,10 @@ Global
 		{2C8E81AD-F934-4AAA-BCEF-DA7D0FAAC79C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C8E81AD-F934-4AAA-BCEF-DA7D0FAAC79C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C8E81AD-F934-4AAA-BCEF-DA7D0FAAC79C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47B14AF1-80A3-40DB-889C-C658BAF8A2DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47B14AF1-80A3-40DB-889C-C658BAF8A2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47B14AF1-80A3-40DB-889C-C658BAF8A2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47B14AF1-80A3-40DB-889C-C658BAF8A2DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -532,6 +540,8 @@ Global
 		{1B0795EC-A060-4769-82FF-F575234BC313} = {AAEAA48A-6FA2-49B3-B9E2-0C1E37EA34F0}
 		{AAEAA48A-6FA2-49B3-B9E2-0C1E37EA34F0} = {437088C1-E503-4F90-AC8F-6EE534F06055}
 		{2C8E81AD-F934-4AAA-BCEF-DA7D0FAAC79C} = {AAEAA48A-6FA2-49B3-B9E2-0C1E37EA34F0}
+		{47B14AF1-80A3-40DB-889C-C658BAF8A2DF} = {6376BFF6-C562-4723-B5CF-A1E3F54A4F1E}
+		{6376BFF6-C562-4723-B5CF-A1E3F54A4F1E} = {723EECF1-B4B8-42A3-AEE0-8F6AA1058D20}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}

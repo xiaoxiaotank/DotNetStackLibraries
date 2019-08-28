@@ -7,7 +7,6 @@ namespace DesignPattern.Proxy
     class MandatoryGamePlayer : IGamePlayer
     {
         private readonly string _userName;
-        private IGamePlayer _proxy;
 
         private MandatoryGamePlayer(string userName)
         {

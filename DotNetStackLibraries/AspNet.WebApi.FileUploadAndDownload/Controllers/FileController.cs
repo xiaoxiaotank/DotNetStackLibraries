@@ -39,7 +39,7 @@ namespace AspNet.WebApi.FileUploadAndDownload.Controllers
                     {
                         file.SaveAs(path);
                     }
-                    catch(Exception ex)
+                    catch(Exception)
                     {
 
                     }
