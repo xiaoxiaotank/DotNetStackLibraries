@@ -104,7 +104,7 @@
         <!--Logo-->
         <Image Name="ImgLogo" Source="{Binding Path=Source,Converter={StaticResource BitmapToImageSourceConverter}}" Height="100" Margin="0 5 0 0"></Image>
         <!--Title-->
-        <TextBlock VerticalAlignment="Bottom" Style="{StaticResource ResourceKey=TbTitle}" >Tracker800无线电监管应用平台</TextBlock>
+        <TextBlock VerticalAlignment="Bottom" Style="{StaticResource ResourceKey=TbTitle}" >XXXX应用平台</TextBlock>
 
         <Grid Style="{StaticResource ResourceKey=LoginGrid}">
             <StackPanel Margin="35 25">
