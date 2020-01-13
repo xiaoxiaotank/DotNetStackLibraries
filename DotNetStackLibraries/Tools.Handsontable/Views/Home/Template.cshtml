@@ -1,0 +1,516 @@
+﻿
+@{
+    ViewBag.Title = "Template";
+}
+@section styles{
+    <link href="~/Content/handsontable/handsontable.full.min.css" rel="stylesheet" media="screen" />
+    <style type="text/css">
+        .box {
+            position: absolute;
+            top: 70px;
+            right: 0;
+            bottom: 10px;
+            left: 0;
+            display: flex;
+        }
+
+        .left-side {
+            width: 16%;
+            height: 100%;
+            background-color: aqua;
+            overflow-y: auto;
+        }
+
+        .content {
+            width: 84%;
+            height: 100%;
+        }
+
+        .toolbar {
+            width: 100%;
+            height: 5%;
+            min-height: 50px;
+            padding: 10px 20px;
+        }
+
+        select {
+            width: auto;
+        }
+
+        dl {
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
+            margin: 0;
+        }
+
+        dd {
+            margin-right: 10px;
+            border: solid 1px transparent;
+        }
+
+            dd:hover {
+                border-color: lightgray;
+            }
+
+            dd embed {
+                width: 30px;
+                height: 30px;
+                vertical-align: middle;
+            }
+    </style>
+}
+
+<div class="box">
+    <div class="left-side"></div>
+    <div class="content">
+        <div class="toolbar">
+            <dl>
+                <dd>
+                    <button id="toolbar-download">下载.csv</button>
+                </dd>
+                <dd>
+                    <button id="toolbar-save">保存</button>
+                </dd>
+                <dd>
+                    <button id="toolbar-clear">清除localstorage</button>
+                </dd>
+
+                <dd>
+                    <select class="form-control" id="toolbar-font-family">
+                        <option>宋体</option>
+                        <option>仿宋</option>
+                        <option>黑体</option>
+                        <option>Arial</option>
+                        <option>Times New Roman</option>
+                    </select>
+                </dd>
+                <dd>
+                    <select class="form-control" id="toolbar-font-size">
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>14</option>
+                        <option>18</option>
+                        <option>24</option>
+                        <option>30</option>
+                        <option>36</option>
+                    </select>
+                </dd>
+                <dd>
+                    <button id="toolbar-bold">加粗</button>
+                    @*<embed id="toolbar-bold" src="~/svgs/spreadsheet-icons/bold.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-italic">倾斜</button>
+                    @*<embed id="toolbar-italic" src="~/svgs/spreadsheet-icons/italic.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-underline">下划线</button>
+                    @*<embed id="toolbar-underline" src="~/svgs/spreadsheet-icons/underline.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-align-top">顶端对齐</button>
+                    @*<embed id="toolbar-align-top" src="~/svgs/spreadsheet-icons/align-top.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-align-middle">垂直居中</button>
+                    @*<embed id="toolbar-align-middle" src="~/svgs/spreadsheet-icons/align-middle.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-align-bottom">底端对齐</button>
+                    @*<embed id="toolbar-align-bottom" src="~/svgs/spreadsheet-icons/align-bottom.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-align-left">左对齐</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/align-left.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-align-center">居中</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/align-center.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-align-right">右对齐</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/align-right.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-border-bottom">下边框</button>
+                    @*<div id="test">
+                <embed src="~/svgs/spreadsheet-icons/border-left.svg" />
+            </div>*@
+                </dd>
+                <dd>
+                    <button id="toolbar-border-top">上边框</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/border-top.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-border-left">左边框</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/border-left.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-border-right">右边框</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/border-right.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-border-none">无边框</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/border-none.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-border-all">所有边框</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/border-all.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-border-outline">外边框</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/border-outline.svg" />*@
+                </dd>
+                <dd>
+                    @*<embed src="~/svgs/spreadsheet-icons/underline.svg" />*@
+                    <button id="toolbar-border-thick">边框粗细</button>
+                </dd>
+                <dd>
+                    <button id="toolbar-merge-cells">合并</button>
+
+                    @*<embed id="toolbar-merge-cells" src="~/svgs/spreadsheet-icons/merge-cells.svg" />*@
+                </dd>
+                <dd>
+                    <button id="toolbar-unmerge-cells">取消合并</button>
+                    @*<embed src="~/svgs/spreadsheet-icons/border-left.svg" />*@
+                </dd>
+            </dl>
+        </div>
+        <div id="spreadsheet"></div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Scripts/handsontable/handsontable.full.js"></script>
+    @*<script src="~/Scripts/handsontable/handsontable.full.min.js"></script>*@
+    <script src="~/Scripts/handsontable/zh-CN.min.js"></script>
+    <script>
+        const Col_Count = 26;
+        const Row_Count = 100;
+
+        var data = getData();
+        var $$ = function (id) {
+            return document.getElementById(id);
+        }
+
+        function defaultRenderer(instance, td, row, col, prop, value, cellProperties) {
+            Handsontable.renderers.TextRenderer.apply(this, arguments);
+
+            if (cellProperties.style) {
+                if (cellProperties.style.fontFamily) {
+                    td.style.fontFamily = cellProperties.style.fontFamily;
+                }
+                if (cellProperties.style.fontSize) {
+                    td.style.fontSize = cellProperties.style.fontSize;
+                }
+                if (cellProperties.style.fontWeight) {
+                    td.style.fontWeight = cellProperties.style.fontWeight;
+                }
+                if (cellProperties.style.fontStyle) {
+                    td.style.fontStyle = cellProperties.style.fontStyle;
+                }
+            } else {
+                cellProperties.style = {};
+            }
+            
+        }
+
+        $(function () {
+            initToolbar();
+            //var data = new Array(Row_Count);
+            //for (var i = 0; i < data.length; i++) {
+            //    data[i] = new Array(Col_Count);
+            //}
+            var container = $$('spreadsheet');
+            var settings = {
+                data: data,
+                persistentState: true,
+                rowHeaders: true,
+                colHeaders: true,
+                contextMenu: [
+                    'row_above',
+                    'row_below',
+                    'col_left',
+                    'col_right',
+                    '--------',
+                    'remove_row',
+                    'remove_col',
+                    'clear_column',
+                    'undo',
+                    'redo',
+                    'make_read_only',
+                    'alignment',
+                    'cut',
+                    'copy',
+                    'borders',
+                    'mergeCells',
+                ],
+                manualRowMove: true,
+                manualRowResize: true,
+                manualColumnMove: true,
+                manualColumnResize: true,
+                outsideClickDeselects: false,
+                language: 'zh-CN',
+                licenseKey: 'non-commercial-and-evaluation',
+                width: '100%',
+                height: '95%',
+                mergeCells: true,
+                customBorders: true,
+                cells: function (row, col) {
+                    var cellProperties = {};
+                    cellProperties.renderer = defaultRenderer;
+
+                    return cellProperties;
+                },
+                afterInit: function () {
+
+                },
+                afterRenderer: function (td, row, col) {
+
+                },
+                afterSetCellMeta: function (row, col, key, val) {
+                   
+                }
+            };
+            var hot = new Handsontable(container, settings);
+            const customBordersPlugin = hot.getPlugin('customBorders');
+            const mergeCellsPlugin = hot.getPlugin('mergeCells');
+            const contextMenuPlugin = hot.getPlugin('contextMenu');
+            const exportPlugin = hot.getPlugin('exportFile');
+            const persistentStatePlugin = hot.getPlugin('persistentState');
+
+            var cellsMetaObj = new Object();
+            persistentStatePlugin.loadValue('cellsMeta', cellsMetaObj);
+            if (cellsMetaObj) {
+                var cellsMeta = cellsMetaObj.value;
+                console.log(cellsMeta);
+                if (cellsMeta) {
+                    for (var i = 0; i < cellsMeta.length; i++) {
+                        var prevCellMeta = cellsMeta[i];
+                        var cellMeta = hot.getCellMeta(prevCellMeta.row, prevCellMeta.col);
+                        prevCellMeta.instance = cellMeta.instance;
+                        hot.setCellMetaObject(cellMeta.row, cellMeta.col, prevCellMeta);
+
+                        if (prevCellMeta.rowspan && prevCellMeta.colspan) {
+                            mergeCellsPlugin.merge(cellMeta.row, cellMeta.col, cellMeta.row + prevCellMeta.rowspan - 1, cellMeta.col + prevCellMeta.colspan - 1);
+                        }
+                        if (prevCellMeta.borders) {
+                            customBordersPlugin.setBorders([
+                                [prevCellMeta.borders.row, prevCellMeta.borders.col, prevCellMeta.borders.row, prevCellMeta.borders.col]
+                            ],
+                            {
+                                left: prevCellMeta.borders.left,
+                                top: prevCellMeta.borders.top,
+                                right: prevCellMeta.borders.right,
+                                bottom: prevCellMeta.borders.bottom
+                            });
+                        }
+                    }
+                   
+                    hot.render();
+                }
+            }
+
+            // 已完成
+            $('#toolbar-download').on('click', function () {
+                exportPlugin.downloadFile('csv', {
+                    // 是否启用 bom 签名
+                    bom: false,
+                    // 列分隔符
+                    columnDelimiter: ',',
+                    // 是否包含列头
+                    columnHeaders: false,
+                    // 是否包含隐藏列
+                    exportHiddenColumns: true,
+                    // 是否包含隐藏行
+                    exportHiddenRows: true,
+                    // 文件扩展名
+                    fileExtension: 'csv',
+                    // 文件名
+                    filename: 'Handsontable-CSV-file_[YYYY]-[MM]-[DD]',
+                    mimeType: 'text/csv',
+                    rowDelimiter: '\r\n',
+                    rowHeaders: true
+                })
+            })
+            // 已完成
+            $('#toolbar-save').on('click', function () {
+                var cellsMeta = hot.getCellsMeta();
+                for (var i = 0; i < cellsMeta.length; i++) {
+                    cellsMeta[i].instance = null;
+                }
+                console.log(cellsMeta);
+                persistentStatePlugin.saveValue('cellsMeta', cellsMeta);
+                persistentStatePlugin.saveValue('data', hot.getData());
+            })
+            // 已完成
+            $('#toolbar-clear').on('click', function () {
+                persistentStatePlugin.resetValue();
+            })           
+            // 已完成
+            $('#toolbar-font-family').on('change', function () {
+                var selectedRange = hot.getSelectedRange()[0];
+                var fontFamily = $(this).children('option:selected').val();
+                for (var row = selectedRange.from.row; row <= selectedRange.to.row; row++) {
+                    for (var col = selectedRange.from.col; col <= selectedRange.to.col; col++) {
+                        var cellMeta = hot.getCellMeta(row, col);
+                        if (cellMeta.style) {
+                            cellMeta.style.fontFamily = fontFamily;
+                        }
+                        hot.setCellMetaObject(row, col, cellMeta);
+                    }
+                }
+                hot.render();
+            })
+            // 已完成
+            $('#toolbar-font-size').on('change', function () {
+                var selectedRange = hot.getSelectedRange()[0];
+                var fontSize = $(this).children('option:selected').val() + 'px';
+                for (var row = selectedRange.from.row; row <= selectedRange.to.row; row++) {
+                    for (var col = selectedRange.from.col; col <= selectedRange.to.col; col++) {
+                        var cellMeta = hot.getCellMeta(row, col);
+                        if (cellMeta.style) {
+                            cellMeta.style.fontSize = fontSize;
+                        }
+                        hot.setCellMetaObject(row, col, cellMeta);
+                    }
+                }
+                hot.render();
+            })
+            //$('#test').on('click', function () {
+            //    console.log("test");
+            //})
+            // 已实现
+            $('#toolbar-align-top').on('click', function () {
+                contextMenuPlugin.executeCommand('alignment:top');
+            })
+            // 已实现
+            $('#toolbar-align-middle').on('click', function () {
+                contextMenuPlugin.executeCommand('alignment:middle');
+            })
+            // 已实现
+            $('#toolbar-align-bottom').on('click', function () {
+                contextMenuPlugin.executeCommand('alignment:bottom');
+            })
+            // 已实现
+            $('#toolbar-align-left').on('click', function () {
+                contextMenuPlugin.executeCommand('alignment:left');
+            })
+            // 已实现
+            $('#toolbar-align-center').on('click', function () {
+                contextMenuPlugin.executeCommand('alignment:center');
+            })
+            // 已实现
+            $('#toolbar-align-right').on('click', function () {
+                contextMenuPlugin.executeCommand('alignment:right');
+            })
+            // 已实现
+            $('#toolbar-border-bottom').on('click', function () {
+                contextMenuPlugin.executeCommand('borders:bottom', normalizeSelections(getSelectedRanges()));
+            })
+            // 已实现
+            $('#toolbar-border-top').on('click', function () {
+                contextMenuPlugin.executeCommand('borders:top', normalizeSelections(getSelectedRanges()));
+            })
+            // 已实现
+            $('#toolbar-border-left').on('click', function () {
+                contextMenuPlugin.executeCommand('borders:left', normalizeSelections(getSelectedRanges()));
+            })
+            // 已实现
+            $('#toolbar-border-right').on('click', function () {
+                contextMenuPlugin.executeCommand('borders:right', normalizeSelections(getSelectedRanges()));
+            })
+            // 已实现
+            $('#toolbar-border-none').on('click', function () {
+                contextMenuPlugin.executeCommand('borders:no_borders', normalizeSelections(getSelectedRanges()));
+            })
+            // 已实现
+            $('#toolbar-border-all').on('click', function () {
+                customBordersPlugin.setBorders(getSelectedRanges(), { bottom: {}, top: {}, left: {}, right: {} })
+            })
+            // 已实现
+            $('#toolbar-border-outline').on('click', function () {
+                var selections = normalizeSelections(getSelectedRanges());
+                contextMenuPlugin.executeCommand('borders:bottom', selections);
+                contextMenuPlugin.executeCommand('borders:top', selections);
+                contextMenuPlugin.executeCommand('borders:left', selections);
+                contextMenuPlugin.executeCommand('borders:right', selections);
+            })
+            $('#toolbar-border-thick').on('click', function () {
+
+            })
+            // 已实现
+            $('#toolbar-merge-cells').on('click', function () {
+                var selectedRanges = getSelectedRanges();
+                for (var i = 0; i < selectedRanges.length; i++) {
+                    mergeCellsPlugin.mergeSelection(selectedRanges[i]);
+                }
+            })
+            // 已实现
+            $('#toolbar-unmerge-cells').on('click', function () {
+                var selectedRanges = getSelectedRanges();
+                for (var i = 0; i < selectedRanges.length; i++) {
+                    mergeCellsPlugin.unmergeSelection(selectedRanges[i]);
+                }
+            })
+
+            function getSelectedRanges() {
+                return hot.getSelectedRange();
+            }
+        })
+
+        function initToolbar() {
+            initToolbarAboutFontFamily();
+            initToolbarAboutFontSize();
+        }
+
+        function initToolbarAboutFontFamily() {
+            var eles = $('#toolbar-font-family').find('option');
+            eles.each(function () {
+                $(this).css('font-family', $(this).text());
+            })
+        }
+
+        function initToolbarAboutFontSize() {
+            var eles = $('#toolbar-font-size').find('option');
+            eles.each(function () {
+                $(this).css('font-size', parseInt($(this).text()));
+            })
+        }
+
+        function getData() {
+            //ajax('...', 'GET', '', (res) => {
+            //    return res.data;
+            //})
+
+            return Handsontable.helper.createSpreadsheetData(100, 26);
+        }
+
+        function normalizeSelections(ranges) {
+            var selections = [];
+            for (var i = 0; i < ranges.length; i++) {
+                selections.push({
+                    start: ranges[i].getTopLeftCorner(),
+                    end: ranges[i].getBottomRightCorner()
+                });
+            }
+            return selections;
+        }
+
+        var fontSize36Renderer = function (instance, td, row, col, prop, value, cellProperties) {
+            Handsontable.renderers.TextRenderer.apply(this, arguments);
+
+            //td.style.fontSize = '36px';
+        }
+
+        var fontFamilyHeiTiRenderer = function (instance, td, row, col, prop, value, cellProperties) {
+            Handsontable.renderers.TextRenderer.apply(this, arguments);
+            td.style.fontFamily = '黑体';
+        }
+
+
+    </script>
+}

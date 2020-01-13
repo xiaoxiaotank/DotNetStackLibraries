@@ -1,0 +1,279 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section styles{
+    <link href="~/Content/handsontable/handsontable.full.min.css" rel="stylesheet" />
+}
+
+<button id="console-data">console data</button>
+<h3>array data</h3>
+<div id="example-arrayData" style="background-color:antiquewhite;">
+
+</div>
+<button id="set-cell-value">设置A2单元格值为jjj</button>
+<br />
+<br />
+<h3>object data</h3>
+<div id="example-objectData" style="background-color:antiquewhite;">
+
+</div>
+<br />
+<br />
+<h3>empty object data</h3>
+<div id="example-emptyObjectData">
+
+</div>
+<button id="load-data">加载数据</button>
+<button id="save-data">保存数据</button>
+
+@section scripts{
+    <script src="~/Scripts/handsontable/handsontable.full.min.js"></script>
+    <script src="~/Scripts/zh-CN.min.js"></script>
+    <script>
+        var $$ = function (id) {
+            return document.getElementById(id);
+        }
+
+        //---------------- begin: arrayData ---------------------------------------------
+        let arrayData = [
+            ['我是只读的', '此列不可编辑', 'Tesla', 'Toyota', 'Honda', 'Hiden', '2019-10-1', 'red'],
+            ['2017', 10, 11, 12, 13, '', '2019-13-1', 'green'],
+            ['2018', 20, 11, 14, 13, '', '2019-10-1', 'yellow'],
+            ['2019', 30, 15, 12, 13, '', '2019-10-1', 'black']
+        ];
+        // 如果不想更改data，则需要提前复制一份
+        let origArrayData = JSON.parse(JSON.stringify(arrayData));
+        let yellowRenderer = function (instance, td, row, col, prop, value, cellPropertities) {
+            Handsontable.renderers.TextRenderer.apply(this, arguments);
+            td.style.backgroundColor = 'yellow';
+        }
+
+        let arrayDataContainer = $$('example-arrayData');
+        let arrayDataHot = new Handsontable(arrayDataContainer, {
+            // 双向绑定，更改表格中的任何数据都会同步更改data
+            data: arrayData,
+            // 启用行头
+            rowHeaders: true,
+            // 启用列头
+            colHeaders: true,
+            // 列头启用行过滤
+            filters: true,
+            // 列头启用下拉菜单
+            dropdownMenu: true,
+            //startRows: 50,
+            //startCols: 50,
+            // 最小备用行数
+            minSpareRows: 5,
+            // 启用右键菜单
+            contextMenu: true,
+            // 启用列移动
+            manualColumnMove: true,
+            // 启用行移动
+            manualRowMove: true,
+            // 开启手动调节行大小
+            manualRowResize: true,
+            // 开启手动调节列大小
+            manualColumnResize: true,
+            // 启用头提示
+            headerTooltips: true,
+            //headerTooltips: {
+            //    // 行头不提示
+            //    rows: false,
+            //    columns: true,
+            //    // 只有头内容超出宽度才提示
+            //    onlyTrimmed: true
+            //},
+            // 冻结列头
+            manualColumnFreeze: true,
+            // 固定前n行
+            fixedRowsTop: 1,
+            // 固定左侧前n列
+            fixedColumnsLeft: 1,
+            // 固定最后n行
+            fixedRowsBottom: 1,
+            // 移动行时连同行头一起移动
+            bindRowsWithHeaders: 'strict',
+            // 配置显示的列，按顺序展示
+            columns: [
+                // type 默认是 text
+                { data: 'isActive', type: 'checkbox' },
+                // Horizontal: htLeft, htCenter, htRight, htJustify,
+                // Vertical: htTop, htMiddle, htBottom.
+                { data: 0, className: 'htMiddle htCenter' },
+                { data: 1, editor: false },
+                { data: 2 },
+                { data: 3 },
+                { data: 4, renderer: yellowRenderer },
+
+                // 隐藏第 colIndex = 5 的数据
+
+                { data: 6, type: 'date', dateFormat: 'YYYY-MM-DD' },
+                { data: 7, type: 'autocomplete', source: ["yellow", "red", "orange", "green", "blue", "gray", "black", "white"] },
+
+            ],
+            // cell：对单元格进行配置
+            cell: [
+                { row: 0, col: 1, readOnly: true, renderer: yellowRenderer }
+            ],
+            // cells：使用 function 进行单元格配置
+            //cells: (row, col, prop) => {
+            //    let props = {};
+
+            //    if (row === 0 && col === 1) {
+            //        props.readOnly = true;
+            //    }
+
+            //    return props;
+            //},
+            // 设置所有单元格为只读
+            //readOnly: true,
+            width: '50vw',
+            height: '30vh',
+            // 配置列宽默认单位 px
+            colWidths: [null, null, 100, null, null, null, 100, 100],
+            // 刷新尺寸之前
+            beforeRefreshDimensions() {
+                console.log('window resizing');
+                // 通过返回 false 来阻止 auto resizing
+                //return false;
+            },
+            // 刷新尺寸之后
+            afterRefreshDimensions() {
+                console.log('window resized');
+            },
+            language: 'zh-CN',
+            mergeCells: [
+                { row: 1, col: 1, rowspan: 2, colspan: 2 }
+
+            ]
+        });
+
+        $('#set-cell-value').click(() => {
+            // A1单元格（row, col, value）
+            arrayDataHot.setDataAtCell(0, 1, 'jjj');
+        })
+        //---------------- end: arrayData ---------------------------------------------
+
+
+        //---------------- begin: objectData ---------------------------------------------
+        let objectData = [
+            // 默认的，表格列顺序以第一个对象的字段顺序为准，可以在columns属性中配置
+            { id: 1, address: '', name: 'Ted Right', fullName: { first: 'Ted', last: 'Right' } },
+            { id: 2, name: 'Frank Honest', address: '', fullName: { first: 'Frank', last: 'Honest' } },
+            { id: 3, name: 'Joan Well', address: '', fullName: { first: 'Joan', last: 'Well' } },
+            { id: 4, name: 'Gail Polite', address: '', fullName: { first: 'Gail', last: 'Polite' } },
+            { id: 5, address: '', name: 'Michael Fair', fullName: { first: 'Michael', last: 'Fair' } },
+        ];
+        let objectDataContainer = $$('example-objectData');
+        let objectDataHot = new Handsontable(objectDataContainer, {
+            data: objectData,
+            rowHeaders: true,
+            colHeaders: true,
+            filters: true,
+            dropdownMenu: true,
+            minSpareRows: 1,
+            // 配置每一列的展示数据
+            //columns: function (column) {
+            //    let data;
+
+            //    switch (column) {
+            //        case 0:
+            //            data = 'id';
+            //            break;
+            //        case 1:
+            //            data = 'name';
+            //            break;
+            //        case 2:
+            //            data = 'fullName.first';
+            //            break;
+            //        case 3:
+            //            data = 'fullName.last';
+            //            break;
+            //        case 4:
+            //            data = 'address';
+            //            break;
+            //    }
+
+            //    return { data: data };
+            //}
+            columns: [
+                { data: 'id' },
+                { data: 'name' },
+                { data: 'fullName.first' },
+                { data: 'fullName.last' }
+            ],
+            // 拉伸以填满空间宽度
+            stretchH: 'all',
+            // 拉伸最后一列以填满空间宽度
+            //stretchH: 'last',
+        });
+        //---------------- end: objectData ---------------------------------------------
+
+
+        //---------------- begin: emptyObjectData ---------------------------------------------
+        let loadData = $$('load-data');
+        let saveData = $$('save-data');
+
+        let emptyObjectData = {};
+        let emptyObjectDataContainer = $$('example-emptyObjectData');
+        let emptyObjectDataHot = new Handsontable(emptyObjectDataContainer, {
+            data: emptyObjectData,
+            rowHeaders: true,
+            colHeaders: ['ID', 'First Name', 'Last Name', 'Address'],
+            minSpareRows: 1,
+            columns: [
+                { data: 'id' },
+                { data: 'fullName.first' },
+                { data: 'fullName.last' },
+                { data: 'address' },
+            ],
+            afterChange: (change, source) => {
+                console.log('change:', change);
+                console.log('source:', source);
+
+                // 通过调用hot.loadData方法改变的数据
+                if (source === 'loadData') {
+                    //loadData.setAttribute('disabled');
+                }
+
+                console.log('data changed');
+            }
+        });
+
+        // 加载数据
+        Handsontable.dom.addEvent(loadData, 'click', () => {
+            //this.setAttribute('disabled', 'disabled');
+
+            //ajax('...', 'GET', '', (res) => {
+            //    emptyObjectDataHot.loadData(res.data);
+            //})
+            emptyObjectData = [
+                { id: 1, fullName: { first: 'Ted', last: 'Right' }, address: '' },
+                { id: 2, fullName: { first: 'Frank', last: 'Honest' }, address: '' },
+                { id: 3, fullName: { first: 'Joan', last: 'Well' }, address: '' },
+                { id: 4, fullName: { first: 'Gail', last: 'Polite' }, address: '' },
+                { id: 5, fullName: { first: 'Michael', last: 'Fair' }, address: '' },
+            ]
+            emptyObjectDataHot.loadData(emptyObjectData);
+        })
+
+        // 保存数据
+        Handsontable.dom.addEvent(saveData, 'click', () => {
+            //ajax('...', 'POST', JSON.stringfy({ data: emptyObjectDataHot.getData() }), (res) => {
+            //
+            //})
+            console.log('saved data:', emptyObjectDataHot.getData())
+        })
+
+        //---------------- end: emptyObjectData ---------------------------------------------
+
+
+
+
+        $('#console-data').click(() => {
+            console.log('arrayData:', arrayData);
+            console.log('objectData:', objectData);
+            console.log('emptyObjectData', emptyObjectData);
+        })
+    </script>
+}
