@@ -49,15 +49,19 @@
             border: solid 1px transparent;
         }
 
-            dd:hover {
-                border-color: lightgray;
-            }
+        dd:hover {
+            border-color: lightgray;
+        }
 
-            dd embed {
-                width: 30px;
-                height: 30px;
-                vertical-align: middle;
-            }
+        dd embed {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+        }
+
+        button:disabled{
+            background-color:red;
+        }
     </style>
 }
 
@@ -191,7 +195,7 @@
         const Col_Count = 26;
         const Row_Count = 100;
 
-        var data = getData();
+        var data;
         var $$ = function (id) {
             return document.getElementById(id);
         }
@@ -212,6 +216,9 @@
                 if (cellProperties.style.fontStyle) {
                     td.style.fontStyle = cellProperties.style.fontStyle;
                 }
+                if (cellProperties.style.textDecoration) {
+                    td.style.textDecoration = cellProperties.style.textDecoration;
+                }
             } else {
                 cellProperties.style = {};
             }
@@ -220,10 +227,6 @@
 
         $(function () {
             initToolbar();
-            //var data = new Array(Row_Count);
-            //for (var i = 0; i < data.length; i++) {
-            //    data[i] = new Array(Col_Count);
-            //}
             var container = $$('spreadsheet');
             var settings = {
                 data: data,
@@ -271,8 +274,25 @@
                 afterRenderer: function (td, row, col) {
 
                 },
-                afterSetCellMeta: function (row, col, key, val) {
-                   
+                afterSelectionEnd: function (row, column, row2, column2, selectionLayerLevel) {
+                    $('.toolbar dd').children().attr('disabled', false);
+
+                    var rowStart = Math.min(row, row2);
+                    var rowEnd = Math.max(row, row2);
+                    var colStart = Math.min(column, column2);
+                    var colEnd = Math.max(column, column2);
+
+                    for (var i = rowStart; i <= rowEnd; i++) {
+                        for (var j = colStart; j <= colEnd; j++) {
+                            var cellMeta = hot.getCellMeta(i, j);
+                            if (cellMeta.style.fontFamily) {
+                                $('#toolbar-font-family').find('option[text=\'' + cellMeta.style.fontFamily + '\']').attr('selected', true);
+                            }
+                            if (cellMeta.rowspan && cellMeta.colspan) {
+                                $('#toolbar-merge-cells').attr('disabled', true);
+                            }
+                        }
+                    }
                 }
             };
             var hot = new Handsontable(container, settings);
@@ -282,11 +302,18 @@
             const exportPlugin = hot.getPlugin('exportFile');
             const persistentStatePlugin = hot.getPlugin('persistentState');
 
+            var dataObj = new Object();
+            persistentStatePlugin.loadValue('data', dataObj);
+            if (dataObj.value) {
+                data = dataObj.value;
+            } else {
+                data = getData();
+            }
+            hot.loadData(data);
             var cellsMetaObj = new Object();
             persistentStatePlugin.loadValue('cellsMeta', cellsMetaObj);
-            if (cellsMetaObj) {
+            if (cellsMetaObj.value) {
                 var cellsMeta = cellsMetaObj.value;
-                console.log(cellsMeta);
                 if (cellsMeta) {
                     for (var i = 0; i < cellsMeta.length; i++) {
                         var prevCellMeta = cellsMeta[i];
@@ -380,9 +407,51 @@
                 }
                 hot.render();
             })
-            //$('#test').on('click', function () {
-            //    console.log("test");
-            //})
+            // 已完成
+            $('#toolbar-bold').on('click', function () {
+                var selectedRange = hot.getSelectedRange()[0];
+                var fontWeight = 'bold';
+                for (var row = selectedRange.from.row; row <= selectedRange.to.row; row++) {
+                    for (var col = selectedRange.from.col; col <= selectedRange.to.col; col++) {
+                        var cellMeta = hot.getCellMeta(row, col);
+                        if (cellMeta.style) {
+                            cellMeta.style.fontWeight = fontWeight;
+                        }
+                        hot.setCellMetaObject(row, col, cellMeta);
+                    }
+                }
+                hot.render();
+            })
+            // 已完成
+            $('#toolbar-italic').on('click', function () {
+                var selectedRange = hot.getSelectedRange()[0];
+                var fontStyle = 'italic';
+                for (var row = selectedRange.from.row; row <= selectedRange.to.row; row++) {
+                    for (var col = selectedRange.from.col; col <= selectedRange.to.col; col++) {
+                        var cellMeta = hot.getCellMeta(row, col);
+                        if (cellMeta.style) {
+                            cellMeta.style.fontStyle = fontStyle;
+                        }
+                        hot.setCellMetaObject(row, col, cellMeta);
+                    }
+                }
+                hot.render();
+            })
+            // 已完成
+            $('#toolbar-underline').on('click', function () {
+                var selectedRange = hot.getSelectedRange()[0];
+                var textDecoration = 'underline';
+                for (var row = selectedRange.from.row; row <= selectedRange.to.row; row++) {
+                    for (var col = selectedRange.from.col; col <= selectedRange.to.col; col++) {
+                        var cellMeta = hot.getCellMeta(row, col);
+                        if (cellMeta.style) {
+                            cellMeta.style.textDecoration = textDecoration;
+                        }
+                        hot.setCellMetaObject(row, col, cellMeta);
+                    }
+                }
+                hot.render();
+            })
             // 已实现
             $('#toolbar-align-top').on('click', function () {
                 contextMenuPlugin.executeCommand('alignment:top');
@@ -499,18 +568,6 @@
             }
             return selections;
         }
-
-        var fontSize36Renderer = function (instance, td, row, col, prop, value, cellProperties) {
-            Handsontable.renderers.TextRenderer.apply(this, arguments);
-
-            //td.style.fontSize = '36px';
-        }
-
-        var fontFamilyHeiTiRenderer = function (instance, td, row, col, prop, value, cellProperties) {
-            Handsontable.renderers.TextRenderer.apply(this, arguments);
-            td.style.fontFamily = '黑体';
-        }
-
 
     </script>
 }
