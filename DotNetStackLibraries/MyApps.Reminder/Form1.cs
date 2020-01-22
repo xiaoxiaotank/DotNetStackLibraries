@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,18 +10,12 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Timer = System.Windows.Forms.Timer;
 
 namespace MyApps.Reminder
 {
     public partial class Form1 : Form
     {
-        public Form1()
-        {
-            InitializeComponent();
-            // Define the priority of the application (0x3FF = The higher priority)
-            SetProcessShutdownParameters(0x3FF, SHUTDOWN_NORETRY);
-        }
-
         /// <summary>
         /// when closing the session
         /// </summary>
@@ -38,32 +33,90 @@ namespace MyApps.Reminder
         [DllImport("kernel32.dll")]
         static extern bool SetProcessShutdownParameters(uint dwLevel, uint dwFlags);
 
-
-        protected override void WndProc(ref Message m)
+        private readonly Timer _timer;
+        private readonly Dictionary<TimeSpan, bool> _timeSpanDic = new Dictionary<TimeSpan, bool>()
         {
-            if (m.Msg == WM_QUERYENDSESSION || m.Msg == WM_ENDSESSION)
+            //[TimeSpan.FromHours(9)] = true,
+            //[TimeSpan.FromHours(10)] = true,
+            [TimeSpan.FromHours(18.5)] = true, 
+            [TimeSpan.FromHours(21)] = true, 
+            [TimeSpan.FromHours(21.5)] = true 
+        };
+        private readonly string tip;
+
+        public Form1()
+        {
+            InitializeComponent();
+            // Define the priority of the application (0x3FF = The higher priority)
+            SetProcessShutdownParameters(0x3FF, SHUTDOWN_NORETRY);
+
+            var tipSb = new StringBuilder(10);
+            for (int i = 0; i < 10; i++)
             {
-                // Prevent windows shutdown
-                ShutdownBlockReasonCreate(Handle, "打卡了吗？给你10秒钟时间!");
-                Task.Run(async () =>
-                {
-                    await Task.Delay(TimeSpan.FromSeconds(10));
-                    BeginInvoke((Action)(() =>
-                    {
-                        // This method must be called on the same thread as the one that have create the Handle, so use BeginInvoke
-                        ShutdownBlockReasonCreate(Handle, "走吧!");
-
-                        // Allow Windows to shutdown
-                        ShutdownBlockReasonDestroy(Handle);
-                    }));
-                });
-
-                return;
+                tipSb.AppendLine("打卡！！！！！！！！！！！！！！！！！！！！！！！");
             }
-
-            base.WndProc(ref m);
+            tip = tipSb.ToString();
+            _timer = new Timer()
+            {
+                Interval = (int)TimeSpan.FromMinutes(10).TotalMilliseconds,
+            };
+            _timer.Tick += Timer_Tick;
+            Register();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            _timer.Start();
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+            {
+                ShowInTaskbar = false;
+                notifyIcon.Visible = true;
+                notifyIcon.ShowBalloonTip((int)TimeSpan.FromSeconds(10).TotalMilliseconds, "打卡提醒程序", "打卡提醒程序已启动", ToolTipIcon.Info);
+            }
+        }
+
+        private static void Register()
+        {
+            try
+            {
+                using (var local = Registry.CurrentUser)
+                using (var key = local.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run"))
+                {
+                    // 添加注册表
+                    key.SetValue("JJJ_Reminder", Application.ExecutablePath);
+                    // 删除注册表
+                    //key.DeleteValue("JJJ_Reminder", false);
+                    key.Close();
+                    local.Close();
+                };
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("写入注册表失败");
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            var nowTs = DateTime.Now.TimeOfDay;
+            foreach (var ts in _timeSpanDic.Keys.OrderBy(k => k))
+            {
+                if(nowTs >= ts && _timeSpanDic[ts])
+                {
+                    if(MessageBox.Show(tip, "打卡提醒", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly) == DialogResult.OK)
+                    {
+                        _timeSpanDic[ts] = false;
+                        break;
+                    }
+                }
+            }
+        }
+   
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             //switch (e.CloseReason)
@@ -91,5 +144,6 @@ namespace MyApps.Reminder
             e.Cancel = true;
             base.OnFormClosing(e);
         }
+
     }
 }
