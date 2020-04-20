@@ -223,17 +223,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CultureInfo", "CultureInfo"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.CultureInfo.MultiLanguage", "CSharp.CultureInfo.MultiLanguage\CSharp.CultureInfo.MultiLanguage.csproj", "{F942043F-B3D3-4710-83E7-25DCF87596CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Thread.Await.Principle", "CSharp.Thread.Await.Principle\CSharp.Thread.Await.Principle.csproj", "{E642B0DF-1951-4B33-9866-2C453FA63CCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Thread.Await.Principle", "CSharp.Thread.Await.Principle\CSharp.Thread.Await.Principle.csproj", "{E642B0DF-1951-4B33-9866-2C453FA63CCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Thread.AwaitForeach.Principle", "CSharp.Thread.AwaitForeach.Principle\CSharp.Thread.AwaitForeach.Principle.csproj", "{D7186F10-E55D-45B9-BEB6-95848FB163D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Thread.AwaitForeach.Principle", "CSharp.Thread.AwaitForeach.Principle\CSharp.Thread.AwaitForeach.Principle.csproj", "{D7186F10-E55D-45B9-BEB6-95848FB163D2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Struct", "Struct", "{1B9A45D4-B0B6-43A5-964B-1AA3B7077BA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Struct.AutoDispose", "CSharp.Struct.AutoDispose\CSharp.Struct.AutoDispose.csproj", "{63E7FE1A-3FB7-4781-94C2-DD1BCB1FFF2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Struct.AutoDispose", "CSharp.Struct.AutoDispose\CSharp.Struct.AutoDispose.csproj", "{63E7FE1A-3FB7-4781-94C2-DD1BCB1FFF2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Collection.Slice.Principle", "CSharp.Collection.Slice.Principle\CSharp.Collection.Slice.Principle.csproj", "{40453DD1-1840-40BA-91E1-280928D13EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Collection.Slice.Principle", "CSharp.Collection.Slice.Principle\CSharp.Collection.Slice.Principle.csproj", "{40453DD1-1840-40BA-91E1-280928D13EAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Deconstruct", "CSharp.Deconstruct\CSharp.Deconstruct.csproj", "{20AAA866-5495-4FAA-A8A9-17CD7F2352E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharp.Deconstruct", "CSharp.Deconstruct\CSharp.Deconstruct.csproj", "{20AAA866-5495-4FAA-A8A9-17CD7F2352E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Observer", "CSharp.Collection.Observer\CSharp.Observer.csproj", "{BCD9DF8B-D6D5-41A5-9CF8-958DF66A3C9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Collection.ObservableCollection", "CSharp.Collection.ObservableCollection\CSharp.Collection.ObservableCollection.csproj", "{4508D21D-1373-4CDA-8DDA-376A9F7E7A19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp.Subject", "CSharp.Subject\CSharp.Subject.csproj", "{BFA2A951-5D2D-40F0-B4C3-4BE563579F10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -537,6 +543,18 @@ Global
 		{20AAA866-5495-4FAA-A8A9-17CD7F2352E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20AAA866-5495-4FAA-A8A9-17CD7F2352E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20AAA866-5495-4FAA-A8A9-17CD7F2352E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCD9DF8B-D6D5-41A5-9CF8-958DF66A3C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCD9DF8B-D6D5-41A5-9CF8-958DF66A3C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCD9DF8B-D6D5-41A5-9CF8-958DF66A3C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCD9DF8B-D6D5-41A5-9CF8-958DF66A3C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4508D21D-1373-4CDA-8DDA-376A9F7E7A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4508D21D-1373-4CDA-8DDA-376A9F7E7A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4508D21D-1373-4CDA-8DDA-376A9F7E7A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4508D21D-1373-4CDA-8DDA-376A9F7E7A19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFA2A951-5D2D-40F0-B4C3-4BE563579F10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFA2A951-5D2D-40F0-B4C3-4BE563579F10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFA2A951-5D2D-40F0-B4C3-4BE563579F10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFA2A951-5D2D-40F0-B4C3-4BE563579F10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -649,6 +667,9 @@ Global
 		{63E7FE1A-3FB7-4781-94C2-DD1BCB1FFF2C} = {1B9A45D4-B0B6-43A5-964B-1AA3B7077BA6}
 		{40453DD1-1840-40BA-91E1-280928D13EAC} = {3C2BE4A6-5934-4EBA-9E08-1F67228F9CFB}
 		{20AAA866-5495-4FAA-A8A9-17CD7F2352E7} = {723EECF1-B4B8-42A3-AEE0-8F6AA1058D20}
+		{BCD9DF8B-D6D5-41A5-9CF8-958DF66A3C9E} = {723EECF1-B4B8-42A3-AEE0-8F6AA1058D20}
+		{4508D21D-1373-4CDA-8DDA-376A9F7E7A19} = {3C2BE4A6-5934-4EBA-9E08-1F67228F9CFB}
+		{BFA2A951-5D2D-40F0-B4C3-4BE563579F10} = {723EECF1-B4B8-42A3-AEE0-8F6AA1058D20}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {81D6A21C-E547-4566-94F6-D72A35CD04A2}
