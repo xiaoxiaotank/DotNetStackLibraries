@@ -79,6 +79,17 @@ namespace CSharp.Subject
             user.Age = 1;
 
             //subscriber2.Dispose();
+
+
+            subject.Throttle(TimeSpan.FromSeconds(1))
+                .Where(v => v.Contains("1"))
+                .Subscribe(v => Console.WriteLine($"-------------------------{v}---------------------------------"));
+            subject.OnNext("测试 Throttle：1（我不会执行上面的Subscribe，因为在限流的1秒钟内我又OnNext了 Throttle：2，导致忽略了该条信息，而采用下方的信息）");
+            subject.OnNext("测试 Throttle：2（我不会执行上面的Subscribe，因为虽然我在one秒内没有发新的OnNext，但是我不符合Where条件）");
+            await Task.Delay(2000);
+
+            subject.OnNext("测试 Throttle：1（我会执行上面的Subscribe，因为限流的1秒内我没有发新的OnNext）");
+
             Console.ReadKey();
         }
 
