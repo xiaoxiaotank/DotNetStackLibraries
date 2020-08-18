@@ -50,6 +50,13 @@ namespace MyApps.Reminder
             // Define the priority of the application (0x3FF = The higher priority)
             SetProcessShutdownParameters(0x3FF, SHUTDOWN_NORETRY);
 
+            var nowTs = DateTime.Now.TimeOfDay;
+            var keys = _timeSpanDic.Keys.Where(k => k <= nowTs).ToList();
+            foreach (var key in keys)
+            {
+                _timeSpanDic[key] = false;
+            }
+
             var tipSb = new StringBuilder(10);
             for (int i = 0; i < 10; i++)
             {
