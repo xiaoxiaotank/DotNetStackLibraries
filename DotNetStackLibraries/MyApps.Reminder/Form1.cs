@@ -36,10 +36,9 @@ namespace MyApps.Reminder
         private readonly Timer _timer;
         private readonly Dictionary<TimeSpan, bool> _timeSpanDic = new Dictionary<TimeSpan, bool>()
         {
-            //[TimeSpan.FromHours(9)] = true,
+            [TimeSpan.FromHours(9.4)] = true,
             //[TimeSpan.FromHours(10)] = true,
             [TimeSpan.FromHours(18.5)] = true, 
-            [TimeSpan.FromHours(21)] = true, 
             [TimeSpan.FromHours(21.5)] = true 
         };
         private readonly string tip;
@@ -58,14 +57,14 @@ namespace MyApps.Reminder
             }
 
             var tipSb = new StringBuilder(10);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 20; i++)
             {
                 tipSb.AppendLine("打卡！！！！！！！！！！！！！！！！！！！！！！！");
             }
             tip = tipSb.ToString();
             _timer = new Timer()
             {
-                Interval = (int)TimeSpan.FromMinutes(10).TotalMilliseconds,
+                Interval = (int)TimeSpan.FromMinutes(2).TotalMilliseconds,
             };
             _timer.Tick += Timer_Tick;
             Register();
