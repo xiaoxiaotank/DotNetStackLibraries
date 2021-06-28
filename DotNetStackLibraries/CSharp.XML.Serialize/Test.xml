@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<form version="2.1">
+  <export>
+    <base id="abcd1234" name="formExport1"/>
+    <header>
+      <column id="column1" type="0" name="编号" nullable="0" length="20"/>
+      <column id="column2" type="Type2" name="姓名" nullable="1" length="100"/>
+    </header>
+    <body>
+      <column name="编号">
+        <value><![CDATA[1]]></value>
+      </column>
+      <column name="姓名">
+        <value><![CDATA[jjj]]></value>
+      </column>
+    </body>
+  </export>
+
+  <export>
+    <base id="abcdefgh" name="formExport2"/>
+    <header>
+      <column id="column3" type="Type2" name="编号" nullable="1" length="20"/>
+      <column id="column4" type="0" name="姓名" nullable="1" length="100"/>
+    </header>
+    <body>
+      <column name="编号">
+        <value><![CDATA[2]]></value>
+      </column>
+      <column name="姓名">
+        <value><![CDATA[kkk]]></value>
+      </column>
+    </body>
+  </export>
+</form>
